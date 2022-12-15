@@ -32,13 +32,12 @@ def get_env_variable(var_name):
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = get_env_variable('SECRET_KEY')
 
-
-
 ALLOWED_HOSTS = [get_env_variable('ALLOWED_HOSTS')]
 
 # Application definition
 
 INSTALLED_APPS = [
+    'jazzmin',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -76,7 +75,6 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'cers.config.wsgi.application'
-
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
@@ -125,3 +123,50 @@ STATIC_ROOT = BASE_DIR / 'static'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# JAZZMIN CONFIG
+
+JAZZMIN_SETTINGS = {"site_title": "CERS",
+                    "site_header": "CERS",
+                    "site_brand": "CERS",
+                    "show_ui_builder": False,
+                    "changeform_format": "collapsible",
+                    "related_modal_active": False,
+                    "language_chooser": True,
+                    "icons": {
+                    },
+                    "hide_apps": []
+                    }
+
+JAZZMIN_UI_TWEAKS = {
+    "navbar_small_text": False,
+    "footer_small_text": False,
+    "body_small_text": False,
+    "brand_small_text": False,
+    "brand_colour": False,
+    "accent": "accent-primary",
+    "navbar": "navbar-white navbar-light",
+    "no_navbar_border": False,
+    "navbar_fixed": False,
+    "layout_boxed": False,
+    "footer_fixed": False,
+    "sidebar_fixed": True,
+    "sidebar": "sidebar-dark-primary",
+    "sidebar_nav_small_text": False,
+    "sidebar_disable_expand": False,
+    "sidebar_nav_child_indent": True,
+    "sidebar_nav_compact_style": False,
+    "sidebar_nav_legacy_style": False,
+    "sidebar_nav_flat_style": False,
+    "theme": "cosmo",
+    "dark_mode_theme": None,
+    "button_classes": {
+        "primary": "btn-outline-primary",
+        "secondary": "btn-outline-secondary",
+        "info": "btn-outline-info",
+        "warning": "btn-outline-warning",
+        "danger": "btn-outline-danger",
+        "success": "btn-outline-success"
+    },
+    "actions_sticky_top": True
+}
