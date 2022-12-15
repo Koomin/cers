@@ -103,6 +103,8 @@ celerybeat.pid
 
 # Environments
 .env
+.env.prod
+.env.prod.db
 .venv
 env/
 venv/
@@ -116,6 +118,7 @@ venv.bak/
 
 # Rope project settings
 .ropeproject
+.idea
 
 # mkdocs documentation
 /site
