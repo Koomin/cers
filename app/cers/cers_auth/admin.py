@@ -25,3 +25,4 @@ class CersUserAdmin(UserAdmin):
     filter_horizontal = (
         "user_permissions",
     )
+    list_display = ['username', 'first_name', 'last_name', 'email', 'company', ]
