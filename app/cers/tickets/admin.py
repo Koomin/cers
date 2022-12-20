@@ -13,6 +13,12 @@ class TicketAdmin(admin.ModelAdmin):
     list_display = ('topic', 'deadline', 'status', 'priority', 'reporting', 'created')
     inlines = (CommentInline,)
 
+    def get_queryset(self, request):
+        qs = super().get_queryset(request)
+        if request.user.is_superuser:
+            qs = qs.filter(accepted=True)
+        return qs
+
     def get_list_display(self, request):
         list_display = super().get_list_display(request)
         if request.user.is_superuser:
@@ -87,7 +93,7 @@ class TicketOpenSuperAdmin(TicketAdmin):
     def get_queryset(self, request):
         qs = super().get_queryset(request)
         if request.user.is_superuser:
-            qs = qs.filter(accepted=True)
+            qs = qs.filter(technician=request.user)
         return qs
 
 
