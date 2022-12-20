@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'cers.core',
     'cers.cers_auth',
     'cers.companies',
+    'cers.tickets',
 ]
 
 MIDDLEWARE = [
