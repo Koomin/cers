@@ -76,8 +76,8 @@ class TicketOpenAdmin(Ticket):
 
     class Meta:
         proxy = True
-        verbose_name = _('Open ticket')
-        verbose_name_plural = _('Open tickets')
+        verbose_name = _('Open ticket +')
+        verbose_name_plural = _('Open tickets +')
 
 
 class TicketClosedAdmin(Ticket):
@@ -85,8 +85,8 @@ class TicketClosedAdmin(Ticket):
 
     class Meta:
         proxy = True
-        verbose_name = _('Closed ticket')
-        verbose_name_plural = _('Closed tickets')
+        verbose_name = _('Closed ticket +')
+        verbose_name_plural = _('Closed tickets +')
 
 
 class Comment(CersModel):
