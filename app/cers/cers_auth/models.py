@@ -20,5 +20,10 @@ class CersUser(AbstractUser, CersModel):
         related_name="cers_user",
         related_query_name="user",
     )
+    is_staff = models.BooleanField(
+        _("staff status"),
+        default=True,
+        help_text=_("Designates whether the user can log into this admin site."),
+    )
     company = models.ForeignKey(Company, on_delete=models.CASCADE, null=True, blank=False, verbose_name=_("Company"))
     phone_number = models.CharField(max_length=9, null=True, blank=True, verbose_name=_("Phone number"))
