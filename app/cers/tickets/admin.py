@@ -13,7 +13,7 @@ class CommentInline(admin.TabularInline):
 
 @admin.register(Ticket)
 class TicketAdmin(admin.ModelAdmin):
-    list_display = ['topic', 'deadline', 'status', 'priority', 'reporting', 'created']
+    list_display = ['topic', 'deadline', 'status', 'accepted', 'priority', 'reporting', 'created']
     inlines = (CommentInline,)
     list_filter = [
         AcceptedFilter,
