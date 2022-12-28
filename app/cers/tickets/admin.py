@@ -1,6 +1,8 @@
 from django.contrib import admin
+from django.utils.translation import gettext_lazy as _
 from durationwidget.widgets import TimeDurationWidget
 
+from cers.tickets.filters import AcceptedFilter
 from cers.tickets.models import Ticket, Comment, TicketOpen, TicketClosed
 
 
@@ -13,6 +15,9 @@ class CommentInline(admin.TabularInline):
 class TicketAdmin(admin.ModelAdmin):
     list_display = ['topic', 'deadline', 'status', 'priority', 'reporting', 'created']
     inlines = (CommentInline,)
+    list_filter = [
+        AcceptedFilter,
+    ]
 
     def get_queryset(self, request):
         qs = super().get_queryset(request)
@@ -26,6 +31,7 @@ class TicketAdmin(admin.ModelAdmin):
             list_display = ['topic',
                             'deadline',
                             'status',
+                            'accepted',
                             'priority',
                             'reporting',
                             'technician',
@@ -74,9 +80,6 @@ class TicketAdmin(admin.ModelAdmin):
 @admin.register(TicketOpen)
 class TicketOpen(TicketAdmin):
     change_form_template = 'tickets/change_form_open_ticket.html'
-
-    class Media:
-        js = ('tickets/js/accept_tickets.js',)
 
     def get_queryset(self, request):
         qs = super().get_queryset(request)

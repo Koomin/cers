@@ -1,5 +1,4 @@
 {% extends "admin/change_form.html" %}
-<script type="text/javascript"> window.CSRF_TOKEN = "{{ csrf_token }}"; </script>
 {% load i18n %}
 {% block submit_buttons_bottom %}
     {% if user.is_manager and original.pk and not original.accepted %}
