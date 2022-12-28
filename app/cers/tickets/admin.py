@@ -16,7 +16,7 @@ class TicketAdmin(admin.ModelAdmin):
 
     def get_queryset(self, request):
         qs = super().get_queryset(request)
-        if self == TicketAdmin:
+        if self.opts.object_name == 'Ticket':
             qs = qs.filter(status='open')
         return qs
 
