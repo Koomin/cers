@@ -13,10 +13,6 @@ class CommentInline(admin.TabularInline):
 class TicketAdmin(admin.ModelAdmin):
     list_display = ['topic', 'deadline', 'status', 'priority', 'reporting', 'created']
     inlines = (CommentInline,)
-    change_form_template = 'tickets/change_form_open_ticket.html'
-
-    class Media:
-        js = ('tickets/js/accept_tickets.js',)
 
     def get_list_display(self, request):
         list_display = super().get_list_display(request)
@@ -71,9 +67,14 @@ class TicketAdmin(admin.ModelAdmin):
 
 @admin.register(TicketOpen)
 class TicketOpen(TicketAdmin):
+    change_form_template = 'tickets/change_form_open_ticket.html'
+
+    class Media:
+        js = ('tickets/js/accept_tickets.js',)
+
     def get_queryset(self, request):
         qs = super().get_queryset(request)
-        if request.user.groups.name == 'user':
+        if request.user.groups and request.user.groups.name == 'user':
             qs = qs.filter(reporting=request.user)
         if request.user.is_superuser:
             qs = qs.filter(technician=request.user)
