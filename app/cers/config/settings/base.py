@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'durationwidget',
     'cers.core',
     'cers.cers_auth',
     'cers.companies',

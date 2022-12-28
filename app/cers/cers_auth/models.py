@@ -27,3 +27,9 @@ class CersUser(AbstractUser, CersModel):
     )
     company = models.ForeignKey(Company, on_delete=models.CASCADE, null=True, blank=False, verbose_name=_("Company"))
     phone_number = models.CharField(max_length=9, null=True, blank=True, verbose_name=_("Phone number"))
+
+    @property
+    def is_manager(self):
+        if self.groups and self.groups.name == 'manager':
+            return True
+        return False
