@@ -14,6 +14,9 @@ class TicketAdmin(admin.ModelAdmin):
     list_display = ['topic', 'deadline', 'status', 'priority', 'reporting', 'created']
     inlines = (CommentInline,)
 
+    def get_queryset(self, request):
+        return super().get_queryset(request).filter(status='open')
+
     def get_list_display(self, request):
         list_display = super().get_list_display(request)
         if request.user.is_superuser:
