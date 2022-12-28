@@ -76,7 +76,7 @@ class TicketOpen(TicketAdmin):
         qs = super().get_queryset(request)
         if request.user.groups and request.user.groups.name == 'user':
             qs = qs.filter(reporting=request.user)
-        if request.user.is_superuser:
+        if request.user.groups and request.user.groups.name == 'technician':
             qs = qs.filter(technician=request.user)
         return qs
 
