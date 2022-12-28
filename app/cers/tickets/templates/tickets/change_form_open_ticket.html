@@ -2,7 +2,6 @@
 <script type="text/javascript"> window.CSRF_TOKEN = "{{ csrf_token }}"; </script>
 {% load i18n %}
 {% block submit_buttons_bottom %}
-
     {% if user.is_manager and original.pk and not original.accepted %}
         <div class="form-group">
             <input type="button" class="btn btn-outline-success form-control" id="accept_ticket"

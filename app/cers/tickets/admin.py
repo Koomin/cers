@@ -15,7 +15,10 @@ class TicketAdmin(admin.ModelAdmin):
     inlines = (CommentInline,)
 
     def get_queryset(self, request):
-        return super().get_queryset(request).filter(status='open')
+        qs = super().get_queryset(request)
+        if self == TicketAdmin:
+            qs = qs.filter(status='open')
+        return qs
 
     def get_list_display(self, request):
         list_display = super().get_list_display(request)
