@@ -1,0 +1,12 @@
+{% extends "admin/change_form.html" %}
+{% load i18n %}
+{% block submit_buttons_bottom %}
+    {% if user.is_manager and original.pk and not original.accepted %}
+        <div class="form-group">
+            <input type="button" class="btn btn-outline-success form-control" id="accept_ticket"
+                   value="{% trans 'Accept ticket' %}" name="_anotherbutton" data-id="{{ original.pk }}"/>
+        </div>
+    {% endif %}
+    {{ block.super }}
+{% endblock %}
+
