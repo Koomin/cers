@@ -2,8 +2,9 @@ from django.contrib import admin
 from django.utils.translation import gettext_lazy as _
 from durationwidget.widgets import TimeDurationWidget
 
+from cers.core.admin import admin_site
 from cers.tickets.filters import AcceptedFilter
-from cers.tickets.models import Ticket, Comment, TicketOpen, TicketClosed
+from cers.tickets.models import Comment, TicketOpen, TicketClosed, Attachment
 
 
 class CommentInline(admin.TabularInline):
@@ -11,13 +12,14 @@ class CommentInline(admin.TabularInline):
     extra = 1
 
 
-@admin.register(Ticket)
+class AttachmentInline(admin.TabularInline):
+    model = Attachment
+    extra = 1
+
+
 class TicketAdmin(admin.ModelAdmin):
     list_display = ['topic', 'deadline', 'status', 'accepted', 'priority', 'reporting', 'created']
-    inlines = (CommentInline,)
-    list_filter = [
-        AcceptedFilter,
-    ]
+    inlines = (CommentInline, AttachmentInline)
 
     def get_queryset(self, request):
         qs = super().get_queryset(request)
@@ -43,6 +45,8 @@ class TicketAdmin(admin.ModelAdmin):
                                   'technician',
                                   'duration',
                                   ]
+        else:
+            self.list_editable = []
         return list_display
 
     def get_fields(self, request, obj=None):
@@ -73,16 +77,22 @@ class TicketAdmin(admin.ModelAdmin):
 
     def get_field_queryset(self, db, db_field, request):
         if db_field.name == 'technician':
-            return super(TicketAdmin, self).get_field_queryset(db, db_field, request).filter(groups__name='technician')
+            qs = super(TicketAdmin, self).get_field_queryset(db, db_field, request)
+            return qs.filter(groups__name='technician')
         return super(TicketAdmin, self).get_field_queryset(db, db_field, request)
+
+    def has_delete_permission(self, request, obj=None):
+        return False
 
 
 @admin.register(TicketOpen)
-class TicketOpen(TicketAdmin):
+class TicketOpenAdmin(TicketAdmin):
     change_form_template = 'tickets/change_form_open_ticket.html'
 
     def get_queryset(self, request):
         qs = super().get_queryset(request)
+        if request.user.is_manager:
+            qs = qs.filter(company=request.user.company)
         if request.user.groups and request.user.groups.name == 'user':
             qs = qs.filter(reporting=request.user)
         if request.user.groups and request.user.groups.name == 'technician':
@@ -97,13 +107,14 @@ class TicketOpen(TicketAdmin):
         return fields
 
 
-@admin.register(TicketClosed)
-class TicketClosed(TicketOpen):
-    def has_add_permission(self, request):
-        return False
+class TicketClosedAdmin(TicketOpenAdmin):
 
-    def has_delete_permission(self, request, obj=None):
+    def has_add_permission(self, request):
         return False
 
     def has_change_permission(self, request, obj=None):
         return False
+
+
+admin_site.register(TicketOpen, TicketOpenAdmin)
+admin_site.register(TicketClosed, TicketClosedAdmin)

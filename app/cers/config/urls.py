@@ -17,10 +17,12 @@ from django.conf.urls.i18n import i18n_patterns
 from django.contrib import admin
 from django.urls import path, include
 
+from cers.core.admin import admin_site
+
 urlpatterns = [
     path('i18n/', include('django.conf.urls.i18n')),
 
 ]
 
 urlpatterns += i18n_patterns(path('', include('cers.tickets.urls')),
-                             path('', admin.site.urls), prefix_default_language=False)
+                             path('', admin_site.urls), prefix_default_language=False)

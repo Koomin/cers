@@ -1,6 +1,7 @@
 from django.contrib import admin
 
 from cers.companies.models import Company, Department
+from cers.core.admin import admin_site
 
 
 class DepartmentInline(admin.StackedInline):
@@ -8,6 +9,8 @@ class DepartmentInline(admin.StackedInline):
     extra = 1
 
 
-@admin.register(Company)
 class CompanyAdmin(admin.ModelAdmin):
     inlines = (DepartmentInline,)
+
+
+admin_site.register(Company, CompanyAdmin)

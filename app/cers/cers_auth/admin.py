@@ -1,11 +1,12 @@
 from django.contrib import admin
-from django.contrib.auth.admin import UserAdmin
+from django.contrib.auth.admin import UserAdmin, GroupAdmin
+from django.contrib.auth.models import Group
 from django.utils.translation import gettext_lazy as _
 
 from cers.cers_auth.models import CersUser
+from cers.core.admin import admin_site
 
 
-@admin.register(CersUser)
 class CersUserAdmin(UserAdmin):
     fieldsets = (
         (None, {"fields": ("username", "password")}),
@@ -26,3 +27,7 @@ class CersUserAdmin(UserAdmin):
         "user_permissions",
     )
     list_display = ['username', 'first_name', 'last_name', 'email', 'company', ]
+
+
+admin_site.register(CersUser, CersUserAdmin)
+admin_site.register(Group, GroupAdmin)
