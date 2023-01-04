@@ -2,6 +2,7 @@ from django.db import models
 from django.utils.translation import gettext_lazy as _
 
 from cers.cers_auth.models import CersUser
+from cers.companies.models import Company
 from cers.core.models import CersModel
 from cers.tickets.managers import TicketOpenManager, TicketClosedManager
 
@@ -37,6 +38,7 @@ class Ticket(CersModel):
                                    default=PriorityLevels.NORMAL, verbose_name=_('Priority'))
     duration = models.DurationField(null=True, blank=True, verbose_name=_('Duration'))
     accepted = models.BooleanField(default=False, verbose_name=_('Accepted'))
+    company = models.ForeignKey(Company, on_delete=models.CASCADE, null=True, blank=True)
 
     class Meta:
         verbose_name = _('Ticket')
@@ -49,6 +51,7 @@ class Ticket(CersModel):
         # TODO Changing status require duration filled
         if self._state.adding:
             self.reporting = self.user
+            self.company = self.user.company
             super().save(*args, **kwargs)
         super().save(*args, **kwargs)
 
@@ -82,3 +85,13 @@ class Comment(CersModel):
     class Meta:
         verbose_name = _('Comment')
         verbose_name_plural = _('Comments')
+
+
+class Attachment(CersModel):
+    name = models.CharField(max_length=255, null=False, blank=False, verbose_name=_('Name'))
+    file = models.FileField(upload_to='attachments/', verbose_name=_('File'))
+    ticket = models.ForeignKey(Ticket, on_delete=models.CASCADE, null=False, blank=False)
+
+    class Meta:
+        verbose_name = _('Attachment')
+        verbose_name_plural = _('Attachments')

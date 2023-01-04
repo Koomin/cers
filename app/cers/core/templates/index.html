@@ -1,0 +1,77 @@
+{% extends "admin/base_site.html" %}
+{% load i18n static %}
+{% load l10n %}
+{% block extrastyle %}{{ block.super }}
+    <link rel="stylesheet" type="text/css" href="{% static 'admin/css/dashboard.css' %}"
+          xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html"/>
+    <script type="text/javascript" src="/jsi18n/"></script>
+    <script type="text/javascript" src="{% static 'admin/js/vendor/jquery/jquery.js' %}"></script>
+    <script type="text/javascript" src="{% static 'admin/js/jquery.init.js' %}"></script>
+    <script type="text/javascript" src="{% static 'admin/js/core.js' %}"></script>
+    <script type="text/javascript" src="{% static 'admin/js/actions.js' %}"></script>
+    <script type="text/javascript" src="{% static 'admin/js/calendar.js' %}"></script>
+    <script type="text/javascript" src="{% static 'admin/js/FiltersDateTimeShortcuts.js' %}"></script>
+
+{% endblock %}
+{% block coltype %}flex{% endblock %}
+
+{% block bodyclass %}{{ block.super }} dashboard{% endblock %}
+
+{% block content %}
+    <div class="container-fluid">
+        <div id="alerts-area">
+
+        </div>
+        <div class="row">
+            <div class="col-lg-3 col-6" onclick="location.href='/tickets/ticketopen/add/'" style="cursor: pointer;">
+                <!-- small box -->
+                <div class="small-box bg-info">
+                    <div class="inner">
+                        <h3>{% translate "Add new ticket" %}</h3>
+                        <p>{% translate "Click to add" %}</p>
+                    </div>
+                    <div class="icon">
+                        <i class="ion ion-bag"></i>
+                    </div>
+                    <div class="small-box-footer">
+                        <br>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-6">
+                <!-- small box -->
+                <div class="small-box bg-info">
+                    <div class="inner">
+                        <h3>{{ open_tasks_count }}</h3>
+
+                        <p>{% translate "Open tickets" %}</p>
+                    </div>
+                    <div class="icon">
+                        <i class="ion ion-bag"></i>
+                    </div>
+                    <a href="/tickets/ticketopen/add/" class="small-box-footer">{% translate "Add ticket" %} <i
+                            class="fas fa-plus-circle"></i></a>
+                </div>
+            </div>
+            <div class="col-lg-3 col-6">
+                <!-- small box -->
+                <div class="small-box bg-info">
+                    <div class="inner">
+                        <h3>{{ closed_tasks_count }}</h3>
+
+                        <p>{% translate "Closed tickets" %}</p>
+                    </div>
+                    <div class="icon">
+                        <i class="ion ion-bag"></i>
+                    </div>
+                    <a href="/tickets/ticketclosed/" class="small-box-footer">{% translate "More info" %} <i
+                            class="fas fa-arrow-circle-right"></i></a>
+                </div>
+            </div>
+
+
+        </div>
+
+    </div>
+{% endblock %}
