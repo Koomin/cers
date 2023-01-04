@@ -27,5 +27,6 @@ urlpatterns = [
 ]
 
 urlpatterns += i18n_patterns(path('', include('cers.tickets.urls')),
-                             path('', admin_site.urls), prefix_default_language=False),
-                             static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+                             static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT),
+                             path('', admin_site.urls), prefix_default_language=False)
+
