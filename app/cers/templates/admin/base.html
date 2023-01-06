@@ -415,7 +415,8 @@
                     'csrfmiddlewaretoken': '{{ csrf_token }}',
                 },
                 success: function () {
-                    location.reload();
+                    $('#ticketopen_form').submit();
+
                 }
             });
         }
