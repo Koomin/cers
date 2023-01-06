@@ -29,7 +29,7 @@ msgstr "Uprawnienia"
 
 #: cers/cers_auth/admin.py:24
 msgid "Important dates"
-msgstr "Ważme daty"
+msgstr "Ważne daty"
 
 #: cers/cers_auth/apps.py:7 cers/cers_auth/apps.py:8
 msgid "Configuration"
