@@ -98,7 +98,7 @@ msgstr "Dashboard"
 
 #: cers/core/templates/index.html:30
 msgid "Add new ticket"
-msgstr "Dodaj nowy ticket"
+msgstr "Dodaj nowe zgłoszenie"
 
 #: cers/core/templates/index.html:31
 msgid "Click to add"
@@ -106,15 +106,15 @@ msgstr "Kliknij aby dodać"
 
 #: cers/core/templates/index.html:48 cers/tickets/models.py:69
 msgid "Open tickets"
-msgstr "Otwarte tickety"
+msgstr "Otwarte zgłoszenia"
 
 #: cers/core/templates/index.html:53
 msgid "Add ticket"
-msgstr "Dodaj ticket"
+msgstr "Dodaj zgłoszenie"
 
 #: cers/core/templates/index.html:63 cers/tickets/models.py:78
 msgid "Closed tickets"
-msgstr "Zamknięte tickety"
+msgstr "Zamknięte zgłoszenia"
 
 #: cers/core/templates/index.html:68
 msgid "More info"
@@ -239,7 +239,7 @@ msgstr "Opis"
 
 #: cers/tickets/models.py:32
 msgid "Deadline"
-msgstr "Deadline"
+msgstr "Termin wykonania"
 
 #: cers/tickets/models.py:34
 msgid "Status"
@@ -267,11 +267,11 @@ msgstr "Tickety"
 
 #: cers/tickets/models.py:68
 msgid "Open ticket"
-msgstr "Otwarty ticket"
+msgstr "Otwarte zgłoszenie"
 
 #: cers/tickets/models.py:77
 msgid "Closed ticket"
-msgstr "Zamknięty ticket"
+msgstr "Zamknięte zgłoszenie"
 
 #: cers/tickets/models.py:86
 msgid "Comment"
@@ -299,4 +299,4 @@ msgstr "Załączniki"
 
 #: cers/tickets/templates/tickets/change_form_open_ticket.html:7
 msgid "Accept ticket"
-msgstr "Zaakceptowany ticket"
+msgstr "Zaakceptuj zgłoszenie"
