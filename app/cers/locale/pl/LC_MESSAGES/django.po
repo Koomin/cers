@@ -259,11 +259,11 @@ msgstr "Czas trwania"
 
 #: cers/tickets/models.py:44
 msgid "Ticket"
-msgstr "Ticket"
+msgstr "Zgłoszenie"
 
 #: cers/tickets/models.py:45
 msgid "Tickets"
-msgstr "Tickety"
+msgstr "Zgłoszenia"
 
 #: cers/tickets/models.py:68
 msgid "Open ticket"
