@@ -98,8 +98,6 @@ msgid "Dashboard"
 msgstr "Dashboard"
 
 #: cers/core/templates/index.html:30
-#, fuzzy
-#| msgid "Open ticket"
 msgid "New ticket"
 msgstr "Nowe zgłoszenie"
 
