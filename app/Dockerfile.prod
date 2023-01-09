@@ -15,7 +15,7 @@ RUN mkdir $APP_HOME/staticfiles
 
 WORKDIR $APP_HOME
 
-RUN apk update && apk add postgresql-dev gcc python3-dev musl-dev
+RUN apk update && apk add postgresql-dev gcc python3-dev musl-dev gettext
 
 RUN pip install --upgrade pip
 COPY . .
