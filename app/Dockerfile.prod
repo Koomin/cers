@@ -2,7 +2,7 @@
 # BUILDER #
 ###########
 
-FROM --platform=linux/amd64 python:3.8.10-alpine as builder
+FROM python:3.8.10-alpine as builder
 
 WORKDIR /usr/src/app
 
@@ -21,7 +21,7 @@ RUN pip wheel --no-cache-dir --no-deps --wheel-dir /usr/src/app/wheels -r requir
 # FINAL #
 #########
 
-FROM --platform=linux/amd64 python:3.8.10-alpine
+FROM python:3.8.10-alpine
 
 RUN mkdir -p /home/app
 
