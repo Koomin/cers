@@ -1,7 +1,7 @@
 version: '3.8'
 
 services:
-  web:
+  cers:
     restart: always
     build:
       context: ./app
@@ -30,7 +30,7 @@ services:
     ports:
       - 1337:80
     depends_on:
-      - web
+      - cers
 volumes:
   postgres_data:
   static_volume:
