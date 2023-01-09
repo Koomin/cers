@@ -27,6 +27,7 @@ urlpatterns = [
 ]
 
 urlpatterns += i18n_patterns(path('', include('cers.tickets.urls')),
+                             path('', include('cers.core.urls', namespace='cers_core_urls')),
                              path('', admin_site.urls), prefix_default_language=False)
 
 if settings.DEBUG:

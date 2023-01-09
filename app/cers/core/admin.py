@@ -18,12 +18,16 @@ class CersAdmin(AdminSite):
     def index(self, request, extra_context=None):
         opened_tickets = TicketOpen.objects.all()
         closed_tickets = TicketClosed.objects.all()
-        if request.user.is_superuser:
-            opened_tickets = opened_tickets.count()
-            closed_tickets = closed_tickets.count()
-        elif request.user.is_manager:
-            opened_tickets = opened_tickets.filter(company=request.user.company).count()
-            closed_tickets = closed_tickets.filter(company=request.user.company).count()
+        if request.user.is_superuser or request.user.is_manager:
+            # opened_tickets = opened_tickets.count()
+            # closed_tickets = closed_tickets.count()
+            kwargs = {'company': None}
+            if request.user.settings.get('company') and request.user.settings.get('company') != 0:
+                kwargs = {'company__pk': request.user.settings.get('company')}
+            elif request.user.settings.get('company') and request.user.settings.get('company') == 0:
+                kwargs = {'company__pk__in': request.user.companies.values_list('pk', flat=True)}
+            opened_tickets = opened_tickets.filter(**kwargs).count()
+            closed_tickets = closed_tickets.filter(**kwargs).count()
         elif request.user.groups and request.user.groups.name == 'user':
             opened_tickets = opened_tickets.filter(reporting=request.user).count()
             closed_tickets = closed_tickets.filter(reporting=request.user).count()
@@ -47,14 +51,19 @@ class CersAdmin(AdminSite):
 
 admin_site = CersAdmin(name='cers_admin')
 
-# class CersAdmin(admin.ModelAdmin):
-#     context_field = None
-#
-#     def get_queryset(self, request):
-#         qs = super().get_queryset()
-#         filter_kwargs = None
-#         if self.context_field and request.user.settings.get('company') != 0:
-#             filter_kwargs = {f'{self.context_field}__id': request.user.settings.get('company')}
-#         if filter_kwargs:
-#             qs.filter(**filter_kwargs)
-#         return qs
+
+class CersModelAdmin(admin.ModelAdmin):
+    context_field = None
+
+    def get_queryset(self, request):
+        qs = super().get_queryset(request)
+        filter_kwargs = None
+        if self.context_field and request.user.settings.get('company') != 0:
+            filter_kwargs = {f'{self.context_field}__pk': request.user.settings.get('company')}
+        if filter_kwargs:
+            qs = qs.filter(**filter_kwargs)
+        return qs
+
+    def save_model(self, request, obj, form, change):
+        obj.user = request.user
+        super().save_model(request, obj, form, change)

@@ -120,6 +120,7 @@ USE_TZ = True
 
 AUTH_USER_MODEL = 'cers_auth.CersUser'
 
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 

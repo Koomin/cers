@@ -2,7 +2,7 @@ from django.contrib import admin
 from django.utils.translation import gettext_lazy as _
 from durationwidget.widgets import TimeDurationWidget
 
-from cers.core.admin import admin_site
+from cers.core.admin import admin_site, CersModelAdmin
 from cers.tickets.filters import AcceptedFilter
 from cers.tickets.models import Comment, TicketOpen, TicketClosed, Attachment
 
@@ -17,9 +17,10 @@ class AttachmentInline(admin.TabularInline):
     extra = 1
 
 
-class TicketAdmin(admin.ModelAdmin):
+class TicketAdmin(CersModelAdmin):
     list_display = ['topic', 'deadline', 'status', 'accepted', 'priority', 'reporting', 'created']
     inlines = (CommentInline, AttachmentInline)
+    context_field = 'company'
 
     def get_queryset(self, request):
         qs = super().get_queryset(request)
@@ -65,10 +66,6 @@ class TicketAdmin(admin.ModelAdmin):
 
         return fields
 
-    def save_model(self, request, obj, form, change):
-        obj.user = request.user
-        super().save_model(request, obj, form, change)
-
     def formfield_for_dbfield(self, db_field, request, **kwargs):
         if db_field.name == 'duration':
             kwargs['widget'] = TimeDurationWidget(show_days=False, show_seconds=False)
@@ -91,8 +88,6 @@ class TicketOpenAdmin(TicketAdmin):
 
     def get_queryset(self, request):
         qs = super().get_queryset(request)
-        if request.user.is_manager:
-            qs = qs.filter(company=request.user.company)
         if request.user.groups and request.user.groups.name == 'user':
             qs = qs.filter(reporting=request.user)
         if request.user.groups and request.user.groups.name == 'technician':

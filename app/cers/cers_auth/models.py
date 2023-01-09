@@ -25,11 +25,18 @@ class CersUser(AbstractUser, CersModel):
         default=True,
         help_text=_("Designates whether the user can log into this admin site."),
     )
-    company = models.ForeignKey(Company, on_delete=models.CASCADE, null=True, blank=False, verbose_name=_("Company"))
+    companies = models.ManyToManyField(Company, verbose_name=_("Companies"))
     phone_number = models.CharField(max_length=9, null=True, blank=True, verbose_name=_("Phone number"))
+    settings = models.JSONField(default={'company': 0}, null=True, blank=True)
 
     @property
     def is_manager(self):
         if self.groups and self.groups.name == 'manager':
             return True
         return False
+
+    def save(self, *args, **kwargs):
+        if not self.settings.get('company'):
+            self.settings['company'] = 0
+        super().save(*args, **kwargs)
+
