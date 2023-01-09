@@ -61,7 +61,7 @@ class CersModelAdmin(admin.ModelAdmin):
         if self.context_field and request.user.settings.get('company') != 0:
             filter_kwargs = {f'{self.context_field}__pk': request.user.settings.get('company')}
         elif self.context_field and request.user.settings.get('company') == 0:
-            filter_kwargs = {f'{self.context_field}__pk': request.user.companies.values_list('pk', flat=True)}
+            filter_kwargs = {f'{self.context_field}__pk__in': request.user.companies.values_list('pk', flat=True)}
         if filter_kwargs:
             qs = qs.filter(**filter_kwargs)
         return qs
