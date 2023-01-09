@@ -7,14 +7,14 @@ services:
       context: ./app
       dockerfile: Dockerfile.prod
     expose:
-      - 8080
+      - 8000
     volumes:
       - static_volume:/home/app/web/cers/static
     env_file:
       - ./.env.prod
     depends_on:
       - db
-    command: gunicorn cers.config.wsgi:application --bind 0.0.0.0:8080
+    command: gunicorn cers.config.wsgi:application --bind 0.0.0.0:8000
   db:
       restart: always
       image: postgres:13.0-alpine
