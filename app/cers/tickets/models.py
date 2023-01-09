@@ -51,7 +51,9 @@ class Ticket(CersModel):
         # TODO Changing status require duration filled
         if self._state.adding:
             self.reporting = self.user
-            self.company = self.user.company
+            company = self.user.settings.get('company')
+            if company != '0':
+                self.company = Company.objects.get(pk=company)
             super().save(*args, **kwargs)
         super().save(*args, **kwargs)
 

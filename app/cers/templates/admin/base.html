@@ -1,4 +1,5 @@
 {% load i18n static jazzmin admin_urls %}
+{% load l10n %}
 {% get_current_language as LANGUAGE_CODE %}
 {% get_current_language_bidi as LANGUAGE_BIDI %}
 {% get_jazzmin_settings request as jazzmin_settings %}
@@ -42,7 +43,7 @@
     <!-- favicons -->
     <link rel="shortcut icon" href="{% static jazzmin_settings.site_icon %}" type="image/png">
     <link rel="icon" href="{% static jazzmin_settings.site_icon %}" sizes="32x32" type="image/png">
-
+    <link rel="stylesheet" href="/static/vendor/select2/css/select2.min.css">
     {% if jazzmin_settings.use_google_fonts_cdn %}
         <!-- Google Font: Source Sans Pro -->
         <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
@@ -51,6 +52,21 @@
     {% block extrastyle %} {% endblock %}
     {% block extrahead %} {% endblock %}
 </head>
+<style>
+    #subsidiary-context-form {
+        margin-left: auto;
+        margin-right: 30px;
+    }
+
+    #subsidiary-context-form select {
+        margin: 0;
+    }
+
+    #subsidiary-context-form select:focus {
+        border-bottom: none;
+        box-shadow: none;
+    }
+</style>
 <body class="hold-transition{% if not jazzmin_settings.show_sidebar %} no-sidebar{% else %} sidebar-mini{% endif %} {% sidebar_status request %} {% if is_popup %}popup {% endif %}{% block bodyclass %}{% endblock %} {{ jazzmin_ui.body_classes }} {% if jazzmin_ui.dark_mode_theme %}theme-dark{% endif %}"
       data-admin-utc-offset="{% now "Z" %}">
 
@@ -59,7 +75,6 @@
     {% if not is_popup %}
         <nav class="main-header navbar navbar-expand {{ jazzmin_ui.navbar_classes }}" id="jazzy-navbar">
             <ul class="navbar-nav">
-
                 {% if jazzmin_settings.show_sidebar %}
                     <li class="nav-item">
                         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i
@@ -77,6 +92,7 @@
                 {% endif %}
 
                 {% get_top_menu user request.current_app|default:"admin" as top_menu %}
+
                 {% for link in top_menu %}
                     <li class="nav-item d-none d-sm-inline-block{% if link.children %} dropdown{% endif %}">
                         {% if link.children %}
@@ -131,7 +147,20 @@
                         </a>
                     </li>
                 {% endif %}
-
+                {% if user.companies.all|length > 0 %}
+                    <li class="nav-item d-none d-sm-inline-block dropdown">
+                        <form id="subsidiary-context-form">
+                            <select id="subsidiary-context" name="subsidiary-context" class="admin-autocomplete">
+                                <option value="0" name="{{ user.settings.company }}">{% trans 'Global context' %}</option>
+                                {% for subsidiary in user.companies.all %}
+                                    <option value="{{ subsidiary.pk }}"
+                                            {% if subsidiary.pk == user.settings.company %}
+                                            selected="selected"{% endif %}>{{ subsidiary.name }}</option>
+                                {% endfor %}
+                            </select>
+                        </form>
+                    </li>
+                {% endif %}
                 {% if jazzmin_settings.language_chooser %}
                     {% get_available_languages as LANGUAGES %}
                     {% get_language_info_list for LANGUAGES as languages %}
@@ -265,6 +294,7 @@
                                                 {% for model in app.models %}
                                                     <li class="nav-item">
                                                         <a href="
+
                                                                 {% if model.url %}{{ model.url }}{% else %}javascript:void(0){% endif %}"
                                                            class="nav-link">
                                                             <i class="nav-icon {{ model.icon }}"></i>
@@ -384,7 +414,6 @@
     </div>
 {% endif %}
 
-<!-- jQuery -->
 <script src="{% static "admin/js/vendor/jquery/jquery.js" %}"></script>
 <!-- Bootstrap 4 -->
 <script src="{% static "vendor/bootstrap/js/bootstrap.min.js" %}"></script>
@@ -393,6 +422,10 @@
 <!-- Django customisations -->
 <script src="{% static "jazzmin/js/main.js" %}"></script>
 
+<script type="text/javascript" src="{% static 'admin/js/base.js' %}"></script>
+<script type="text/javascript" href="/static/jazzmin/js/change_form.js"></script>
+<script type="text/javascript" href="/static/admin/js/prepopulate_init.js"></script>
+<script type="text/javascript" href="/static/vendor/select2/js/select2.min.js"></script>
 {% if jazzmin_settings.custom_js %}
     <script src="{% static jazzmin_settings.custom_js %}"></script>
 {% endif %}
@@ -404,7 +437,6 @@
     <script src="{% static "jazzmin/js/ui-builder.js" %}"></script>
 {% endif %}
 <script>
-
     $('#accept_ticket').on('click', function (e) {
             console.log('clicked');
             $.ajax({

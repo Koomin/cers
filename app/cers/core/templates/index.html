@@ -6,11 +6,13 @@
           xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html"/>
     <script type="text/javascript" src="/jsi18n/"></script>
     <script type="text/javascript" src="{% static 'admin/js/vendor/jquery/jquery.js' %}"></script>
+{#    <script type="text/javascript" src="{% static 'admin/js/vendor/select2/select2.full.js' %}"></script>#}
     <script type="text/javascript" src="{% static 'admin/js/jquery.init.js' %}"></script>
     <script type="text/javascript" src="{% static 'admin/js/core.js' %}"></script>
+    <script type="text/javascript" src="{% static 'admin/js/autocomplete.js' %}"></script>
     <script type="text/javascript" src="{% static 'admin/js/actions.js' %}"></script>
     <script type="text/javascript" src="{% static 'admin/js/calendar.js' %}"></script>
-    <script type="text/javascript" src="{% static 'admin/js/FiltersDateTimeShortcuts.js' %}"></script>
+
 
 {% endblock %}
 {% block coltype %}flex{% endblock %}
@@ -51,8 +53,8 @@
                     <div class="icon">
                         <i class="ion ion-bag"></i>
                     </div>
-                    <a href="/tickets/ticketopen/add/" class="small-box-footer">{% translate "Add ticket" %} <i
-                            class="fas fa-plus-circle"></i></a>
+                    <a href="/tickets/ticketopen/" class="small-box-footer">{% translate "More info" %} <i
+                            class="fas fa-arrow-circle-right"></i></a>
                 </div>
             </div>
             <div class="col-lg-3 col-6">
