@@ -34,6 +34,7 @@
 
     <!-- Custom fixes for django -->
     <link rel="stylesheet" href="{% static "jazzmin/css/main.css" %}">
+    <link rel="stylesheet" href="{% static "admin/css/extra.css" %}">
 
     {% if jazzmin_settings.custom_css %}
         <!-- Custom CSS -->
@@ -43,7 +44,6 @@
     <!-- favicons -->
     <link rel="shortcut icon" href="{% static jazzmin_settings.site_icon %}" type="image/png">
     <link rel="icon" href="{% static jazzmin_settings.site_icon %}" sizes="32x32" type="image/png">
-    <link rel="stylesheet" href="/static/vendor/select2/css/select2.min.css">
     {% if jazzmin_settings.use_google_fonts_cdn %}
         <!-- Google Font: Source Sans Pro -->
         <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
@@ -293,10 +293,7 @@
                                             <ul class="nav nav-treeview" style="display: none;">
                                                 {% for model in app.models %}
                                                     <li class="nav-item">
-                                                        <a href="
-
-                                                                {% if model.url %}{{ model.url }}{% else %}javascript:void(0){% endif %}"
-                                                           class="nav-link">
+                                                        <a href="{% if model.url %}{{ model.url }}{% else %}javascript:void(0){% endif %}" class="nav-link">
                                                             <i class="nav-icon {{ model.icon }}"></i>
                                                             <p>{{ model.name }}</p>
                                                         </a>
@@ -423,9 +420,7 @@
 <script src="{% static "jazzmin/js/main.js" %}"></script>
 
 <script type="text/javascript" src="{% static 'admin/js/base.js' %}"></script>
-<script type="text/javascript" href="/static/jazzmin/js/change_form.js"></script>
-<script type="text/javascript" href="/static/admin/js/prepopulate_init.js"></script>
-<script type="text/javascript" href="/static/vendor/select2/js/select2.min.js"></script>
+
 {% if jazzmin_settings.custom_js %}
     <script src="{% static jazzmin_settings.custom_js %}"></script>
 {% endif %}

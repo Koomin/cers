@@ -32,11 +32,11 @@ function initializeSelects() {
         theme: 'admin-autocomplete',
         width: '20px',
     });
-    $('select:not(#subsidiary-context, .actions-wrap select, .field-permissions select)').not('select[class*="admin-autocomplete"]').not('[name*=__prefix__]').select2({
-        theme: 'admin-autocomplete',
-        minimumResultsForSearch: 6,
-        width: '100%',
-    });
+    // $('select:not(#subsidiary-context, .actions-wrap select, .field-permissions select)').not('select[class*="admin-autocomplete"]').not('[name*=__prefix__]').select2({
+    //     theme: 'admin-autocomplete',
+    //     minimumResultsForSearch: 6,
+    //     width: '100%',
+    // });
 
 }
 
