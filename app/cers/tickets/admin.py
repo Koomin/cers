@@ -48,7 +48,7 @@ class TicketAdmin(CersModelAdmin):
                                   ]
         else:
             self.list_editable = []
-        if (request.user.setting.get('company') != 0 or request.user.companies.count() == 1) and 'company' in list_display:
+        if (request.user.settings.get('company') != 0 or request.user.companies.count() == 1) and 'company' in list_display:
             list_display.remove('company')
         return list_display
 
