@@ -18,7 +18,7 @@ class AttachmentInline(admin.TabularInline):
 
 
 class TicketAdmin(CersModelAdmin):
-    list_display = ['topic', 'deadline', 'status', 'accepted', 'priority', 'reporting', 'created']
+    list_display = ['topic', 'deadline', 'status', 'accepted', 'priority', 'reporting', 'duration', 'created']
     inlines = (CommentInline, AttachmentInline)
     context_field = 'company'
 
