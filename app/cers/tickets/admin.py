@@ -1,9 +1,7 @@
 from django.contrib import admin
-from django.utils.translation import gettext_lazy as _
 from durationwidget.widgets import TimeDurationWidget
 
 from cers.core.admin import admin_site, CersModelAdmin
-from cers.tickets.filters import AcceptedFilter
 from cers.tickets.models import Comment, TicketOpen, TicketClosed, Attachment
 
 
@@ -60,12 +58,22 @@ class TicketAdmin(CersModelAdmin):
                 ('topic', 'technician'),
                 ('description',),
                 ('priority', 'status'),
-                ('deadline', 'duration'),
+                ('deadline', ),
+                ('duration', ),
+                ('access_to_client',),
             )
         elif request.user.is_manager:
-            fields = (('topic',), ('description',), ('priority', 'deadline'),)
+            fields = (('topic',), ('description',), ('priority', ), ('deadline', ),)
         elif request.user.groups.name == 'user':
             fields = (('topic',), ('description',))
+        elif request.user.groups.name == 'technician':
+            fields = (
+                ('topic', ),
+                ('description',),
+                ('status', ),
+                ('access_to_client', ),
+                ('duration',),
+            )
 
         return fields
 
