@@ -18,7 +18,7 @@ class AttachmentInline(admin.TabularInline):
 
 
 class TicketAdmin(CersModelAdmin):
-    list_display = ['topic', 'deadline', 'status', 'accepted', 'priority', 'reporting', 'duration', 'created']
+    list_display = ['topic', 'deadline', 'status', 'accepted', 'priority', 'reporting', 'duration', 'company' ,'created']
     inlines = (CommentInline, AttachmentInline)
     context_field = 'company'
 
@@ -48,6 +48,8 @@ class TicketAdmin(CersModelAdmin):
                                   ]
         else:
             self.list_editable = []
+        if (request.user.setting.get('company') != 0 or request.user.companies.count() == 1) and 'company' in list_display:
+            list_display.remove('company')
         return list_display
 
     def get_fields(self, request, obj=None):
@@ -79,6 +81,8 @@ class TicketAdmin(CersModelAdmin):
         return super(TicketAdmin, self).get_field_queryset(db, db_field, request)
 
     def has_delete_permission(self, request, obj=None):
+        if request.user.is_superuser:
+            return True
         return False
 
 
