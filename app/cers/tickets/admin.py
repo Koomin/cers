@@ -1,9 +1,10 @@
 import datetime
+import locale
 
 from django.utils.translation import gettext_lazy as _
 from django.db.models import Sum
 from django.contrib import admin
-from durationwidget.widgets import TimeDurationWidget
+from cers.core.duration_widget import TimeDurationWidget
 
 from cers.core.admin import admin_site, CersModelAdmin
 from cers.tickets.models import Comment, TicketOpen, TicketClosed, Attachment
@@ -121,22 +122,38 @@ class TicketOpenAdmin(TicketAdmin):
 
 
 class TicketClosedAdmin(TicketOpenAdmin):
+    sum_fields = ['duration']
 
     def changelist_view(self, request, extra_context=None):
-        result = super().changelist_view(request, extra_context=None)
+        result = super().changelist_view(request, extra_context)
         try:
             qs = result.context_data['cl'].queryset
-            month = datetime.date.today().month
-            year = datetime.date.today().year
+            today = datetime.datetime.now()
+            month = today.month
+            year = today.year
             qs = qs.filter(closed_date__year=year, closed_date__month=month)
+            locale.setlocale(locale.LC_ALL, request.META.get('LC_CTYPE'))
+            month = today.strftime("%B").capitalize()
             value = list(qs.aggregate(Sum('duration')).values())[0] or 0
-            field = {
-                'period': f'{month}-{year}',
-                'today': datetime.date.today(),
-                'name': _('Duration'),
-                'value': value,
-            }
-            result.context_data['total_fields'] = field
+            if value != 0:
+                seconds = value.seconds
+                hours = seconds // 3600
+                minutes = (seconds // 60) % 60
+                hours_name = _('hours')
+                minutes_name = _('minutes')
+                value = f"{hours} {hours_name} {minutes} {minutes_name}"
+            sum_fields = [{'name': _('Period'),
+                           'value': f'{month} {year}'
+                           },
+                          {
+                              'name': _('For day'),
+                              'value': datetime.date.today()
+                          },
+                          {
+                              'name': _('Time'),
+                              'value': value,
+                          }]
+            result.context_data['sum_fields'] = sum_fields
         except:  # noqa
             pass
         return result
