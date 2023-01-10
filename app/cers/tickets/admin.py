@@ -18,7 +18,7 @@ class AttachmentInline(admin.TabularInline):
 
 
 class TicketAdmin(CersModelAdmin):
-    list_display = ['topic', 'deadline', 'status', 'accepted', 'priority', 'reporting', 'duration', 'company' ,'created']
+    list_display = ['topic', 'deadline', 'status', 'accepted', 'priority', 'reporting', 'duration', 'company', 'created']
     inlines = (CommentInline, AttachmentInline)
     context_field = 'company'
 
@@ -39,6 +39,7 @@ class TicketAdmin(CersModelAdmin):
                             'reporting',
                             'technician',
                             'duration',
+                            'company',
                             'created',
                             ]
             self.list_editable = ['status',
