@@ -52,8 +52,10 @@ class Ticket(CersModel):
         if self._state.adding:
             self.reporting = self.user
             company = self.user.settings.get('company')
-            if company != '0':
+            if company != 0:
                 self.company = Company.objects.get(pk=company)
+            elif company == 0 or self.user.companies.count() == 1:
+                self.company = self.user.companies.first()
             super().save(*args, **kwargs)
         super().save(*args, **kwargs)
 
