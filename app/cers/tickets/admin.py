@@ -123,6 +123,7 @@ class TicketOpenAdmin(TicketAdmin):
 
 class TicketClosedAdmin(TicketOpenAdmin):
     sum_fields = ['duration']
+    list_editable = []
 
     def changelist_view(self, request, extra_context=None):
         result = super().changelist_view(request, extra_context)
