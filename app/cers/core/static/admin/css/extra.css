@@ -45,3 +45,11 @@
 #total-fields-wrap.open {
     display: block;
 }
+
+.duration-widget {
+    max-width: 70px;
+}
+
+#id_deadline {
+    max-width: 100px !important;
+}

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-01-10 21:36+0100\n"
+"POT-Creation-Date: 2023-01-11 15:49+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -28,11 +28,11 @@ msgstr "Dane personalne"
 msgid "Permissions"
 msgstr "Uprawnienia"
 
-#: cers/cers_auth/admin.py:24
+#: cers/cers_auth/admin.py:25 cers/cers_auth/models.py:30
 msgid "Settings"
 msgstr "Ustawienia"
 
-#: cers/cers_auth/admin.py:25
+#: cers/cers_auth/admin.py:26
 msgid "Important dates"
 msgstr "Ważne daty"
 
@@ -69,6 +69,10 @@ msgstr "Firmy"
 msgid "Phone number"
 msgstr "Numer telefonu"
 
+#: cers/cers_auth/models.py:31
+msgid "Report on behalf"
+msgstr "Zgłaszaj w imieniu"
+
 #: cers/companies/apps.py:7 cers/companies/models.py:11
 #: cers/tickets/models.py:43
 msgid "Company"
@@ -90,15 +94,15 @@ msgstr "Dział"
 msgid "Departments"
 msgstr "Działy"
 
-#: cers/config/settings/base.py:106
+#: cers/config/settings/base.py:105
 msgid "Polish"
 msgstr "Polski"
 
-#: cers/config/settings/base.py:107
+#: cers/config/settings/base.py:106
 msgid "English"
 msgstr "Angielski"
 
-#: cers/core/admin.py:41 cers/templates/admin/base.html:264
+#: cers/core/admin.py:41 cers/templates/admin/base.html:263
 msgid "Dashboard"
 msgstr "Dashboard"
 
@@ -110,6 +114,19 @@ msgstr[1] ""
 msgstr[2] ""
 msgstr[3] ""
 
+#: cers/core/duration_widget.py:31 cers/core/duration_widget.py:77
+msgid "Hours"
+msgstr "godzin"
+
+#: cers/core/duration_widget.py:33
+#, fuzzy
+#| msgid "Minute"
+msgid "Minute"
+msgid_plural "Minutes"
+msgstr[0] "minuta"
+msgstr[1] "minuta"
+msgstr[2] "minuta"
+msgstr[3] "minuta"
 
 #: cers/core/duration_widget.py:35
 msgid "Second"
@@ -123,89 +140,79 @@ msgstr[3] ""
 msgid "Days"
 msgstr ""
 
-#: cers/core/duration_widget.py:77
-msgid "Hours"
-msgstr "godzin"
-
-msgid "Hour"
-msgstr "godzina"
-
 #: cers/core/duration_widget.py:78
-
 msgid "Minutes"
 msgstr "minut"
 
-msgid "Minute"
-msgstr "minuta"
 #: cers/core/duration_widget.py:79
 msgid "Seconds"
 msgstr ""
 
-#: cers/core/templates/index.html:32
+#: cers/core/templates/index.html:25
 msgid "New ticket"
 msgstr "Nowe zgłoszenie"
 
-#: cers/core/templates/index.html:33
+#: cers/core/templates/index.html:26
 msgid "Click to add"
 msgstr "Kliknij aby dodać"
 
-#: cers/core/templates/index.html:51 cers/tickets/models.py:78
+#: cers/core/templates/index.html:44 cers/tickets/models.py:78
 msgid "Open tickets"
 msgstr "Otwarte zgłoszenia"
 
-#: cers/core/templates/index.html:56 cers/core/templates/index.html:71
+#: cers/core/templates/index.html:49 cers/core/templates/index.html:64
 msgid "More info"
 msgstr "Więcej informacji"
 
-#: cers/core/templates/index.html:66 cers/tickets/models.py:87
+#: cers/core/templates/index.html:59 cers/tickets/models.py:87
 msgid "Closed tickets"
 msgstr "Zamknięte zgłoszenia"
 
-#: cers/templates/admin/base.html:123 cers/templates/admin/base.html:124
+#: cers/templates/admin/base.html:122 cers/templates/admin/base.html:123
 msgid "Search"
 msgstr "Szukaj"
 
-#: cers/templates/admin/base.html:155
+#: cers/templates/admin/base.html:154
 msgid "Global context"
 msgstr ""
 
-#: cers/templates/admin/base.html:199
+#: cers/templates/admin/base.html:198
 msgid "Account"
 msgstr "Konto"
 
-#: cers/templates/admin/base.html:202
+#: cers/templates/admin/base.html:201
 msgid "Change password"
 msgstr "Zmień hasło"
 
-#: cers/templates/admin/base.html:206
+#: cers/templates/admin/base.html:205
 msgid "Log out"
 msgstr "Wyloguj"
 
-#: cers/templates/admin/base.html:219
+#: cers/templates/admin/base.html:218
 msgid "See Profile"
 msgstr "Zobacz profil"
 
-#: cers/templates/admin/base.html:381
+#: cers/templates/admin/base.html:377
 msgid "Jazzmin version"
 msgstr "Wersja CERS"
 
-#: cers/templates/admin/base.html:384
+#: cers/templates/admin/base.html:380
 msgid "Copyright"
 msgstr "Copyright"
 
-#: cers/templates/admin/base.html:385
+#: cers/templates/admin/base.html:381
 msgid "All rights reserved."
 msgstr "All rights reserved."
 
-#: cers/templates/admin/base.html:401
+#: cers/templates/admin/base.html:397
 msgid "UI Configuration"
 msgstr ""
 
-#: cers/templates/admin/base.html:405
+#: cers/templates/admin/base.html:401
 msgid "Copy this info your settings file to persist these UI changes"
 msgstr ""
 
-#: cers/templates/admin/base.html:410
+#: cers/templates/admin/base.html:406
 msgid "Close"
 msgstr "Zamknij"
 
@@ -241,23 +248,23 @@ msgstr "Pokaż wszystko"
 msgid "Save"
 msgstr "Zapisz"
 
-#: cers/tickets/admin.py:142
+#: cers/tickets/admin.py:143
 msgid "hours"
 msgstr "godzin"
 
-#: cers/tickets/admin.py:143
+#: cers/tickets/admin.py:144
 msgid "minutes"
 msgstr "minut"
 
-#: cers/tickets/admin.py:145
+#: cers/tickets/admin.py:146
 msgid "Period"
 msgstr "Okres"
 
-#: cers/tickets/admin.py:149
+#: cers/tickets/admin.py:150
 msgid "For day"
 msgstr "Na dzień"
 
-#: cers/tickets/admin.py:153
+#: cers/tickets/admin.py:154
 msgid "Time"
 msgstr "Czas"
 
@@ -390,6 +397,9 @@ msgstr "Załączniki"
 #: cers/tickets/templates/tickets/change_form_open_ticket.html:7
 msgid "Accept ticket"
 msgstr "Zaakceptuj zgłoszenie"
+
+#~ msgid "Hour"
+#~ msgstr "godzina"
 
 #~ msgid "Add ticket"
 #~ msgstr "Dodaj zgłoszenie"

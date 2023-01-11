@@ -15,16 +15,15 @@
 {% block content %}
     <div class="container-fluid">
         <div id="alerts-area">
-
         </div>
         <div class="row">
+            {% if user.settings.company != 0 %}
             <div class="col-lg-3 col-6" onclick="location.href='/tickets/ticketopen/add/'" style="cursor: pointer;">
                 <!-- small box -->
                 <div class="small-box" style="background-color: rgb(20 35 117); color: #fff!important;">
                     <div class="inner">
                         <h3 style="font-size: 2.3rem!important;">{% translate "New ticket" %}</h3>
                         <p>{% translate "Click to add" %}</p>
-
                     </div>
                     <div class="icon">
                         <i class="ion ion-bag"></i>
@@ -34,7 +33,7 @@
                     </div>
                 </div>
             </div>
-
+            {% endif %}
             <div class="col-lg-3 col-6">
                 <!-- small box -->
                 <div class="small-box" style="background-color: rgb(20 35 117); color: #fff!important;">
@@ -65,9 +64,6 @@
                             class="fas fa-arrow-circle-right"></i></a>
                 </div>
             </div>
-
-
         </div>
-
     </div>
 {% endblock %}

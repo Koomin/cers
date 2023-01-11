@@ -53,12 +53,13 @@ class Ticket(CersModel):
 
     def save(self, *args, **kwargs):
         if self._state.adding:
-            self.reporting = self.user
-            company = self.user.settings.get('company')
-            if company != 0:
-                self.company = Company.objects.get(pk=company)
-            elif company == 0 or self.user.companies.count() == 1:
-                self.company = self.user.companies.first()
+            if not self.reporting:
+                self.reporting = self.user
+                company = self.user.settings.get('company')
+                if company != 0:
+                    self.company = Company.objects.get(pk=company)
+                elif company == 0 or self.user.companies.count() == 1:
+                    self.company = self.user.companies.first()
             super().save(*args, **kwargs)
         if self.status == self.Status.CLOSED and not self.closed_date:
             self.closed_date = datetime.date.today()

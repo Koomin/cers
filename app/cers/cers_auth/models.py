@@ -27,7 +27,8 @@ class CersUser(AbstractUser, CersModel):
     )
     companies = models.ManyToManyField(Company, verbose_name=_("Companies"))
     phone_number = models.CharField(max_length=9, null=True, blank=True, verbose_name=_("Phone number"))
-    settings = models.JSONField(default={'company': 0}, null=True, blank=True)
+    settings = models.JSONField(default={'company': 0}, null=True, blank=True, verbose_name=_("Settings"))
+    report_on_behalf = models.BooleanField(default=False, verbose_name=_("Report on behalf"))
 
     @property
     def is_manager(self):
@@ -39,4 +40,3 @@ class CersUser(AbstractUser, CersModel):
         if not self.settings.get('company'):
             self.settings['company'] = 0
         super().save(*args, **kwargs)
-
