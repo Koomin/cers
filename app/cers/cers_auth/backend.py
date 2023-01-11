@@ -1,5 +1,4 @@
 from django.contrib.auth.backends import ModelBackend, UserModel
-from django.contrib.auth.base_user import BaseUserManager
 
 from cers.cers_auth.models import CersUser
 
