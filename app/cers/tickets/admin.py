@@ -1,9 +1,9 @@
 import datetime
 
 from calendar import month_name
-import django.utils.translation
+
 from django.utils.translation import gettext_lazy as _
-from django.utils.translation import get_language
+from django.utils.translation import get_language, activate, deactivate
 from django.db.models import Sum
 from django.contrib import admin
 from cers.core.duration_widget import TimeDurationWidget
@@ -133,7 +133,7 @@ class TicketClosedAdmin(TicketOpenAdmin):
             year = today.year
             qs = qs.filter(closed_date__year=year, closed_date__month=month)
             language_code = get_language()
-            django.utils.translation.activate(language_code)
+            activate(language_code)
             month = str(_(month_name[month]))
             value = list(qs.aggregate(Sum('duration')).values())[0] or 0
             if value != 0:
@@ -157,6 +157,7 @@ class TicketClosedAdmin(TicketOpenAdmin):
             result.context_data['sum_fields'] = sum_fields
         except:  # noqa
             pass
+        deactivate()
         return result
 
     def has_add_permission(self, request):
