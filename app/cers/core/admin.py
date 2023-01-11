@@ -2,7 +2,6 @@ from django.contrib import admin
 from django.contrib.admin import AdminSite
 from django.template.response import TemplateResponse
 from django.utils.translation import gettext_lazy as _
-from django.views.decorators.cache import never_cache
 
 from cers.tickets.models import TicketOpen, TicketClosed
 
@@ -22,9 +21,9 @@ class CersAdmin(AdminSite):
             # opened_tickets = opened_tickets.count()
             # closed_tickets = closed_tickets.count()
             kwargs = {'company': None}
-            if request.user.settings.get('company') and request.user.settings.get('company') != 0:
+            if request.user.settings.get('company') is not None and request.user.settings.get('company') != 0:
                 kwargs = {'company__pk': request.user.settings.get('company')}
-            elif request.user.settings.get('company') and request.user.settings.get('company') == 0:
+            elif request.user.settings.get('company') is not None and request.user.settings.get('company') == 0:
                 kwargs = {'company__pk__in': request.user.companies.values_list('pk', flat=True)}
             opened_tickets = opened_tickets.filter(**kwargs).count()
             closed_tickets = closed_tickets.filter(**kwargs).count()
