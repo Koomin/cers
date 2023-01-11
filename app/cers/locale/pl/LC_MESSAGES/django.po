@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-01-11 15:49+0100\n"
+"POT-Creation-Date: 2023-01-11 17:50+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -28,7 +28,7 @@ msgstr "Dane personalne"
 msgid "Permissions"
 msgstr "Uprawnienia"
 
-#: cers/cers_auth/admin.py:25 cers/cers_auth/models.py:30
+#: cers/cers_auth/admin.py:25 cers/cers_auth/models.py:31
 msgid "Settings"
 msgstr "Ustawienia"
 
@@ -40,38 +40,42 @@ msgstr "Ważne daty"
 msgid "Configuration"
 msgstr "Konfiguracja"
 
-#: cers/cers_auth/models.py:11
+#: cers/cers_auth/models.py:12
 msgid "groups"
 msgstr "grupy"
 
-#: cers/cers_auth/models.py:17
+#: cers/cers_auth/models.py:18
 msgid "user permissions"
 msgstr "uprawnienia użytkownika"
 
-#: cers/cers_auth/models.py:19
+#: cers/cers_auth/models.py:20
 msgid "Specific permissions for this user."
 msgstr ""
 
-#: cers/cers_auth/models.py:24
+#: cers/cers_auth/models.py:25
 msgid "staff status"
 msgstr ""
 
-#: cers/cers_auth/models.py:26
+#: cers/cers_auth/models.py:27
 msgid "Designates whether the user can log into this admin site."
 msgstr ""
 
-#: cers/cers_auth/models.py:28 cers/companies/apps.py:8
+#: cers/cers_auth/models.py:29 cers/companies/apps.py:8
 #: cers/companies/models.py:12
 msgid "Companies"
 msgstr "Firmy"
 
-#: cers/cers_auth/models.py:29
+#: cers/cers_auth/models.py:30
 msgid "Phone number"
 msgstr "Numer telefonu"
 
-#: cers/cers_auth/models.py:31
+#: cers/cers_auth/models.py:32
 msgid "Report on behalf"
 msgstr "Zgłaszaj w imieniu"
+
+#: cers/cers_auth/models.py:49 cers/cers_auth/models.py:60
+msgid "User with given username already exist."
+msgstr "Użytkownik z podaną nazwą już istnieje."
 
 #: cers/companies/apps.py:7 cers/companies/models.py:11
 #: cers/tickets/models.py:43
@@ -94,15 +98,15 @@ msgstr "Dział"
 msgid "Departments"
 msgstr "Działy"
 
-#: cers/config/settings/base.py:105
+#: cers/config/settings/base.py:107
 msgid "Polish"
 msgstr "Polski"
 
-#: cers/config/settings/base.py:106
+#: cers/config/settings/base.py:108
 msgid "English"
 msgstr "Angielski"
 
-#: cers/core/admin.py:41 cers/templates/admin/base.html:263
+#: cers/core/admin.py:40 cers/templates/admin/base.html:263
 msgid "Dashboard"
 msgstr "Dashboard"
 
@@ -156,15 +160,15 @@ msgstr "Nowe zgłoszenie"
 msgid "Click to add"
 msgstr "Kliknij aby dodać"
 
-#: cers/core/templates/index.html:44 cers/tickets/models.py:78
+#: cers/core/templates/index.html:43 cers/tickets/models.py:79
 msgid "Open tickets"
 msgstr "Otwarte zgłoszenia"
 
-#: cers/core/templates/index.html:49 cers/core/templates/index.html:64
+#: cers/core/templates/index.html:48 cers/core/templates/index.html:63
 msgid "More info"
 msgstr "Więcej informacji"
 
-#: cers/core/templates/index.html:59 cers/tickets/models.py:87
+#: cers/core/templates/index.html:58 cers/tickets/models.py:88
 msgid "Closed tickets"
 msgstr "Zamknięte zgłoszenia"
 
@@ -248,23 +252,23 @@ msgstr "Pokaż wszystko"
 msgid "Save"
 msgstr "Zapisz"
 
-#: cers/tickets/admin.py:143
+#: cers/tickets/admin.py:151
 msgid "hours"
 msgstr "godzin"
 
-#: cers/tickets/admin.py:144
+#: cers/tickets/admin.py:152
 msgid "minutes"
 msgstr "minut"
 
-#: cers/tickets/admin.py:146
+#: cers/tickets/admin.py:154
 msgid "Period"
 msgstr "Okres"
 
-#: cers/tickets/admin.py:150
+#: cers/tickets/admin.py:158
 msgid "For day"
 msgstr "Na dzień"
 
-#: cers/tickets/admin.py:154
+#: cers/tickets/admin.py:162
 msgid "Time"
 msgstr "Czas"
 
@@ -324,7 +328,7 @@ msgstr "Technik"
 msgid "Topic"
 msgstr "Temat"
 
-#: cers/tickets/models.py:33 cers/tickets/models.py:91
+#: cers/tickets/models.py:33 cers/tickets/models.py:92
 msgid "Description"
 msgstr "Opis"
 
@@ -362,35 +366,35 @@ msgstr "Zamknięte zgłoszenie"
 msgid "Ticket"
 msgstr "Zgłoszenie"
 
-#: cers/tickets/models.py:77
+#: cers/tickets/models.py:78
 msgid "Open ticket"
 msgstr "Otwarte zgłoszenie"
 
-#: cers/tickets/models.py:86
+#: cers/tickets/models.py:87
 msgid "Closed ticket"
 msgstr "Zamknięte zgłoszenie"
 
-#: cers/tickets/models.py:95
+#: cers/tickets/models.py:96
 msgid "Comment"
 msgstr "Komentarz"
 
-#: cers/tickets/models.py:96
+#: cers/tickets/models.py:97
 msgid "Comments"
 msgstr "Komentarze"
 
-#: cers/tickets/models.py:100
+#: cers/tickets/models.py:101
 msgid "Name"
 msgstr "Nazwa"
 
-#: cers/tickets/models.py:101
+#: cers/tickets/models.py:102
 msgid "File"
 msgstr "Plik"
 
-#: cers/tickets/models.py:105
+#: cers/tickets/models.py:106
 msgid "Attachment"
 msgstr "Załącznik"
 
-#: cers/tickets/models.py:106
+#: cers/tickets/models.py:107
 msgid "Attachments"
 msgstr "Załączniki"
 

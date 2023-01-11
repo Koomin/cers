@@ -1,4 +1,5 @@
 from django.contrib.auth.models import AbstractUser, Group, Permission
+from django.core.exceptions import ValidationError
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 
@@ -36,7 +37,27 @@ class CersUser(AbstractUser, CersModel):
             return True
         return False
 
+    def clean(self):
+        super().clean()
+        error_dict = {}
+        if self.username:
+            try:
+                CersUser.objects.get(username__iexact=self.username)
+            except self.DoesNotExist:
+                pass
+            else:
+                error_dict['username'] = ValidationError(_('User with given username already exist.'))
+        if error_dict:
+            raise ValidationError(error_dict)
+
     def save(self, *args, **kwargs):
+        if self._state.adding:
+            try:
+                CersUser.objects.get(username__iexact=self.username)
+            except self.DoesNotExist:
+                pass
+            else:
+                raise ValidationError(_('User with given username already exist.'))
         if not self.settings.get('company'):
             self.settings['company'] = 0
         super().save(*args, **kwargs)
