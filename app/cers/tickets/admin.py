@@ -71,7 +71,7 @@ class TicketAdmin(CersModelAdmin):
                 ('access_to_client',),
             )
         elif request.user.is_manager:
-            fields = (('topic',), ('description',), ('priority',), ('deadline',),)
+            fields = (('reporting',), ('topic',), ('description',), ('priority',), ('deadline',),)
         elif request.user.groups.name == 'user':
             fields = (('topic',), ('description',))
         elif request.user.groups.name == 'technician':
@@ -95,6 +95,9 @@ class TicketAdmin(CersModelAdmin):
         if db_field.name == 'technician':
             qs = super(TicketAdmin, self).get_field_queryset(db, db_field, request)
             return qs.filter(groups__name='technician')
+        if db_field.name == 'reporting' and request.user.report_on_behalf:
+            qs = super(TicketAdmin, self).get_field_queryset(db, db_field, request)
+            return qs.filter(companies__in=request.user.companies.all())
         return super(TicketAdmin, self).get_field_queryset(db, db_field, request)
 
     def has_delete_permission(self, request, obj=None):
