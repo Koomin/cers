@@ -1,7 +1,9 @@
 import datetime
-import locale
 
+from calendar import month_name
+import django.utils.translation
 from django.utils.translation import gettext_lazy as _
+from django.utils.translation import get_language
 from django.db.models import Sum
 from django.contrib import admin
 from cers.core.duration_widget import TimeDurationWidget
@@ -96,9 +98,7 @@ class TicketAdmin(CersModelAdmin):
         return super(TicketAdmin, self).get_field_queryset(db, db_field, request)
 
     def has_delete_permission(self, request, obj=None):
-        if request.user.is_superuser:
-            return True
-        return False
+        return True if request.user.is_superuser else False
 
 
 @admin.register(TicketOpen)
@@ -132,8 +132,9 @@ class TicketClosedAdmin(TicketOpenAdmin):
             month = today.month
             year = today.year
             qs = qs.filter(closed_date__year=year, closed_date__month=month)
-            locale.setlocale(locale.LC_ALL, request.META.get('LC_CTYPE'))
-            month = today.strftime("%B").capitalize()
+            language_code = get_language()
+            django.utils.translation.activate(language_code)
+            month = str(_(month_name[month]))
             value = list(qs.aggregate(Sum('duration')).values())[0] or 0
             if value != 0:
                 seconds = value.seconds
@@ -162,7 +163,7 @@ class TicketClosedAdmin(TicketOpenAdmin):
         return False
 
     def has_change_permission(self, request, obj=None):
-        return False
+        return True if request.user.is_superuser else False
 
 
 admin_site.register(TicketOpen, TicketOpenAdmin)
