@@ -29,7 +29,7 @@ class TicketAdmin(CersModelAdmin):
 
     def save_model(self, request, obj, form, change):
         obj.user = request.user
-        if self.form.cleaned_data.get('reporting'):
+        if hasattr(self.form, 'cleaned_data') and self.form.cleaned_data.get('reporting'):
             obj.user = self.form.cleaned_data.get('reporting')
         super().save_model(request, obj, form, change)
 
