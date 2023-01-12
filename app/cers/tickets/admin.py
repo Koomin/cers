@@ -27,6 +27,12 @@ class TicketAdmin(CersModelAdmin):
     inlines = (CommentInline, AttachmentInline)
     context_field = 'company'
 
+    def save_model(self, request, obj, form, change):
+        obj.user = request.user
+        if self.form.cleaned_data.get('reporting'):
+            obj.user = self.form.cleaned_data.get('reporting')
+        super().save_model(request, obj, form, change)
+
     def get_queryset(self, request):
         qs = super().get_queryset(request)
         if self.opts.object_name == 'Ticket':
@@ -70,8 +76,10 @@ class TicketAdmin(CersModelAdmin):
                 ('duration',),
                 ('access_to_client',),
             )
-        elif request.user.is_manager:
+        elif request.user.is_manager and request.user.report_on_behalf:
             fields = (('reporting',), ('topic',), ('description',), ('priority',), ('deadline',),)
+        elif request.user.is_manager:
+            fields = (('topic',), ('description',), ('priority',), ('deadline',),)
         elif request.user.groups.name == 'user':
             fields = (('topic',), ('description',))
         elif request.user.groups.name == 'technician':
