@@ -40,7 +40,7 @@ class CersUser(AbstractUser, CersModel):
     def clean(self):
         super().clean()
         error_dict = {}
-        if self.username:
+        if self._state.adding and self.username:
             try:
                 CersUser.objects.get(username__iexact=self.username)
             except self.DoesNotExist:
