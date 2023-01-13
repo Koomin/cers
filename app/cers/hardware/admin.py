@@ -1,3 +1,9 @@
-from django.contrib import admin
+from cers.core.admin import CersModelAdmin, admin_site
+from cers.hardware.models import Computer
 
-# Register your models here.
+
+class ComputerAdmin(CersModelAdmin):
+    pass
+
+
+admin_site.register(Computer, ComputerAdmin)
