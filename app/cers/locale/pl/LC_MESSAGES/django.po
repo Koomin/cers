@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-01-13 18:55+0100\n"
+"POT-Creation-Date: 2023-01-13 20:08+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -98,11 +98,11 @@ msgstr "Dział"
 msgid "Departments"
 msgstr "Działy"
 
-#: cers/config/settings/base.py:109
+#: cers/config/settings/base.py:110
 msgid "Polish"
 msgstr "Polski"
 
-#: cers/config/settings/base.py:110
+#: cers/config/settings/base.py:111
 msgid "English"
 msgstr "Angielski"
 
@@ -209,10 +209,8 @@ msgid "Office"
 msgstr ""
 
 #: cers/hardware/models.py:13
-#, fuzzy
-#| msgid "Change password"
 msgid "Bios password"
-msgstr "Zmień hasło"
+msgstr "Hasło BIOS"
 
 #: cers/hardware/models.py:14
 msgid "Bitlocker"
@@ -223,20 +221,16 @@ msgid "Backup"
 msgstr ""
 
 #: cers/hardware/models.py:16
-#, fuzzy
-#| msgid "SMS"
 msgid "SSD"
-msgstr "SMS"
+msgstr "SSD"
 
 #: cers/hardware/models.py:17
 msgid "Norton"
 msgstr ""
 
 #: cers/hardware/models.py:18
-#, fuzzy
-#| msgid "Change password"
 msgid "Synology password"
-msgstr "Zmień hasło"
+msgstr "Hasło Synology"
 
 #: cers/hardware/models.py:19 cers/tickets/models.py:95
 msgid "Comment"
@@ -247,18 +241,36 @@ msgid "VPN"
 msgstr ""
 
 #: cers/hardware/models.py:21
-
 msgid "Serial number"
 msgstr "Numer seryjny"
 
 #: cers/hardware/models.py:24
-
 msgid "Computer"
 msgstr "Komputer"
 
 #: cers/hardware/models.py:25
 msgid "Computers"
 msgstr "Komputery"
+
+#: cers/imports/apps.py:8 cers/imports/models.py:17
+msgid "Imports"
+msgstr "Importy"
+
+#: cers/imports/models.py:10
+msgid "Import computers"
+msgstr "Import komputerów"
+
+#: cers/imports/models.py:12 cers/tickets/models.py:101
+msgid "File"
+msgstr "Plik"
+
+#: cers/imports/models.py:13
+msgid "Type"
+msgstr ""
+
+#: cers/imports/models.py:16
+msgid "Import"
+msgstr "Import"
 
 #: cers/templates/admin/base.html:122 cers/templates/admin/base.html:123
 msgid "Search"
@@ -445,10 +457,11 @@ msgid "Access to the client"
 msgstr "Dojazd"
 
 #: cers/tickets/models.py:45
-#, fuzzy
-#| msgid "Closed ticket"
-msgid "Closed date"
+msgid "Closed ticket"
 msgstr "Zamknięte zgłoszenie"
+
+msgid "Closed date"
+msgstr "Data zamknięcia"
 
 #: cers/tickets/models.py:48
 msgid "Ticket"
@@ -458,17 +471,10 @@ msgstr "Zgłoszenie"
 msgid "Open ticket"
 msgstr "Otwarte zgłoszenie"
 
-#: cers/tickets/models.py:86
-msgid "Closed ticket"
-msgstr "Zamknięte zgłoszenie"
 
 #: cers/tickets/models.py:96
 msgid "Comments"
 msgstr "Komentarze"
-
-#: cers/tickets/models.py:101
-msgid "File"
-msgstr "Plik"
 
 #: cers/tickets/models.py:105
 msgid "Attachment"

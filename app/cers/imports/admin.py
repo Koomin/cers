@@ -5,6 +5,7 @@ from cers.imports.models import Import
 
 
 class ImportAdmin(CersModelAdmin):
-    pass
+    list_display = ['type', 'created']
+
 
 admin_site.register(Import, ImportAdmin)
