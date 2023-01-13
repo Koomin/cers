@@ -17,6 +17,7 @@ class CersUserAdmin(UserAdmin):
                 "fields": (
                     "is_active",
                     "is_superuser",
+                    "report_on_behalf",
                     "groups",
                 ),
             },

@@ -44,7 +44,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'durationwidget',
     'cers.core',
     'cers.cers_auth',
     'cers.companies',
@@ -54,6 +53,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -99,6 +99,8 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+AUTHENTICATION_BACKENDS = ['cers.cers_auth.backend.LoginBackend', ]
+
 # Internationalization
 # https://docs.djangoproject.com/en/4.1/topics/i18n/
 LOCALE_PATHS = (BASE_DIR / 'locale',)
@@ -117,7 +119,6 @@ USE_L10N = True
 
 USE_TZ = True
 
-
 AUTH_USER_MODEL = 'cers_auth.CersUser'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
@@ -128,7 +129,6 @@ STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 STATIC_ROOT = BASE_DIR / 'static'
-
 
 # JAZZMIN CONFIG
 

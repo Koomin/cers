@@ -1,3 +1,5 @@
+import datetime
+
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 
@@ -38,7 +40,9 @@ class Ticket(CersModel):
                                    default=PriorityLevels.NORMAL, verbose_name=_('Priority'))
     duration = models.DurationField(null=True, blank=True, verbose_name=_('Duration'))
     accepted = models.BooleanField(default=False, verbose_name=_('Accepted'))
-    company = models.ForeignKey(Company, on_delete=models.CASCADE, null=True, blank=True)
+    company = models.ForeignKey(Company, on_delete=models.CASCADE, null=True, blank=True, verbose_name=_('Company'))
+    access_to_client = models.BooleanField(default=False, verbose_name=_('Access to the client'))
+    closed_date = models.DateField(null=True, blank=True, verbose_name=_('Closed date'))
 
     class Meta:
         verbose_name = _('Ticket')
@@ -48,13 +52,16 @@ class Ticket(CersModel):
         return self.topic
 
     def save(self, *args, **kwargs):
-        # TODO Changing status require duration filled
         if self._state.adding:
             self.reporting = self.user
             company = self.user.settings.get('company')
-            if company != '0':
+            if company != 0:
                 self.company = Company.objects.get(pk=company)
+            elif company == 0 or self.user.companies.count() == 1:
+                self.company = self.user.companies.first()
             super().save(*args, **kwargs)
+        if self.status == self.Status.CLOSED and not self.closed_date:
+            self.closed_date = datetime.date.today()
         super().save(*args, **kwargs)
 
     def accept(self):
