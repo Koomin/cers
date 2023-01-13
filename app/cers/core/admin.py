@@ -70,9 +70,11 @@ class CersModelAdmin(admin.ModelAdmin):
         super().save_model(request, obj, form, change)
 
     def has_add_permission(self, request):
-        if (request.user.settings.get(
-                'company') == 0 and request.user.companies.count() > 1) or request.user.companies.count() == 0:
+        if self.context_field:
+            if (request.user.settings.get(
+                    'company') == 0 and request.user.companies.count() > 1) or request.user.companies.count() == 0:
+                return False
+            elif request.user.settings.get('company') != 0 or request.user.companies.count() == 1:
+                return super().has_add_permission(request)
             return False
-        elif request.user.settings.get('company') != 0 or request.user.companies.count() == 1:
-            return super().has_add_permission(request)
-        return False
+        return super(CersModelAdmin, self).has_add_permission(request)
