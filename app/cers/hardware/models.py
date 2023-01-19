@@ -11,10 +11,9 @@ class Computer(CersModel):
     office = models.CharField(max_length=120, null=True, blank=True, verbose_name=_('Office'))
     bitlocker = models.CharField(max_length=250, null=True, blank=True, verbose_name=_('Bitlocker'))
     backup = models.BooleanField(default=False, verbose_name=_('Backup'))
-    norton_installed = models.BooleanField(default=False, verbose_name=_('Norton'))
+    norton = models.BooleanField(default=False, verbose_name=_('Norton'))
     synology_pass = models.CharField(max_length=255, null=True, blank=True, verbose_name=_('Synology password'))
     comment = models.CharField(max_length=255, null=True, blank=True, verbose_name=_('Comment'))
-    vpn = models.BooleanField(default=False, verbose_name=_('VPN'))
     serial_number = models.CharField(max_length=50, null=True, blank=True, verbose_name=_('Serial number'))
 
     class Meta:
