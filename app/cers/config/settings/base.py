@@ -142,6 +142,13 @@ JAZZMIN_SETTINGS = {"site_title": "CERS",
                     "related_modal_active": False,
                     "language_chooser": True,
                     "icons": {
+                        "imports.import": "fas fa-file-import",
+                        "cers_auth.company": "fas fa-building",
+                        "cers_auth.cersuser": "fas fa-users",
+                        "hardware.computer": "fas fa-laptop",
+                        "auth.group": "fas fa-users",
+                        "tickets.ticketopen": "fas fa-tasks",
+                        "tickets.ticketclosed": "fas fa-times",
                     },
                     "hide_apps": []
                     }

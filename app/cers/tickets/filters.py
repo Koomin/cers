@@ -18,3 +18,4 @@ class AcceptedFilter(SimpleListFilter):
             return queryset.filter(accepted=True)
         if self.value() == 'no':
             return queryset.filter(accepted=False)
+
