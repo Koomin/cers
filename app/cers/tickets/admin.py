@@ -185,7 +185,7 @@ class TicketClosedAdmin(TicketOpenAdmin):
     def get_list_filter(self, request):
         if request.user.is_superuser:
             return ('technician', RelatedOnlyFieldListFilter), 'closed_date',
-
+        return super().get_list_filter(request)
 
 admin_site.register(TicketOpen, TicketOpenAdmin)
 admin_site.register(TicketClosed, TicketClosedAdmin)
