@@ -151,7 +151,8 @@
                     <li class="nav-item d-none d-sm-inline-block dropdown">
                         <form id="subsidiary-context-form">
                             <select id="subsidiary-context" name="subsidiary-context" class="admin-autocomplete">
-                                <option value="0" name="{{ user.settings.company }}">{% trans 'Global context' %}</option>
+                                <option value="0"
+                                        name="{{ user.settings.company }}">{% trans 'Global context' %}</option>
                                 {% for subsidiary in user.companies.all %}
                                     <option value="{{ subsidiary.pk }}"
                                             {% if subsidiary.pk == user.settings.company %}
@@ -293,7 +294,9 @@
                                             <ul class="nav nav-treeview" style="display: none;">
                                                 {% for model in app.models %}
                                                     <li class="nav-item">
-                                                        <a href="{% if model.url %}{{ model.url }}{% else %}javascript:void(0){% endif %}" class="nav-link">
+                                                        <a href="
+                                                                {% if model.url %}{{ model.url }}{% else %}javascript:void(0){% endif %}"
+                                                           class="nav-link">
                                                             <i class="nav-icon {{ model.icon }}"></i>
                                                             <p>{{ model.name }}</p>
                                                         </a>
@@ -420,6 +423,8 @@
 <script src="{% static "jazzmin/js/main.js" %}"></script>
 
 <script type="text/javascript" src="{% static 'admin/js/base.js' %}"></script>
+<link rel="stylesheet" type="text/css" href="{% static "vendor/select2/css/select2.min.css" %}" />
+<script type="text/javascript" src="{% static 'vendor/select2/js/select2.min.js' %}"></script>
 
 {% if jazzmin_settings.custom_js %}
     <script src="{% static jazzmin_settings.custom_js %}"></script>
