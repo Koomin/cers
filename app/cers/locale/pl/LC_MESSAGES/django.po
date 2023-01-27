@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-01-13 20:08+0100\n"
+"POT-Creation-Date: 2023-01-27 15:46+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,9 +16,9 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n"
-"%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n"
-"%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
+"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && "
+"(n%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && "
+"n%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
 
 #: cers/cers_auth/admin.py:13
 msgid "Personal info"
@@ -78,7 +78,7 @@ msgid "User with given username already exist."
 msgstr "Użytkownik z podaną nazwą już istnieje."
 
 #: cers/companies/apps.py:7 cers/companies/models.py:11
-#: cers/tickets/models.py:43
+#: cers/hardware/models.py:125 cers/tickets/models.py:43
 msgid "Company"
 msgstr "Firma"
 
@@ -184,73 +184,152 @@ msgstr "Zamknięte zgłoszenia"
 msgid "Hardware"
 msgstr "Sprzęt"
 
-#: cers/hardware/models.py:7 cers/tickets/models.py:100
+#: cers/hardware/models.py:8 cers/hardware/models.py:19
+#: cers/hardware/models.py:30 cers/tickets/models.py:100
 msgid "Name"
 msgstr "Nazwa"
 
-#: cers/hardware/models.py:8
-msgid "Model"
-msgstr "Model"
+#: cers/hardware/models.py:14 cers/hardware/models.py:49
+msgid "Manufacturer"
+msgstr "Producent"
 
-#: cers/hardware/models.py:9
-msgid "MAC address"
-msgstr ""
+#: cers/hardware/models.py:15
+msgid "Manufacturers"
+msgstr "Producenci"
 
-#: cers/hardware/models.py:10
-msgid "Computer number"
-msgstr "Numer komputera"
-
-#: cers/hardware/models.py:11
+#: cers/hardware/models.py:25 cers/hardware/models.py:33
+#: cers/hardware/models.py:129
 msgid "Operating system"
 msgstr "System operacyjny"
 
-#: cers/hardware/models.py:12
+#: cers/hardware/models.py:26
+msgid "Operating systems"
+msgstr "System operacyjny"
+
+#: cers/hardware/models.py:31 cers/hardware/models.py:48
+#: cers/hardware/models.py:101 cers/hardware/models.py:109
+#: cers/hardware/models.py:117 cers/hardware/models.py:126
+msgid "Model"
+msgstr "Model"
+
+#: cers/hardware/models.py:32
+msgid "Computer number"
+msgstr "Numer komputera"
+
+#: cers/hardware/models.py:34
 msgid "Office"
 msgstr ""
 
-#: cers/hardware/models.py:13
-msgid "Bios password"
-msgstr "Hasło BIOS"
-
-#: cers/hardware/models.py:14
+#: cers/hardware/models.py:35
 msgid "Bitlocker"
 msgstr ""
 
-#: cers/hardware/models.py:15
+#: cers/hardware/models.py:36
 msgid "Backup"
 msgstr ""
 
-#: cers/hardware/models.py:16
-msgid "SSD"
-msgstr "SSD"
-
-#: cers/hardware/models.py:17
+#: cers/hardware/models.py:37
 msgid "Norton"
 msgstr ""
 
-#: cers/hardware/models.py:18
+#: cers/hardware/models.py:38
 msgid "Synology password"
 msgstr "Hasło Synology"
 
-#: cers/hardware/models.py:19 cers/tickets/models.py:95
+#: cers/hardware/models.py:39 cers/tickets/models.py:95
 msgid "Comment"
 msgstr "Komentarz"
 
-#: cers/hardware/models.py:20
-msgid "VPN"
-msgstr ""
-
-#: cers/hardware/models.py:21
+#: cers/hardware/models.py:40 cers/hardware/models.py:60
+#: cers/hardware/models.py:127
 msgid "Serial number"
 msgstr "Numer seryjny"
 
-#: cers/hardware/models.py:24
+#: cers/hardware/models.py:43
 msgid "Computer"
 msgstr "Komputer"
 
-#: cers/hardware/models.py:25
+#: cers/hardware/models.py:44
 msgid "Computers"
 msgstr "Komputery"
+
+#: cers/hardware/models.py:66 cers/hardware/models.py:130
+msgid "Processor"
+msgstr "Procesor"
+
+#: cers/hardware/models.py:67
+msgid "Processors"
+msgstr "Procesory"
+
+#: cers/hardware/models.py:72 cers/hardware/models.py:73
+#: cers/hardware/models.py:112 cers/hardware/models.py:113
+msgid "Hard Drive"
+msgstr "Sprzęt"
+
+#: cers/hardware/models.py:78 cers/hardware/models.py:79
+#: cers/hardware/models.py:120
+msgid "Memory"
+msgstr "Pamięć"
+
+#: cers/hardware/models.py:84 cers/hardware/models.py:104
+msgid "Graphic Card"
+msgstr "Karta graficzna"
+
+#: cers/hardware/models.py:85 cers/hardware/models.py:105
+msgid "Graphic Cards"
+msgstr "Karty graficzne"
+
+#: cers/hardware/models.py:90
+msgid "Power Supply"
+msgstr "Zasilacz"
+
+#: cers/hardware/models.py:91
+msgid "Power Supplies"
+msgstr "Zasilacze"
+
+#: cers/hardware/models.py:96 cers/hardware/models.py:136
+msgid "Motherboard"
+msgstr "Płyta główna"
+
+#: cers/hardware/models.py:97
+msgid "Motherboards"
+msgstr "Płyty główne"
+
+#: cers/hardware/models.py:121
+msgid "Memories"
+msgstr "Pamięć"
+
+#: cers/hardware/models.py:132
+msgid "Processor serial number"
+msgstr "Numer seryjny - procesor"
+
+#: cers/hardware/models.py:133
+msgid "Power supply"
+msgstr "Zasilacz"
+
+#: cers/hardware/models.py:135
+msgid "Power supply serial number"
+msgstr "Numer seryjny - zasilacz"
+
+#: cers/hardware/models.py:138
+msgid "Motherboard serial number"
+msgstr "Numer seryjny - płyta główna"
+
+#: cers/hardware/models.py:139
+msgid "Date of sale"
+msgstr "Data sprzedaży"
+
+#: cers/hardware/models.py:140
+msgid "Warranty"
+msgstr "Gwarancja"
+
+#: cers/hardware/models.py:143
+msgid "Computer set"
+msgstr "Zestaw komputerowy"
+
+#: cers/hardware/models.py:144
+msgid "Computer sets"
+msgstr "Zestawy komputerowe"
 
 #: cers/imports/apps.py:8 cers/imports/models.py:17
 msgid "Imports"
@@ -266,7 +345,7 @@ msgstr "Plik"
 
 #: cers/imports/models.py:13
 msgid "Type"
-msgstr ""
+msgstr "Typ"
 
 #: cers/imports/models.py:16
 msgid "Import"
@@ -457,9 +536,6 @@ msgid "Access to the client"
 msgstr "Dojazd"
 
 #: cers/tickets/models.py:45
-msgid "Closed ticket"
-msgstr "Zamknięte zgłoszenie"
-
 msgid "Closed date"
 msgstr "Data zamknięcia"
 
@@ -471,6 +547,9 @@ msgstr "Zgłoszenie"
 msgid "Open ticket"
 msgstr "Otwarte zgłoszenie"
 
+#: cers/tickets/models.py:86
+msgid "Closed ticket"
+msgstr "Zamknięte zgłoszenie"
 
 #: cers/tickets/models.py:96
 msgid "Comments"
@@ -487,6 +566,12 @@ msgstr "Załączniki"
 #: cers/tickets/templates/tickets/change_form_open_ticket.html:7
 msgid "Accept ticket"
 msgstr "Zaakceptuj zgłoszenie"
+
+#~ msgid "Bios password"
+#~ msgstr "Hasło BIOS"
+
+#~ msgid "SSD"
+#~ msgstr "SSD"
 
 #~ msgid "Hour"
 #~ msgstr "godzina"

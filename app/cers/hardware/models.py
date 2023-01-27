@@ -45,8 +45,8 @@ class Computer(CersModel):
 
 
 class ComponentModel(CersModel):
-    model = models.CharField(max_length=255)
-    manufacturer = models.ForeignKey(Manufacturer, on_delete=models.CASCADE)
+    model = models.CharField(max_length=255, verbose_name=_('Model'))
+    manufacturer = models.ForeignKey(Manufacturer, on_delete=models.CASCADE, verbose_name=_('Manufacturer'))
 
     class Meta:
         abstract = True
@@ -98,7 +98,7 @@ class MotherboardModel(ComponentModel):
 
 
 class GraphicCard(Component):
-    model = models.ForeignKey(GraphicCardModel, on_delete=models.CASCADE)
+    model = models.ForeignKey(GraphicCardModel, on_delete=models.CASCADE, verbose_name=_('Model'))
 
     class Meta:
         verbose_name = _('Graphic Card')
@@ -106,7 +106,7 @@ class GraphicCard(Component):
 
 
 class HardDrive(Component):
-    model = models.ForeignKey(HardDriveModel, on_delete=models.CASCADE)
+    model = models.ForeignKey(HardDriveModel, on_delete=models.CASCADE, verbose_name=_('Model'))
 
     class Meta:
         verbose_name = _('Hard Drive')
@@ -114,7 +114,7 @@ class HardDrive(Component):
 
 
 class Memory(Component):
-    model = models.ForeignKey(MemoryModel, on_delete=models.CASCADE)
+    model = models.ForeignKey(MemoryModel, on_delete=models.CASCADE, verbose_name=_('Model'))
 
     class Meta:
         verbose_name = _('Memory')
