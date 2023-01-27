@@ -1,6 +1,7 @@
 from cers.core.admin import CersModelAdmin, admin_site
-from cers.hardware.models import Computer, ComputerSet, Processor, HardDrive, Memory, PowerSupply, Motherboard, \
-    OperatingSystem, Manufacturer
+from django.contrib import admin
+from cers.hardware.models import Computer, ComputerSet, HardDrive, Memory, OperatingSystem, Manufacturer, GraphicCard, \
+    ProcessorModel, HardDriveModel, MemoryModel, PowerSupplyModel, MotherboardModel
 
 
 class ComputerAdmin(CersModelAdmin):
@@ -8,9 +9,25 @@ class ComputerAdmin(CersModelAdmin):
                     'synology_pass', 'comment', 'serial_number']
 
 
+class GraphicCardInline(admin.TabularInline):
+    model = GraphicCard
+    extra = 1
+
+
+class MemoryInline(admin.TabularInline):
+    model = Memory
+    extra = 1
+
+
+class HardDriveInline(admin.TabularInline):
+    model = HardDrive
+    extra = 1
+
+
 class ComputerSetAdmin(CersModelAdmin):
-    list_display = ['company', 'model', 'serial_number', 'operating_system', 'processor', 'hard_drive', 'memory_ram',
-                    'power_supply', 'motherboard', 'date_of_sale', 'warranty']
+    list_display = ['company', 'model', 'serial_number', 'operating_system', 'processor', 'power_supply', 'motherboard',
+                    'date_of_sale', 'warranty']
+    inlines = (HardDriveInline, MemoryInline, GraphicCardInline)
 
 
 class ComponentAdmin(CersModelAdmin):
@@ -19,10 +36,10 @@ class ComponentAdmin(CersModelAdmin):
 
 admin_site.register(Computer, ComputerAdmin)
 admin_site.register(ComputerSet, ComputerSetAdmin)
-admin_site.register(Processor, ComponentAdmin)
-admin_site.register(HardDrive, ComponentAdmin)
-admin_site.register(Memory, ComponentAdmin)
-admin_site.register(PowerSupply, ComponentAdmin)
-admin_site.register(Motherboard, ComponentAdmin)
+admin_site.register(ProcessorModel, ComponentAdmin)
+admin_site.register(HardDriveModel, ComponentAdmin)
+admin_site.register(MemoryModel, ComponentAdmin)
+admin_site.register(PowerSupplyModel, ComponentAdmin)
+admin_site.register(MotherboardModel, ComponentAdmin)
 admin_site.register(OperatingSystem, CersModelAdmin)
 admin_site.register(Manufacturer, CersModelAdmin)
