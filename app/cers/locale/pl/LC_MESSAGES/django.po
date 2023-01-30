@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-01-27 15:46+0100\n"
+"POT-Creation-Date: 2023-01-30 19:07+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -106,7 +106,7 @@ msgstr "Polski"
 msgid "English"
 msgstr "Angielski"
 
-#: cers/core/admin.py:40 cers/templates/admin/base.html:263
+#: cers/core/admin.py:40 cers/templates/admin/base.html:264
 msgid "Dashboard"
 msgstr "Dashboard"
 
@@ -253,7 +253,7 @@ msgstr "Komputer"
 msgid "Computers"
 msgstr "Komputery"
 
-#: cers/hardware/models.py:66 cers/hardware/models.py:130
+#: cers/hardware/models.py:66 cers/hardware/models.py:132
 msgid "Processor"
 msgstr "Procesor"
 
@@ -287,7 +287,7 @@ msgstr "Zasilacz"
 msgid "Power Supplies"
 msgstr "Zasilacze"
 
-#: cers/hardware/models.py:96 cers/hardware/models.py:136
+#: cers/hardware/models.py:96 cers/hardware/models.py:138
 msgid "Motherboard"
 msgstr "Płyta główna"
 
@@ -299,35 +299,39 @@ msgstr "Płyty główne"
 msgid "Memories"
 msgstr "Pamięć RAM"
 
-#: cers/hardware/models.py:132
+#: cers/hardware/models.py:131
+msgid "Operating system license key"
+msgstr "Klucz licencyjny - system operacyjny"
+
+#: cers/hardware/models.py:134
 msgid "Processor serial number"
 msgstr "Numer seryjny - procesor"
 
-#: cers/hardware/models.py:133
+#: cers/hardware/models.py:135
 msgid "Power supply"
 msgstr "Zasilacz"
 
-#: cers/hardware/models.py:135
+#: cers/hardware/models.py:137
 msgid "Power supply serial number"
 msgstr "Numer seryjny - zasilacz"
 
-#: cers/hardware/models.py:138
+#: cers/hardware/models.py:140
 msgid "Motherboard serial number"
 msgstr "Numer seryjny - płyta główna"
 
-#: cers/hardware/models.py:139
+#: cers/hardware/models.py:141
 msgid "Date of sale"
 msgstr "Data sprzedaży"
 
-#: cers/hardware/models.py:140
+#: cers/hardware/models.py:142
 msgid "Warranty"
 msgstr "Gwarancja"
 
-#: cers/hardware/models.py:143
+#: cers/hardware/models.py:145
 msgid "Computer set"
 msgstr "Zestaw komputerowy"
 
-#: cers/hardware/models.py:144
+#: cers/hardware/models.py:146
 msgid "Computer sets"
 msgstr "Zestawy komputerowe"
 
@@ -355,47 +359,47 @@ msgstr "Import"
 msgid "Search"
 msgstr "Szukaj"
 
-#: cers/templates/admin/base.html:154
+#: cers/templates/admin/base.html:155
 msgid "Global context"
 msgstr ""
 
-#: cers/templates/admin/base.html:198
+#: cers/templates/admin/base.html:199
 msgid "Account"
 msgstr "Konto"
 
-#: cers/templates/admin/base.html:201
+#: cers/templates/admin/base.html:202
 msgid "Change password"
 msgstr "Zmień hasło"
 
-#: cers/templates/admin/base.html:205
+#: cers/templates/admin/base.html:206
 msgid "Log out"
 msgstr "Wyloguj"
 
-#: cers/templates/admin/base.html:218
+#: cers/templates/admin/base.html:219
 msgid "See Profile"
 msgstr "Zobacz profil"
 
-#: cers/templates/admin/base.html:377
+#: cers/templates/admin/base.html:380
 msgid "Jazzmin version"
 msgstr "Wersja CERS"
 
-#: cers/templates/admin/base.html:380
+#: cers/templates/admin/base.html:383
 msgid "Copyright"
 msgstr "Copyright"
 
-#: cers/templates/admin/base.html:381
+#: cers/templates/admin/base.html:384
 msgid "All rights reserved."
 msgstr "All rights reserved."
 
-#: cers/templates/admin/base.html:397
+#: cers/templates/admin/base.html:400
 msgid "UI Configuration"
 msgstr ""
 
-#: cers/templates/admin/base.html:401
+#: cers/templates/admin/base.html:404
 msgid "Copy this info your settings file to persist these UI changes"
 msgstr ""
 
-#: cers/templates/admin/base.html:406
+#: cers/templates/admin/base.html:409
 msgid "Close"
 msgstr "Zamknij"
 
@@ -566,6 +570,9 @@ msgstr "Załączniki"
 #: cers/tickets/templates/tickets/change_form_open_ticket.html:7
 msgid "Accept ticket"
 msgstr "Zaakceptuj zgłoszenie"
+
+#~ msgid "Operating system serial number"
+#~ msgstr "Numer seryjny - system operacyjny"
 
 #~ msgid "Bios password"
 #~ msgstr "Hasło BIOS"
