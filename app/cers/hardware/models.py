@@ -127,6 +127,8 @@ class ComputerSet(CersModel):
     serial_number = models.CharField(max_length=255, verbose_name=_('Serial number'))
     operating_system = models.ForeignKey(OperatingSystem, on_delete=models.CASCADE, null=True, blank=True,
                                          verbose_name=_('Operating system'))
+    operating_system_license_key = models.CharField(max_length=255, null=True, blank=True,
+                                                      verbose_name=_('Operating system license key'))
     processor = models.ForeignKey(ProcessorModel, on_delete=models.CASCADE, verbose_name=_('Processor'))
     processor_serial_number = models.CharField(max_length=255, null=True, blank=True,
                                                verbose_name=_('Processor serial number'))
