@@ -264,12 +264,12 @@ msgstr "Procesory"
 #: cers/hardware/models.py:72 cers/hardware/models.py:73
 #: cers/hardware/models.py:112 cers/hardware/models.py:113
 msgid "Hard Drive"
-msgstr "Sprzęt"
+msgstr "Dysk twardy"
 
 #: cers/hardware/models.py:78 cers/hardware/models.py:79
 #: cers/hardware/models.py:120
 msgid "Memory"
-msgstr "Pamięć"
+msgstr "Pamięć RAM"
 
 #: cers/hardware/models.py:84 cers/hardware/models.py:104
 msgid "Graphic Card"
@@ -297,7 +297,7 @@ msgstr "Płyty główne"
 
 #: cers/hardware/models.py:121
 msgid "Memories"
-msgstr "Pamięć"
+msgstr "Pamięć RAM"
 
 #: cers/hardware/models.py:132
 msgid "Processor serial number"
