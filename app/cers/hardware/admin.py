@@ -1,7 +1,7 @@
 from cers.core.admin import CersModelAdmin, admin_site
 from django.contrib import admin
 from cers.hardware.models import Computer, ComputerSet, HardDrive, Memory, OperatingSystem, Manufacturer, GraphicCard, \
-    ProcessorModel, HardDriveModel, MemoryModel, PowerSupplyModel, MotherboardModel
+    ProcessorModel, HardDriveModel, MemoryModel, PowerSupplyModel, MotherboardModel, GraphicCardModel
 
 
 class ComputerAdmin(CersModelAdmin):
@@ -38,7 +38,7 @@ admin_site.register(Computer, ComputerAdmin)
 admin_site.register(ComputerSet, ComputerSetAdmin)
 admin_site.register(ProcessorModel, ComponentAdmin)
 admin_site.register(HardDriveModel, ComponentAdmin)
-admin_site.register(GraphicCard, ComponentAdmin)
+admin_site.register(GraphicCardModel, ComponentAdmin)
 admin_site.register(MemoryModel, ComponentAdmin)
 admin_site.register(PowerSupplyModel, ComponentAdmin)
 admin_site.register(MotherboardModel, ComponentAdmin)
