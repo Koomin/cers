@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-06 18:01+0100\n"
+"POT-Creation-Date: 2023-02-06 18:30+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -435,23 +435,27 @@ msgstr "Pokaż wszystko"
 msgid "Save"
 msgstr "Zapisz"
 
-#: cers/tickets/admin.py:160
+#: cers/tickets/admin.py:156
+msgid "year"
+msgstr "rok"
+
+#: cers/tickets/admin.py:165
 msgid "hours"
 msgstr "godzin"
 
-#: cers/tickets/admin.py:161
+#: cers/tickets/admin.py:166
 msgid "minutes"
 msgstr "minut"
 
-#: cers/tickets/admin.py:163
+#: cers/tickets/admin.py:168
 msgid "Period"
 msgstr "Okres"
 
-#: cers/tickets/admin.py:167
+#: cers/tickets/admin.py:172
 msgid "For day"
 msgstr "Na dzień"
 
-#: cers/tickets/admin.py:171
+#: cers/tickets/admin.py:176
 msgid "Time"
 msgstr "Czas"
 
