@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-01-30 19:07+0100\n"
+"POT-Creation-Date: 2023-02-06 18:01+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -113,8 +113,8 @@ msgstr "Dashboard"
 #: cers/core/duration_widget.py:29
 msgid "Day"
 msgid_plural "Days"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "dzień"
+msgstr[1] "dni"
 msgstr[2] ""
 msgstr[3] ""
 
@@ -142,7 +142,7 @@ msgstr[3] ""
 
 #: cers/core/duration_widget.py:76
 msgid "Days"
-msgstr ""
+msgstr "dni"
 
 #: cers/core/duration_widget.py:78
 msgid "Minutes"
@@ -435,23 +435,23 @@ msgstr "Pokaż wszystko"
 msgid "Save"
 msgstr "Zapisz"
 
-#: cers/tickets/admin.py:159
+#: cers/tickets/admin.py:160
 msgid "hours"
 msgstr "godzin"
 
-#: cers/tickets/admin.py:160
+#: cers/tickets/admin.py:161
 msgid "minutes"
 msgstr "minut"
 
-#: cers/tickets/admin.py:162
+#: cers/tickets/admin.py:163
 msgid "Period"
 msgstr "Okres"
 
-#: cers/tickets/admin.py:166
+#: cers/tickets/admin.py:167
 msgid "For day"
 msgstr "Na dzień"
 
-#: cers/tickets/admin.py:170
+#: cers/tickets/admin.py:171
 msgid "Time"
 msgstr "Czas"
 
@@ -459,9 +459,17 @@ msgstr "Czas"
 msgid "Tickets"
 msgstr "Zgłoszenia"
 
-#: cers/tickets/filters.py:7 cers/tickets/models.py:42
+#: cers/tickets/filters.py:11 cers/tickets/models.py:42
 msgid "Accepted"
 msgstr "Zaakceptowany"
+
+#: cers/tickets/filters.py:28
+msgid "Month closed"
+msgstr "Miesiąc zamknięcia"
+
+#: cers/tickets/filters.py:45
+msgid "Year closed"
+msgstr "Rok zamknięcia"
 
 #: cers/tickets/models.py:14
 msgid "Open"
