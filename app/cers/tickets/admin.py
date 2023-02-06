@@ -144,14 +144,19 @@ class TicketClosedAdmin(TicketOpenAdmin):
     def changelist_view(self, request, extra_context=None):
         result = super().changelist_view(request, extra_context)
         try:
-            qs = result.context_data['cl'].queryset
+            changelist = result.context_data['cl']
+            qs = changelist.queryset
             today = datetime.datetime.now()
-            month = today.month
-            year = today.year
-            qs = qs.filter(closed_date__year=year, closed_date__month=month)
+            month = int(changelist.params.get('closed_date__month', today.month))
+            year = changelist.params.get('closed_date__year', today.year)
             language_code = get_language()
             activate(language_code)
-            month = str(_(month_name[month]))
+            if 'closed_date__year' in changelist.params and 'closed_date__month' not in changelist.params:
+                qs = qs.filter(closed_date__year=year)
+                month = _('year')
+            else:
+                qs = qs.filter(closed_date__year=year, closed_date__month=month)
+                month = str(_(month_name[month]))
             value = list(qs.aggregate(Sum('duration')).values())[0] or 0
             if value != 0:
                 seconds = value.seconds
