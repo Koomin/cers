@@ -2,13 +2,14 @@ import datetime
 
 from calendar import month_name
 
-from django.contrib.admin import DateFieldListFilter, RelatedOnlyFieldListFilter
+from django.contrib.admin import RelatedOnlyFieldListFilter
 from django.utils.translation import gettext_lazy as _
 from django.utils.translation import get_language, activate, deactivate
 from django.db.models import Sum
 from django.contrib import admin
 from cers.core.duration_widget import TimeDurationWidget
 from cers.core.admin import admin_site, CersModelAdmin
+from cers.tickets.filters import MonthClosedFilter, YearClosedFilter
 from cers.tickets.models import Comment, TicketOpen, TicketClosed, Attachment
 
 
@@ -184,8 +185,9 @@ class TicketClosedAdmin(TicketOpenAdmin):
 
     def get_list_filter(self, request):
         if request.user.is_superuser:
-            return ('technician', RelatedOnlyFieldListFilter), 'closed_date',
+            return ('technician', RelatedOnlyFieldListFilter), MonthClosedFilter, YearClosedFilter, 'closed_date'
         return super().get_list_filter(request)
+
 
 admin_site.register(TicketOpen, TicketOpenAdmin)
 admin_site.register(TicketClosed, TicketClosedAdmin)
