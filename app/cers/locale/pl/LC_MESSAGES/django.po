@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-06 18:30+0100\n"
+"POT-Creation-Date: 2023-02-06 22:03+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -78,7 +78,8 @@ msgid "User with given username already exist."
 msgstr "Użytkownik z podaną nazwą już istnieje."
 
 #: cers/companies/apps.py:7 cers/companies/models.py:11
-#: cers/hardware/models.py:125 cers/tickets/models.py:43
+#: cers/hardware/models.py:125 cers/reports/models.py:17
+#: cers/tickets/models.py:43
 msgid "Company"
 msgstr "Firma"
 
@@ -98,11 +99,11 @@ msgstr "Dział"
 msgid "Departments"
 msgstr "Działy"
 
-#: cers/config/settings/base.py:110
+#: cers/config/settings/base.py:111
 msgid "Polish"
 msgstr "Polski"
 
-#: cers/config/settings/base.py:111
+#: cers/config/settings/base.py:112
 msgid "English"
 msgstr "Angielski"
 
@@ -355,6 +356,62 @@ msgstr "Typ"
 msgid "Import"
 msgstr "Import"
 
+#: cers/reports/management/commands/monthly_report.py:20
+#: cers/reports/models.py:11
+msgid "Monthly report"
+msgstr "Raport miesięczny"
+
+#: cers/reports/management/commands/monthly_report.py:25
+msgid "No."
+msgstr "Lp"
+
+#: cers/reports/management/commands/monthly_report.py:25
+msgid "Date"
+msgstr "Data"
+
+#: cers/reports/management/commands/monthly_report.py:25
+#, fuzzy
+#| msgid "Access to the client"
+msgid "Access to client"
+msgstr "Dojazd"
+
+#: cers/reports/management/commands/monthly_report.py:25
+#: cers/tickets/models.py:33 cers/tickets/models.py:91
+msgid "Description"
+msgstr "Opis"
+
+#: cers/reports/management/commands/monthly_report.py:25
+msgid "Duration of service"
+msgstr "Czas realizacji usługi"
+
+#: cers/reports/management/commands/monthly_report.py:32
+msgid "YES"
+msgstr "TAK"
+
+#: cers/reports/management/commands/monthly_report.py:32
+msgid "NO"
+msgstr "NIE"
+
+#: cers/reports/models.py:14
+msgid "Report type"
+msgstr "Typ raportu"
+
+#: cers/reports/models.py:15
+msgid "Date from"
+msgstr "Data od"
+
+#: cers/reports/models.py:16
+msgid "Date to"
+msgstr "Data do"
+
+#: cers/reports/models.py:18
+msgid "Report file"
+msgstr "Raport"
+
+#: cers/reports/models.py:21 cers/reports/models.py:22
+msgid "Reports generation"
+msgstr "Generowanie raportów"
+
 #: cers/templates/admin/base.html:122 cers/templates/admin/base.html:123
 msgid "Search"
 msgstr "Szukaj"
@@ -522,10 +579,6 @@ msgstr "Technik"
 #: cers/tickets/models.py:32
 msgid "Topic"
 msgstr "Temat"
-
-#: cers/tickets/models.py:33 cers/tickets/models.py:91
-msgid "Description"
-msgstr "Opis"
 
 #: cers/tickets/models.py:34
 msgid "Deadline"
