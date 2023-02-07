@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-06 22:03+0100\n"
+"POT-Creation-Date: 2023-02-07 19:04+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -356,39 +356,42 @@ msgstr "Typ"
 msgid "Import"
 msgstr "Import"
 
-#: cers/reports/management/commands/monthly_report.py:20
+#: cers/reports/apps.py:8
+msgid "Reports"
+msgstr "Raporty"
+
+#: cers/reports/management/commands/monthly_report.py:22
 #: cers/reports/models.py:11
 msgid "Monthly report"
 msgstr "Raport miesięczny"
 
-#: cers/reports/management/commands/monthly_report.py:25
+#: cers/reports/management/commands/monthly_report.py:28
 msgid "No."
 msgstr "Lp"
 
-#: cers/reports/management/commands/monthly_report.py:25
+#: cers/reports/management/commands/monthly_report.py:28
 msgid "Date"
 msgstr "Data"
 
-#: cers/reports/management/commands/monthly_report.py:25
-#, fuzzy
-#| msgid "Access to the client"
-msgid "Access to client"
+#: cers/reports/management/commands/monthly_report.py:28
+#: cers/tickets/models.py:44
+msgid "Access to the client"
 msgstr "Dojazd"
 
-#: cers/reports/management/commands/monthly_report.py:25
+#: cers/reports/management/commands/monthly_report.py:28
 #: cers/tickets/models.py:33 cers/tickets/models.py:91
 msgid "Description"
 msgstr "Opis"
 
-#: cers/reports/management/commands/monthly_report.py:25
+#: cers/reports/management/commands/monthly_report.py:28
 msgid "Duration of service"
 msgstr "Czas realizacji usługi"
 
-#: cers/reports/management/commands/monthly_report.py:32
+#: cers/reports/management/commands/monthly_report.py:38
 msgid "YES"
 msgstr "TAK"
 
-#: cers/reports/management/commands/monthly_report.py:32
+#: cers/reports/management/commands/monthly_report.py:38
 msgid "NO"
 msgstr "NIE"
 
@@ -600,10 +603,6 @@ msgstr "Priorytet"
 msgid "Duration"
 msgstr "Czas trwania"
 
-#: cers/tickets/models.py:44
-msgid "Access to the client"
-msgstr "Dojazd"
-
 #: cers/tickets/models.py:45
 msgid "Closed date"
 msgstr "Data zamknięcia"
@@ -635,6 +634,11 @@ msgstr "Załączniki"
 #: cers/tickets/templates/tickets/change_form_open_ticket.html:7
 msgid "Accept ticket"
 msgstr "Zaakceptuj zgłoszenie"
+
+#, fuzzy
+#~| msgid "Access to the client"
+#~ msgid "Access to client"
+#~ msgstr "Dojazd"
 
 #~ msgid "Operating system serial number"
 #~ msgstr "Numer seryjny - system operacyjny"
