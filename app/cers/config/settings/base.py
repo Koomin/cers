@@ -158,6 +158,7 @@ JAZZMIN_SETTINGS = {"site_title": "CERS",
                         "auth.group": "fas fa-users",
                         "tickets.ticketopen": "fas fa-tasks",
                         "tickets.ticketclosed": "fas fa-times",
+                        "reports.reportgeneration": "fas fa-file-excel",
                     },
                     "hide_apps": []
                     }
