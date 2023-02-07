@@ -36,5 +36,5 @@ class ReportGeneration(CersModel):
     def save(self, *args, **kwargs):
         if self._state.adding:
             file = call_command(self.report_type, **self.get_options())
-            self.report_file = file
+            self.report_file = f'reports/{file}'
         super().save(*args, **kwargs)
