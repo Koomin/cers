@@ -1,6 +1,9 @@
 version: '3.8'
 
 services:
+  cers-rabbit:
+    restart: always
+    image: rabbitmq:latest
   cers-web:
     restart: always
     container_name: cers-web
@@ -30,6 +33,28 @@ services:
         - ./.env.prod.db
       networks:
         - cers-network
+  cers-celery:
+    build:
+      context: ./app
+      dockerfile: Dockerfile.prod
+    command: celery -A config worker -l info
+    env_file:
+      - ./.env.prod
+    depends_on:
+      - cers-db
+      - cers-rabbit
+      - cers-web
+  cers-beat:
+    build:
+      context: ./app
+      dockerfile: Dockerfile.prod
+    command: celery -A config beat -l INFO --scheduler django_celery_beat.schedulers:DatabaseScheduler
+    env_file:
+      - ./.env.prod
+    depends_on:
+      - cers-celery
+      - cers-rabbit
+      - cers-web
 volumes:
   postgres_data:
   static_volume:
