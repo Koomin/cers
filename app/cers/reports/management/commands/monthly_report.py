@@ -17,7 +17,7 @@ class Command(BaseCommand):
         parser.add_argument('--company_id')
 
     def handle(self, *args, **kwargs):
-        file_name = _('Monthly report')
+        report_name = _('Monthly report')
         queryset = TicketClosed.objects.filter(closed_date__gte=kwargs.get('date_from'),
                                                closed_date__lte=kwargs.get('date_to'),
                                                company__id=kwargs.get('company_id'))
@@ -33,9 +33,10 @@ class Command(BaseCommand):
                        str(_('YES')) if obj.access_to_client else str(_('NO')),
                        obj.description,
                        obj.duration])
-        path = f'{settings.MEDIA_ROOT}/reports/{file_name}_' \
-               f'{Company.objects.get(id=kwargs.get("company_id")).name}_' \
-               f'{datetime.date.today()}.xlsx'
+        file_name = f'{report_name}_' \
+                    f'{Company.objects.get(id=kwargs.get("company_id")).name}_' \
+                    f'{datetime.date.today()}.xlsx'
+        path = f'{settings.MEDIA_ROOT}/reports/{file_name}'
         wb.save(path)
         deactivate()
-        return path
+        return file_name
