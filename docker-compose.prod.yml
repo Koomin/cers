@@ -1,36 +1,39 @@
 version: '3.8'
 
 services:
-  web:
+  cers-web:
     restart: always
+    container_name: cers-web
     build:
       context: ./app
       dockerfile: Dockerfile.prod
-    expose:
-      - 8000
+    ports:
+      - 8081:8081
     volumes:
-      - static_volume:/home/app/web/cers/static
+      - /home/cers/staticfiles:/home/app/web/cers/static
+      - /home/cers/media:/home/app/web/cers/media
     env_file:
       - ./.env.prod
     depends_on:
-      - db
-    command: gunicorn cers.config.wsgi:application --bind 0.0.0.0:8000
-  db:
+      - cers-db
+    networks:
+      - npm-nw
+      - cers-network
+    command: gunicorn cers.config.wsgi:application --bind 0.0.0.0:8081
+  cers-db:
       restart: always
+      container_name: cers-db
       image: postgres:13.0-alpine
       volumes:
-        - postgres_data:/var/lib/postgresql/cers/data
+        - postgres_data:/var/lib/postgresql/data
       env_file:
         - ./.env.prod.db
-  nginx:
-    restart: always
-    build: ./nginx
-    volumes:
-      - static_volume:/home/app/web/cers/static
-    ports:
-      - 80:80
-    depends_on:
-      - web
+      networks:
+        - cers-network
 volumes:
   postgres_data:
   static_volume:
+networks:
+  cers-network:
+  npm-nw:
+    external: true
