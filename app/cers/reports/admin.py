@@ -1,5 +1,3 @@
-from django.contrib import admin
-
 from cers.core.admin import admin_site, CersModelAdmin
 from cers.reports.models import ReportGeneration
 
