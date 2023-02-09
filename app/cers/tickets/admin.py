@@ -53,6 +53,7 @@ class TicketAdmin(CersModelAdmin):
                             'duration',
                             'company',
                             'created',
+                            'closed_date'
                             ]
             self.list_editable = ['status',
                                   'priority',
@@ -160,6 +161,8 @@ class TicketClosedAdmin(TicketOpenAdmin):
             value = list(qs.aggregate(Sum('duration')).values())[0] or 0
             if value != 0:
                 seconds = value.seconds
+                if value.days:
+                    seconds += value.days * 24 * 3600
                 hours = seconds // 3600
                 minutes = (seconds // 60) % 60
                 hours_name = _('hours')
