@@ -2,7 +2,7 @@ from cers.core.admin import CersModelAdmin, admin_site
 from django.contrib import admin
 from cers.hardware.models import Computer, ComputerSet, HardDrive, Memory, OperatingSystem, Manufacturer, GraphicCard, \
     ProcessorModel, HardDriveModel, MemoryModel, PowerSupplyModel, MotherboardModel, GraphicCardModel, \
-    SerialNumberConfig
+    SerialNumberConfig, ComputerModel
 
 
 class ComputerAdmin(CersModelAdmin):
@@ -49,4 +49,5 @@ admin_site.register(PowerSupplyModel, ComponentAdmin)
 admin_site.register(MotherboardModel, ComponentAdmin)
 admin_site.register(OperatingSystem, CersModelAdmin)
 admin_site.register(Manufacturer, CersModelAdmin)
+admin_site.register(ComputerModel, CersModelAdmin)
 admin_site.register(SerialNumberConfig, SerialNumberConfigAdmin)
