@@ -134,8 +134,8 @@ class ComputerModel(CersModel):
 
 class SerialNumberConfig(CersModel):
     computer_model = models.OneToOneField(ComputerModel, on_delete=models.CASCADE, verbose_name=_('Computer model'))
-    prefix = models.CharField(max_length=20, default='')
-    suffix = models.CharField(max_length=20, default='')
+    prefix = models.CharField(max_length=20, default='', blank=True)
+    suffix = models.CharField(max_length=20, default='', blank=True)
     number_length = models.PositiveIntegerField(default=5, verbose_name=_('Number length'))
 
     class Meta:
