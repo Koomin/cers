@@ -35,8 +35,13 @@ class ComponentAdmin(CersModelAdmin):
     list_display = ['manufacturer', 'model']
 
 
-class SerialNumberConfigAdmin(CersModelAdmin):
-    list_display = ['computer_model']
+class SerialNumberConfigInline(admin.TabularInline):
+    model = SerialNumberConfig
+
+
+class ComputerModelAdmin(CersModelAdmin):
+    list_display = ['name']
+    inlines = [SerialNumberConfigInline, ]
 
 
 admin_site.register(Computer, ComputerAdmin)
@@ -49,5 +54,4 @@ admin_site.register(PowerSupplyModel, ComponentAdmin)
 admin_site.register(MotherboardModel, ComponentAdmin)
 admin_site.register(OperatingSystem, CersModelAdmin)
 admin_site.register(Manufacturer, CersModelAdmin)
-admin_site.register(ComputerModel, CersModelAdmin)
-admin_site.register(SerialNumberConfig, SerialNumberConfigAdmin)
+admin_site.register(ComputerModel, ComputerModelAdmin)
