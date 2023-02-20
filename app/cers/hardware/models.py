@@ -121,14 +121,53 @@ class Memory(Component):
         verbose_name_plural = _('Memories')
 
 
+class ComputerModel(CersModel):
+    name = models.CharField(max_length=70, verbose_name=_('Name'))
+
+    class Meta:
+        verbose_name = _('Computer model')
+        verbose_name_plural = _('Computer models')
+
+    def __str__(self):
+        return self.name
+
+
+class SerialNumberConfig(CersModel):
+    computer_model = models.OneToOneField(ComputerModel, on_delete=models.CASCADE, verbose_name=_('Computer model'))
+    prefix = models.CharField(max_length=20, default='')
+    suffix = models.CharField(max_length=20, default='')
+    number_length = models.PositiveIntegerField(default=5, verbose_name=_('Number length'))
+
+    class Meta:
+        verbose_name = _('Serial number config')
+        verbose_name_plural = _('Serial number config')
+
+    def __str__(self):
+        return self.computer_model.name
+
+    def get_next_number(self):
+        if self.serial_number.last():
+            next_number = self.serial_number.last().number + 1
+        else:
+            next_number = 1
+        return next_number
+
+    def generate_full_number(self):
+        next_number = self.get_next_number()
+        zeros_quantity = self.number_length - len(str(next_number))
+        zeros = ''.join('0' for _ in range(0, zeros_quantity))
+        full_number = f'{self.prefix}{zeros}{next_number}{self.suffix}'
+        return full_number
+
+
 class ComputerSet(CersModel):
     company = models.ForeignKey(Company, on_delete=models.CASCADE, null=True, blank=True, verbose_name=_('Company'))
-    model = models.CharField(max_length=255, verbose_name=_('Model'))
-    serial_number = models.CharField(max_length=255, verbose_name=_('Serial number'))
+    model = models.ForeignKey(ComputerModel, null=True, on_delete=models.CASCADE, verbose_name=_('Model'))
+    serial_number = models.CharField(max_length=255, verbose_name=_('Serial number'), null=True, blank=True)
     operating_system = models.ForeignKey(OperatingSystem, on_delete=models.CASCADE, null=True, blank=True,
                                          verbose_name=_('Operating system'))
     operating_system_license_key = models.CharField(max_length=255, null=True, blank=True,
-                                                      verbose_name=_('Operating system license key'))
+                                                    verbose_name=_('Operating system license key'))
     processor = models.ForeignKey(ProcessorModel, on_delete=models.CASCADE, verbose_name=_('Processor'))
     processor_serial_number = models.CharField(max_length=255, null=True, blank=True,
                                                verbose_name=_('Processor serial number'))
@@ -144,3 +183,32 @@ class ComputerSet(CersModel):
     class Meta:
         verbose_name = _('Computer set')
         verbose_name_plural = _('Computer sets')
+
+    def save(self, *args, **kwargs):
+        if self._state.adding:
+            self.serial_number = SerialNumber().generate_serial_number(self)
+        super().save(*args, **kwargs)
+
+
+class SerialNumber(CersModel):
+    full_number = models.CharField(max_length=255, verbose_name=_('Full number'))
+    number = models.PositiveIntegerField()
+    computer_set = models.OneToOneField(ComputerSet, on_delete=models.CASCADE, null=False, blank=False)
+    config = models.ForeignKey(SerialNumberConfig, on_delete=models.CASCADE, related_name='serial_number',
+                               verbose_name=_('Serial number config'))
+
+    class Meta:
+        verbose_name = _('Serial number')
+        verbose_name_plural = _('Serial numbers')
+
+    def __str__(self):
+        return self.full_number
+
+    def generate_serial_number(self, computer_set):
+        config = SerialNumberConfig.objects.get(computer_model=computer_set.model)
+        self.config = config
+        self.computer_set = computer_set
+        self.full_number = config.generate_full_number()
+        self.number = config.get_next_number()
+        self.save()
+        return self.full_number

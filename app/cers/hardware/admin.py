@@ -1,7 +1,8 @@
 from cers.core.admin import CersModelAdmin, admin_site
 from django.contrib import admin
 from cers.hardware.models import Computer, ComputerSet, HardDrive, Memory, OperatingSystem, Manufacturer, GraphicCard, \
-    ProcessorModel, HardDriveModel, MemoryModel, PowerSupplyModel, MotherboardModel, GraphicCardModel
+    ProcessorModel, HardDriveModel, MemoryModel, PowerSupplyModel, MotherboardModel, GraphicCardModel, \
+    SerialNumberConfig
 
 
 class ComputerAdmin(CersModelAdmin):
@@ -34,6 +35,10 @@ class ComponentAdmin(CersModelAdmin):
     list_display = ['manufacturer', 'model']
 
 
+class SerialNumberConfigAdmin(CersModelAdmin):
+    list_display = ['computer_model']
+
+
 admin_site.register(Computer, ComputerAdmin)
 admin_site.register(ComputerSet, ComputerSetAdmin)
 admin_site.register(ProcessorModel, ComponentAdmin)
@@ -44,3 +49,4 @@ admin_site.register(PowerSupplyModel, ComponentAdmin)
 admin_site.register(MotherboardModel, ComponentAdmin)
 admin_site.register(OperatingSystem, CersModelAdmin)
 admin_site.register(Manufacturer, CersModelAdmin)
+admin_site.register(SerialNumberConfig, SerialNumberConfigAdmin)

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-07 19:04+0100\n"
+"POT-Creation-Date: 2023-02-20 17:26+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -78,7 +78,7 @@ msgid "User with given username already exist."
 msgstr "Użytkownik z podaną nazwą już istnieje."
 
 #: cers/companies/apps.py:7 cers/companies/models.py:11
-#: cers/hardware/models.py:125 cers/reports/models.py:17
+#: cers/hardware/models.py:165 cers/reports/models.py:17
 #: cers/tickets/models.py:43
 msgid "Company"
 msgstr "Firma"
@@ -186,7 +186,8 @@ msgid "Hardware"
 msgstr "Sprzęt"
 
 #: cers/hardware/models.py:8 cers/hardware/models.py:19
-#: cers/hardware/models.py:30 cers/tickets/models.py:100
+#: cers/hardware/models.py:30 cers/hardware/models.py:125
+#: cers/tickets/models.py:100
 msgid "Name"
 msgstr "Nazwa"
 
@@ -199,7 +200,7 @@ msgid "Manufacturers"
 msgstr "Producenci"
 
 #: cers/hardware/models.py:25 cers/hardware/models.py:33
-#: cers/hardware/models.py:129
+#: cers/hardware/models.py:169
 msgid "Operating system"
 msgstr "System operacyjny"
 
@@ -209,7 +210,7 @@ msgstr "System operacyjny"
 
 #: cers/hardware/models.py:31 cers/hardware/models.py:48
 #: cers/hardware/models.py:101 cers/hardware/models.py:109
-#: cers/hardware/models.py:117 cers/hardware/models.py:126
+#: cers/hardware/models.py:117 cers/hardware/models.py:166
 msgid "Model"
 msgstr "Model"
 
@@ -242,7 +243,7 @@ msgid "Comment"
 msgstr "Komentarz"
 
 #: cers/hardware/models.py:40 cers/hardware/models.py:60
-#: cers/hardware/models.py:127
+#: cers/hardware/models.py:167 cers/hardware/models.py:202
 msgid "Serial number"
 msgstr "Numer seryjny"
 
@@ -254,7 +255,7 @@ msgstr "Komputer"
 msgid "Computers"
 msgstr "Komputery"
 
-#: cers/hardware/models.py:66 cers/hardware/models.py:132
+#: cers/hardware/models.py:66 cers/hardware/models.py:172
 msgid "Processor"
 msgstr "Procesor"
 
@@ -288,7 +289,7 @@ msgstr "Zasilacz"
 msgid "Power Supplies"
 msgstr "Zasilacze"
 
-#: cers/hardware/models.py:96 cers/hardware/models.py:138
+#: cers/hardware/models.py:96 cers/hardware/models.py:178
 msgid "Motherboard"
 msgstr "Płyta główna"
 
@@ -300,41 +301,70 @@ msgstr "Płyty główne"
 msgid "Memories"
 msgstr "Pamięć RAM"
 
-#: cers/hardware/models.py:131
+#: cers/hardware/models.py:128 cers/hardware/models.py:136
+msgid "Computer model"
+msgstr "Model komputera"
+
+#: cers/hardware/models.py:129
+msgid "Computer models"
+msgstr "Modele komputerów"
+
+#: cers/hardware/models.py:139
+msgid "Number length"
+msgstr "Długość liczby"
+
+#: cers/hardware/models.py:142 cers/hardware/models.py:143
+#: cers/hardware/models.py:199
+msgid "Serial number config"
+msgstr "Numer seryjny - konfiguracja"
+
+#: cers/hardware/models.py:171
 msgid "Operating system license key"
 msgstr "Klucz licencyjny - system operacyjny"
 
-#: cers/hardware/models.py:134
+#: cers/hardware/models.py:174
 msgid "Processor serial number"
 msgstr "Numer seryjny - procesor"
 
-#: cers/hardware/models.py:135
+#: cers/hardware/models.py:175
 msgid "Power supply"
 msgstr "Zasilacz"
 
-#: cers/hardware/models.py:137
+#: cers/hardware/models.py:177
 msgid "Power supply serial number"
 msgstr "Numer seryjny - zasilacz"
 
-#: cers/hardware/models.py:140
+#: cers/hardware/models.py:180
 msgid "Motherboard serial number"
 msgstr "Numer seryjny - płyta główna"
 
-#: cers/hardware/models.py:141
+#: cers/hardware/models.py:181
 msgid "Date of sale"
 msgstr "Data sprzedaży"
 
-#: cers/hardware/models.py:142
+#: cers/hardware/models.py:182
 msgid "Warranty"
 msgstr "Gwarancja"
 
-#: cers/hardware/models.py:145
+#: cers/hardware/models.py:185
 msgid "Computer set"
 msgstr "Zestaw komputerowy"
 
-#: cers/hardware/models.py:146
+#: cers/hardware/models.py:186
 msgid "Computer sets"
 msgstr "Zestawy komputerowe"
+
+#: cers/hardware/models.py:195
+#, fuzzy
+#| msgid "Serial number"
+msgid "Full number"
+msgstr "Numer seryjny"
+
+#: cers/hardware/models.py:203
+#, fuzzy
+#| msgid "Serial number"
+msgid "Serial numbers"
+msgstr "Numer seryjny"
 
 #: cers/imports/apps.py:8 cers/imports/models.py:17
 msgid "Imports"
@@ -495,27 +525,27 @@ msgstr "Pokaż wszystko"
 msgid "Save"
 msgstr "Zapisz"
 
-#: cers/tickets/admin.py:156
+#: cers/tickets/admin.py:157
 msgid "year"
 msgstr "rok"
 
-#: cers/tickets/admin.py:165
+#: cers/tickets/admin.py:168
 msgid "hours"
 msgstr "godzin"
 
-#: cers/tickets/admin.py:166
+#: cers/tickets/admin.py:169
 msgid "minutes"
 msgstr "minut"
 
-#: cers/tickets/admin.py:168
+#: cers/tickets/admin.py:171
 msgid "Period"
 msgstr "Okres"
 
-#: cers/tickets/admin.py:172
+#: cers/tickets/admin.py:175
 msgid "For day"
 msgstr "Na dzień"
 
-#: cers/tickets/admin.py:176
+#: cers/tickets/admin.py:179
 msgid "Time"
 msgstr "Czas"
 
