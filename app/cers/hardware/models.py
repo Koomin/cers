@@ -185,7 +185,8 @@ class ComputerSet(CersModel):
         verbose_name_plural = _('Computer sets')
 
     def save(self, *args, **kwargs):
-        if self._state.adding:
+        if not self.serial_number:
+            super().save(*args, **kwargs)
             self.serial_number = SerialNumber().generate_serial_number(self)
         super().save(*args, **kwargs)
 
@@ -193,7 +194,7 @@ class ComputerSet(CersModel):
 class SerialNumber(CersModel):
     full_number = models.CharField(max_length=255, verbose_name=_('Full number'))
     number = models.PositiveIntegerField()
-    computer_set = models.OneToOneField(ComputerSet, on_delete=models.CASCADE, null=False, blank=False)
+    computer_set = models.OneToOneField(ComputerSet, on_delete=models.CASCADE, null=True, blank=True)
     config = models.ForeignKey(SerialNumberConfig, on_delete=models.CASCADE, related_name='serial_number',
                                verbose_name=_('Serial number config'))
 
