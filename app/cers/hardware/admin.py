@@ -28,6 +28,7 @@ class HardDriveInline(admin.TabularInline):
 class ComputerSetAdmin(CersModelAdmin):
     list_display = ['company', 'model', 'serial_number', 'operating_system', 'processor', 'power_supply', 'motherboard',
                     'date_of_sale', 'warranty']
+    readonly_fields = ['serial_number']
     inlines = (HardDriveInline, MemoryInline, GraphicCardInline)
 
 
