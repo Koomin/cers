@@ -1,5 +1,7 @@
 from django.db import models
 from django.utils.translation import gettext_lazy as _
+
+from cers.cers_auth.models import CersUser
 from cers.core.models import CersModel
 from cers.companies.models import Company
 
@@ -28,6 +30,7 @@ class OperatingSystem(CersModel):
 
 class Computer(CersModel):
     name = models.CharField(max_length=255, null=True, blank=True, verbose_name=_('Name'))
+    user = models.ForeignKey(CersUser, on_delete=models.CASCADE, null=True, blank=False, verbose_name=_('User'))
     model = models.CharField(max_length=255, null=True, blank=True, verbose_name=_('Model'))
     number = models.CharField(max_length=255, null=True, blank=True, verbose_name=_('Computer number'))
     operating_system = models.CharField(max_length=255, null=True, blank=True, verbose_name=_('Operating system'))
