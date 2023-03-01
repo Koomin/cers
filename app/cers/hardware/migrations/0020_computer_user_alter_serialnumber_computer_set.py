@@ -5,7 +5,6 @@ import string
 from django.conf import settings
 from django.db import migrations, models
 import django.db.models.deletion
-from django.db.models import Q
 
 
 def password_generator():
