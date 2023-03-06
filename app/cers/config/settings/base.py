@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     'cers.hardware',
     'cers.imports',
     'cers.reports',
+    'cers.orders',
 ]
 
 MIDDLEWARE = [
@@ -159,6 +160,7 @@ JAZZMIN_SETTINGS = {"site_title": "CERS",
                         "tickets.ticketopen": "fas fa-tasks",
                         "tickets.ticketclosed": "fas fa-times",
                         "reports.reportgeneration": "fas fa-file-excel",
+                        "orders.order": "fas fa-truck",
                     },
                     "hide_apps": []
                     }
