@@ -17,3 +17,4 @@ class OrderAdmin(CersModelAdmin):
 
 
 admin_site.register(Order, OrderAdmin)
+admin_site.register(Supplier, CersModelAdmin)
