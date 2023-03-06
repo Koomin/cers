@@ -162,7 +162,9 @@ JAZZMIN_SETTINGS = {"site_title": "CERS",
                         "reports.reportgeneration": "fas fa-file-excel",
                         "orders.order": "fas fa-truck",
                     },
-                    "hide_apps": []
+                    "hide_models": [
+                        "orders.supplier",
+                    ]
                     }
 
 JAZZMIN_UI_TWEAKS = {

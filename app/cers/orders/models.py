@@ -11,6 +11,9 @@ class Supplier(CersModel):
         verbose_name = _('Supplier')
         verbose_name_plural = _('Suppliers')
 
+    def __str__(self):
+        return self.name
+
 
 class Order(CersModel):
     class Status(models.TextChoices):
@@ -29,6 +32,9 @@ class Order(CersModel):
     class Meta:
         verbose_name = _('Order')
         verbose_name_plural = _('Orders')
+
+    def __str__(self):
+        return self.name
 
     def save(self, *args, **kwargs):
         if self._state.adding:
