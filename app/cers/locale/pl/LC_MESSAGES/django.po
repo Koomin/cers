@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-03-06 17:05+0100\n"
+"POT-Creation-Date: 2023-03-07 18:15+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -78,7 +78,7 @@ msgid "User with given username already exist."
 msgstr "Użytkownik z podaną nazwą już istnieje."
 
 #: cers/companies/apps.py:7 cers/companies/models.py:11
-#: cers/hardware/models.py:167 cers/orders/models.py:23
+#: cers/hardware/models.py:167 cers/orders/models.py:27
 #: cers/reports/models.py:17 cers/tickets/models.py:43
 msgid "Company"
 msgstr "Firma"
@@ -187,7 +187,7 @@ msgstr "Sprzęt"
 
 #: cers/hardware/models.py:10 cers/hardware/models.py:21
 #: cers/hardware/models.py:32 cers/hardware/models.py:128
-#: cers/orders/models.py:8 cers/orders/models.py:24 cers/tickets/models.py:100
+#: cers/orders/models.py:8 cers/orders/models.py:28 cers/tickets/models.py:100
 msgid "Name"
 msgstr "Nazwa"
 
@@ -242,7 +242,7 @@ msgstr ""
 msgid "Synology password"
 msgstr "Hasło Synology"
 
-#: cers/hardware/models.py:42 cers/orders/models.py:48
+#: cers/hardware/models.py:42 cers/orders/models.py:55
 #: cers/tickets/models.py:95
 msgid "Comment"
 msgstr "Komentarz"
@@ -391,11 +391,11 @@ msgstr "Typ"
 msgid "Import"
 msgstr "Import"
 
-#: cers/orders/apps.py:8 cers/orders/models.py:31
+#: cers/orders/apps.py:8 cers/orders/models.py:35
 msgid "Orders"
 msgstr "Zamówienia"
 
-#: cers/orders/models.py:11 cers/orders/models.py:27
+#: cers/orders/models.py:11 cers/orders/models.py:31
 msgid "Supplier"
 msgstr "Dostawca"
 
@@ -403,45 +403,49 @@ msgstr "Dostawca"
 msgid "Suppliers"
 msgstr "Dostawcy"
 
-#: cers/orders/models.py:17
+#: cers/orders/models.py:20
+msgid "Proposed"
+msgstr "Zaproponowano"
+
+#: cers/orders/models.py:21
 msgid "Placed"
 msgstr "Złożone"
 
-#: cers/orders/models.py:18
+#: cers/orders/models.py:22
 msgid "Ordered"
 msgstr "Zamówione"
 
-#: cers/orders/models.py:19
+#: cers/orders/models.py:23
 msgid "On-site"
 msgstr "Na miejscu"
 
-#: cers/orders/models.py:20
+#: cers/orders/models.py:24
 msgid "For release"
 msgstr "Do wydania"
 
-#: cers/orders/models.py:21
+#: cers/orders/models.py:25
 msgid "Delivered"
 msgstr "Dostarczone"
 
-#: cers/orders/models.py:25 cers/tickets/models.py:36
+#: cers/orders/models.py:29 cers/tickets/models.py:36
 msgid "Status"
 msgstr "Status"
 
-#: cers/orders/models.py:26
+#: cers/orders/models.py:30
 msgid "Gross selling price"
 msgstr "Cena sprzedaży brutto"
 
-#: cers/orders/models.py:30
+#: cers/orders/models.py:34
 msgid "Order"
 msgstr "Zamówienie"
 
-#: cers/orders/models.py:44
+#: cers/orders/models.py:51
 #: cers/reports/management/commands/monthly_report.py:28
 #: cers/tickets/models.py:33 cers/tickets/models.py:91
 msgid "Description"
 msgstr "Opis"
 
-#: cers/orders/models.py:49 cers/tickets/models.py:96
+#: cers/orders/models.py:56 cers/tickets/models.py:96
 msgid "Comments"
 msgstr "Komentarze"
 
@@ -579,27 +583,27 @@ msgstr "Pokaż wszystko"
 msgid "Save"
 msgstr "Zapisz"
 
-#: cers/tickets/admin.py:157
+#: cers/tickets/admin.py:167
 msgid "year"
 msgstr "rok"
 
-#: cers/tickets/admin.py:168
+#: cers/tickets/admin.py:178
 msgid "hours"
 msgstr "godzin"
 
-#: cers/tickets/admin.py:169
+#: cers/tickets/admin.py:179
 msgid "minutes"
 msgstr "minut"
 
-#: cers/tickets/admin.py:171
+#: cers/tickets/admin.py:181
 msgid "Period"
 msgstr "Okres"
 
-#: cers/tickets/admin.py:175
+#: cers/tickets/admin.py:185
 msgid "For day"
 msgstr "Na dzień"
 
-#: cers/tickets/admin.py:179
+#: cers/tickets/admin.py:189
 msgid "Time"
 msgstr "Czas"
 
