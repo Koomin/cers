@@ -17,6 +17,7 @@ class Supplier(CersModel):
 
 class Order(CersModel):
     class Status(models.TextChoices):
+        proposed = 'proposed', _('Proposed')
         placed = 'placed', _('Placed')
         ordered = 'ordered', _('Ordered')
         on_site = 'on-site', _('On-site')
