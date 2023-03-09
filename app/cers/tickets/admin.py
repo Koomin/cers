@@ -3,9 +3,10 @@ import datetime
 from calendar import month_name
 
 from django.contrib.admin import RelatedOnlyFieldListFilter
+from django.core.exceptions import ObjectDoesNotExist
 from django.utils.translation import gettext_lazy as _
 from django.utils.translation import get_language, activate, deactivate
-from django.db.models import Sum
+from django.db.models import Sum, Q
 from django.contrib import admin
 from cers.core.duration_widget import TimeDurationWidget
 from cers.core.admin import admin_site, CersModelAdmin
@@ -118,9 +119,21 @@ class TicketAdmin(CersModelAdmin):
         if db_field.name == 'reporting' and request.user.report_on_behalf:
             qs = super(TicketAdmin, self).get_field_queryset(db, db_field, request)
             company_pk = request.user.settings.get('company')
+            try:
+                object_pk = request.resolver_match.kwargs.get('object_id')
+                ticket = TicketOpen.objects.get(pk=object_pk)
+                user = ticket.reporting.pk
+            except (AttributeError, ObjectDoesNotExist):
+                user = None
+            if request.user.is_superuser:
+                groups = ['user', 'manager', 'admin']
+            else:
+                groups = ['user', 'manager']
             if company_pk:
-                return qs.filter(companies__pk__in=[company_pk], groups__name='user').distinct('username')
-            return qs.filter(companies__in=request.user.companies.all(), groups__name='user').distinct('username')
+                return qs.filter(Q(companies__pk__in=[company_pk], groups__name__in=groups) |
+                                 Q(pk=user)).distinct('username')
+            return qs.filter(Q(companies__in=request.user.companies.all(), groups__name__in=groups) |
+                             Q(pk=user)).distinct('username')
         return super(TicketAdmin, self).get_field_queryset(db, db_field, request)
 
     def has_delete_permission(self, request, obj=None):
