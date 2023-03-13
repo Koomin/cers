@@ -29,6 +29,8 @@ class Order(CersModel):
     status = models.CharField(max_length=120, choices=Status.choices, default=Status.placed, verbose_name=_('Status'))
     selling_price_gross = models.DecimalField(max_digits=12, decimal_places=2, verbose_name=_('Gross selling price'))
     supplier = models.ForeignKey(Supplier, on_delete=models.CASCADE, verbose_name=_('Supplier'))
+    paid = models.BooleanField(default=False, verbose_name=_('Paid'))
+    invoiced = models.BooleanField(default=False, verbose_name=_('Invoiced'))
 
     class Meta:
         verbose_name = _('Order')
