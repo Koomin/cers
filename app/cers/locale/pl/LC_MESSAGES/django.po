@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-03-07 18:15+0100\n"
+"POT-Creation-Date: 2023-03-13 10:23+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -242,7 +242,7 @@ msgstr ""
 msgid "Synology password"
 msgstr "Hasło Synology"
 
-#: cers/hardware/models.py:42 cers/orders/models.py:55
+#: cers/hardware/models.py:42 cers/orders/models.py:57
 #: cers/tickets/models.py:95
 msgid "Comment"
 msgstr "Komentarz"
@@ -391,7 +391,7 @@ msgstr "Typ"
 msgid "Import"
 msgstr "Import"
 
-#: cers/orders/apps.py:8 cers/orders/models.py:35
+#: cers/orders/apps.py:8 cers/orders/models.py:37
 msgid "Orders"
 msgstr "Zamówienia"
 
@@ -435,17 +435,25 @@ msgstr "Status"
 msgid "Gross selling price"
 msgstr "Cena sprzedaży brutto"
 
-#: cers/orders/models.py:34
+#: cers/orders/models.py:32
+msgid "Paid"
+msgstr "Zapłacono"
+
+#: cers/orders/models.py:33
+msgid "Invoiced"
+msgstr "Zafakturowane"
+
+#: cers/orders/models.py:36
 msgid "Order"
 msgstr "Zamówienie"
 
-#: cers/orders/models.py:51
+#: cers/orders/models.py:53
 #: cers/reports/management/commands/monthly_report.py:28
 #: cers/tickets/models.py:33 cers/tickets/models.py:91
 msgid "Description"
 msgstr "Opis"
 
-#: cers/orders/models.py:56 cers/tickets/models.py:96
+#: cers/orders/models.py:58 cers/tickets/models.py:96
 msgid "Comments"
 msgstr "Komentarze"
 
@@ -551,27 +559,17 @@ msgstr ""
 msgid "Close"
 msgstr "Zamknij"
 
-#: cers/templates/admin/change_form.html:23
-#: cers/templates/admin/change_list.html:28
-msgid "Home"
-msgstr "Główna"
-
-#: cers/templates/admin/change_form.html:34
-#, python-format
-msgid "Add %(name)s"
-msgstr "Dodaj %(name)s"
-
-#: cers/templates/admin/change_form.html:55
-#: cers/templates/admin/change_list.html:63
+#: cers/templates/admin/change_form.html:32
+#: cers/templates/admin/change_list.html:55
 msgid "Please correct the error below."
 msgstr "Proszę poprawić błąd."
 
-#: cers/templates/admin/change_form.html:57
-#: cers/templates/admin/change_list.html:65
+#: cers/templates/admin/change_form.html:34
+#: cers/templates/admin/change_list.html:57
 msgid "Please correct the errors below."
 msgstr "Proszę poprawić błędy."
 
-#: cers/templates/admin/change_list.html:90
+#: cers/templates/admin/change_list.html:82
 msgid "Total"
 msgstr "Podsumowanie"
 
@@ -583,27 +581,27 @@ msgstr "Pokaż wszystko"
 msgid "Save"
 msgstr "Zapisz"
 
-#: cers/tickets/admin.py:167
+#: cers/tickets/admin.py:183
 msgid "year"
 msgstr "rok"
 
-#: cers/tickets/admin.py:178
+#: cers/tickets/admin.py:194
 msgid "hours"
 msgstr "godzin"
 
-#: cers/tickets/admin.py:179
+#: cers/tickets/admin.py:195
 msgid "minutes"
 msgstr "minut"
 
-#: cers/tickets/admin.py:181
+#: cers/tickets/admin.py:197
 msgid "Period"
 msgstr "Okres"
 
-#: cers/tickets/admin.py:185
+#: cers/tickets/admin.py:201
 msgid "For day"
 msgstr "Na dzień"
 
-#: cers/tickets/admin.py:189
+#: cers/tickets/admin.py:205
 msgid "Time"
 msgstr "Czas"
 
@@ -714,6 +712,13 @@ msgstr "Załączniki"
 #: cers/tickets/templates/tickets/change_form_open_ticket.html:7
 msgid "Accept ticket"
 msgstr "Zaakceptuj zgłoszenie"
+
+#~ msgid "Home"
+#~ msgstr "Główna"
+
+#, python-format
+#~ msgid "Add %(name)s"
+#~ msgstr "Dodaj %(name)s"
 
 #, fuzzy
 #~| msgid "Access to the client"

@@ -11,9 +11,9 @@ class CommentInline(admin.TabularInline):
 
 class OrderAdmin(CersModelAdmin):
     context_field = 'company'
-    list_display = ['name', 'status', 'selling_price_gross', 'supplier', 'company', 'created']
+    list_display = ['name', 'status', 'selling_price_gross', 'supplier', 'company', 'paid', 'invoiced', 'created']
     inlines = (CommentInline,)
-    fields = ('name', 'status', 'selling_price_gross', 'supplier')
+    fields = ('name', 'status', 'selling_price_gross', 'supplier', 'paid', 'invoiced')
 
 
 admin_site.register(Order, OrderAdmin)
