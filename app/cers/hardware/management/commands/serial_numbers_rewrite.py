@@ -1,6 +1,5 @@
-from django.core.management import BaseCommand
-
 from cers.hardware.models import ComputerSet, SerialNumber
+from django.core.management import BaseCommand
 
 
 class Command(BaseCommand):

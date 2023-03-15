@@ -1,8 +1,7 @@
+from cers.core.models import CersModel
 from django.core.management import call_command
 from django.db import models
 from django.utils.translation import gettext_lazy as _
-
-from cers.core.models import CersModel
 
 
 class Import(CersModel):
@@ -19,4 +18,3 @@ class Import(CersModel):
     def save(self, *args, **kwargs):
         super().save(*args, **kwargs)
         call_command(self.type, file=self.file.path)
-

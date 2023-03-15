@@ -1,9 +1,8 @@
+from cers.tickets.models import TicketClosed, TicketOpen
 from django.contrib import admin
 from django.contrib.admin import AdminSite
 from django.template.response import TemplateResponse
 from django.utils.translation import gettext_lazy as _
-
-from cers.tickets.models import TicketOpen, TicketClosed
 
 
 class CersAdmin(AdminSite):
@@ -36,16 +35,18 @@ class CersAdmin(AdminSite):
         else:
             opened_tickets = 0
             closed_tickets = 0
-        context = {**self.each_context(request),
-                   'title': _('Dashboard'),
-                   'open_tasks_count': opened_tickets,
-                   'closed_tasks_count': closed_tickets,
-                   **(extra_context or {}), }
+        context = {
+            **self.each_context(request),
+            'title': _('Dashboard'),
+            'open_tasks_count': opened_tickets,
+            'closed_tasks_count': closed_tickets,
+            **(extra_context or {}),
+        }
         return TemplateResponse(request, 'index.html', context)
 
     @property
     def urls(self):
-        return self.get_urls(), "admin", self.name
+        return self.get_urls(), 'admin', self.name
 
 
 admin_site = CersAdmin(name='cers_admin')
@@ -71,8 +72,9 @@ class CersModelAdmin(admin.ModelAdmin):
 
     def has_add_permission(self, request):
         if self.context_field:
-            if (request.user.settings.get(
-                    'company') == 0 and request.user.companies.count() > 1) or request.user.companies.count() == 0:
+            if (
+                request.user.settings.get('company') == 0 and request.user.companies.count() > 1
+            ) or request.user.companies.count() == 0:
                 return False
             elif request.user.settings.get('company') != 0 or request.user.companies.count() == 1:
                 return super().has_add_permission(request)

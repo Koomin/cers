@@ -1,10 +1,8 @@
-from django.contrib.auth.backends import ModelBackend, UserModel
-
 from cers.cers_auth.models import CersUser
+from django.contrib.auth.backends import ModelBackend, UserModel
 
 
 class LoginBackend(ModelBackend):
-
     def authenticate(self, request, username=None, password=None, **kwargs):
         if username is None:
             username = kwargs.get(UserModel.USERNAME_FIELD)

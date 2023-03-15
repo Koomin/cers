@@ -1,17 +1,16 @@
 import datetime
-
 from calendar import month_name
 
+from cers.core.admin import CersModelAdmin, admin_site
+from cers.core.duration_widget import TimeDurationWidget
+from cers.tickets.filters import MonthClosedFilter, YearClosedFilter
+from cers.tickets.models import Attachment, Comment, TicketClosed, TicketOpen
+from django.contrib import admin
 from django.contrib.admin import RelatedOnlyFieldListFilter
 from django.core.exceptions import ObjectDoesNotExist
+from django.db.models import Q, Sum
+from django.utils.translation import activate, deactivate, get_language
 from django.utils.translation import gettext_lazy as _
-from django.utils.translation import get_language, activate, deactivate
-from django.db.models import Sum, Q
-from django.contrib import admin
-from cers.core.duration_widget import TimeDurationWidget
-from cers.core.admin import admin_site, CersModelAdmin
-from cers.tickets.filters import MonthClosedFilter, YearClosedFilter
-from cers.tickets.models import Comment, TicketOpen, TicketClosed, Attachment
 
 
 class CommentInline(admin.TabularInline):
@@ -44,27 +43,30 @@ class TicketAdmin(CersModelAdmin):
     def get_list_display(self, request):
         list_display = super().get_list_display(request)
         if request.user.is_superuser:
-            list_display = ['topic',
-                            'deadline',
-                            'status',
-                            'accepted',
-                            'priority',
-                            'reporting',
-                            'technician',
-                            'duration',
-                            'company',
-                            'created',
-                            'closed_date'
-                            ]
-            self.list_editable = ['status',
-                                  'priority',
-                                  'technician',
-                                  'duration',
-                                  ]
+            list_display = [
+                'topic',
+                'deadline',
+                'status',
+                'accepted',
+                'priority',
+                'reporting',
+                'technician',
+                'duration',
+                'company',
+                'created',
+                'closed_date',
+            ]
+            self.list_editable = [
+                'status',
+                'priority',
+                'technician',
+                'duration',
+            ]
         else:
             self.list_editable = []
-        if (request.user.settings.get(
-                'company') != 0 or request.user.companies.count() == 1) and 'company' in list_display:
+        if (
+            request.user.settings.get('company') != 0 or request.user.companies.count() == 1
+        ) and 'company' in list_display:
             list_display.remove('company')
         return list_display
 
@@ -90,9 +92,20 @@ class TicketAdmin(CersModelAdmin):
                 ('access_to_client',),
             )
         elif request.user.is_manager and request.user.report_on_behalf:
-            fields = (('reporting',), ('topic',), ('description',), ('priority',), ('deadline',),)
+            fields = (
+                ('reporting',),
+                ('topic',),
+                ('description',),
+                ('priority',),
+                ('deadline',),
+            )
         elif request.user.is_manager:
-            fields = (('topic',), ('description',), ('priority',), ('deadline',),)
+            fields = (
+                ('topic',),
+                ('description',),
+                ('priority',),
+                ('deadline',),
+            )
         elif request.user.groups.name == 'user':
             fields = (('topic',), ('description',))
         elif request.user.groups.name == 'technician':
@@ -130,10 +143,12 @@ class TicketAdmin(CersModelAdmin):
             else:
                 groups = ['user', 'manager']
             if company_pk:
-                return qs.filter(Q(companies__pk__in=[company_pk], groups__name__in=groups) |
-                                 Q(pk=user)).distinct('username')
-            return qs.filter(Q(companies__in=request.user.companies.all(), groups__name__in=groups) |
-                             Q(pk=user)).distinct('username')
+                return qs.filter(Q(companies__pk__in=[company_pk], groups__name__in=groups) | Q(pk=user)).distinct(
+                    'username'
+                )
+            return qs.filter(
+                Q(companies__in=request.user.companies.all(), groups__name__in=groups) | Q(pk=user)
+            ).distinct('username')
         return super(TicketAdmin, self).get_field_queryset(db, db_field, request)
 
     def has_delete_permission(self, request, obj=None):
@@ -193,18 +208,15 @@ class TicketClosedAdmin(TicketOpenAdmin):
                 minutes = (seconds // 60) % 60
                 hours_name = _('hours')
                 minutes_name = _('minutes')
-                value = f"{hours} {hours_name} {minutes} {minutes_name}"
-            sum_fields = [{'name': _('Period'),
-                           'value': f'{month} {year}'
-                           },
-                          {
-                              'name': _('For day'),
-                              'value': datetime.date.today()
-                          },
-                          {
-                              'name': _('Time'),
-                              'value': value,
-                          }]
+                value = f'{hours} {hours_name} {minutes} {minutes_name}'
+            sum_fields = [
+                {'name': _('Period'), 'value': f'{month} {year}'},
+                {'name': _('For day'), 'value': datetime.date.today()},
+                {
+                    'name': _('Time'),
+                    'value': value,
+                },
+            ]
             result.context_data['sum_fields'] = sum_fields
         except:  # noqa
             pass
