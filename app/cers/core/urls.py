@@ -1,6 +1,5 @@
-from django.urls import path
-
 from cers.core import views
+from django.urls import path
 
 app_name = 'core'
 

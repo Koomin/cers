@@ -1,7 +1,6 @@
+from cers.hardware.models import ComputerSet
 from django.http import JsonResponse
 from django.shortcuts import render
-
-from cers.hardware.models import ComputerSet
 
 
 def driver_site(request):

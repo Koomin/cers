@@ -1,7 +1,6 @@
+from cers.core.models import CersModel
 from django.db import models
 from django.utils.translation import gettext_lazy as _
-
-from cers.core.models import CersModel
 
 
 class Company(CersModel):

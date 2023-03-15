@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 import os
 from pathlib import Path
+
 from django.core.exceptions import ImproperlyConfigured
 from django.utils.translation import gettext_lazy as _
 
@@ -103,7 +104,9 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-AUTHENTICATION_BACKENDS = ['cers.cers_auth.backend.LoginBackend', ]
+AUTHENTICATION_BACKENDS = [
+    'cers.cers_auth.backend.LoginBackend',
+]
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.1/topics/i18n/
@@ -136,66 +139,67 @@ STATIC_ROOT = BASE_DIR / 'static'
 
 # JAZZMIN CONFIG
 
-JAZZMIN_SETTINGS = {"site_title": "CERS",
-                    "site_header": "CERS",
-                    "site_brand": "CERS",
-                    "show_ui_builder": False,
-                    "changeform_format": "collapsible",
-                    "related_modal_active": False,
-                    "language_chooser": True,
-                    "icons": {
-                        "imports.import": "fas fa-file-import",
-                        "cers_auth.company": "fas fa-building",
-                        "cers_auth.cersuser": "fas fa-users",
-                        "hardware.computer": "fas fa-laptop",
-                        "hardware.computerset": "fas fa-desktop",
-                        "hardware.processormodel": "fas fa-microchip",
-                        "hardware.memorymodel": "fas fa-memory",
-                        "hardware.harddrivemodel": "fas fa-database",
-                        "hardware.operatingsystem": "fas fa-code",
-                        "hardware.manufacturer": "fas fa-industry",
-                        "hardware.motherboardmodel": "fas fa-square-full",
-                        "hardware.powersupplymodel": "fas fa-plug",
-                        "auth.group": "fas fa-users",
-                        "tickets.ticketopen": "fas fa-tasks",
-                        "tickets.ticketclosed": "fas fa-times",
-                        "reports.reportgeneration": "fas fa-file-excel",
-                        "orders.order": "fas fa-truck",
-                    },
-                    "hide_models": [
-                        "orders.supplier",
-                    ]
-                    }
+JAZZMIN_SETTINGS = {
+    'site_title': 'CERS',
+    'site_header': 'CERS',
+    'site_brand': 'CERS',
+    'show_ui_builder': False,
+    'changeform_format': 'collapsible',
+    'related_modal_active': False,
+    'language_chooser': True,
+    'icons': {
+        'imports.import': 'fas fa-file-import',
+        'cers_auth.company': 'fas fa-building',
+        'cers_auth.cersuser': 'fas fa-users',
+        'hardware.computer': 'fas fa-laptop',
+        'hardware.computerset': 'fas fa-desktop',
+        'hardware.processormodel': 'fas fa-microchip',
+        'hardware.memorymodel': 'fas fa-memory',
+        'hardware.harddrivemodel': 'fas fa-database',
+        'hardware.operatingsystem': 'fas fa-code',
+        'hardware.manufacturer': 'fas fa-industry',
+        'hardware.motherboardmodel': 'fas fa-square-full',
+        'hardware.powersupplymodel': 'fas fa-plug',
+        'auth.group': 'fas fa-users',
+        'tickets.ticketopen': 'fas fa-tasks',
+        'tickets.ticketclosed': 'fas fa-times',
+        'reports.reportgeneration': 'fas fa-file-excel',
+        'orders.order': 'fas fa-truck',
+    },
+    'hide_models': [
+        'orders.supplier',
+    ],
+}
 
 JAZZMIN_UI_TWEAKS = {
-    "navbar_small_text": False,
-    "footer_small_text": False,
-    "body_small_text": False,
-    "brand_small_text": False,
-    "brand_colour": False,
-    "accent": "accent-primary",
-    "navbar": "navbar-white navbar-light",
-    "no_navbar_border": False,
-    "navbar_fixed": False,
-    "layout_boxed": False,
-    "footer_fixed": False,
-    "sidebar_fixed": True,
-    "sidebar": "sidebar-dark-primary",
-    "sidebar_nav_small_text": False,
-    "sidebar_disable_expand": False,
-    "sidebar_nav_child_indent": True,
-    "sidebar_nav_compact_style": False,
-    "sidebar_nav_legacy_style": False,
-    "sidebar_nav_flat_style": False,
-    "theme": "cosmo",
-    "dark_mode_theme": None,
-    "button_classes": {
-        "primary": "btn-outline-primary",
-        "secondary": "btn-outline-secondary",
-        "info": "btn-outline-info",
-        "warning": "btn-outline-warning",
-        "danger": "btn-outline-danger",
-        "success": "btn-outline-success"
+    'navbar_small_text': False,
+    'footer_small_text': False,
+    'body_small_text': False,
+    'brand_small_text': False,
+    'brand_colour': False,
+    'accent': 'accent-primary',
+    'navbar': 'navbar-white navbar-light',
+    'no_navbar_border': False,
+    'navbar_fixed': False,
+    'layout_boxed': False,
+    'footer_fixed': False,
+    'sidebar_fixed': True,
+    'sidebar': 'sidebar-dark-primary',
+    'sidebar_nav_small_text': False,
+    'sidebar_disable_expand': False,
+    'sidebar_nav_child_indent': True,
+    'sidebar_nav_compact_style': False,
+    'sidebar_nav_legacy_style': False,
+    'sidebar_nav_flat_style': False,
+    'theme': 'cosmo',
+    'dark_mode_theme': None,
+    'button_classes': {
+        'primary': 'btn-outline-primary',
+        'secondary': 'btn-outline-secondary',
+        'info': 'btn-outline-info',
+        'warning': 'btn-outline-warning',
+        'danger': 'btn-outline-danger',
+        'success': 'btn-outline-success',
     },
-    "actions_sticky_top": True
+    'actions_sticky_top': True,
 }

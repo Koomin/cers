@@ -1,9 +1,8 @@
+from cers.cers_auth.models import CersUser
+from cers.companies.models import Company
+from cers.core.models import CersModel
 from django.db import models
 from django.utils.translation import gettext_lazy as _
-
-from cers.cers_auth.models import CersUser
-from cers.core.models import CersModel
-from cers.companies.models import Company
 
 
 class Manufacturer(CersModel):
@@ -59,8 +58,7 @@ class ComponentModel(CersModel):
 
 
 class Component(CersModel):
-    serial_number = models.CharField(max_length=255, null=True, blank=True,
-                                     verbose_name=_('Serial number'))
+    serial_number = models.CharField(max_length=255, null=True, blank=True, verbose_name=_('Serial number'))
     computer_set = models.ForeignKey('ComputerSet', on_delete=models.CASCADE)
 
 
@@ -167,19 +165,24 @@ class ComputerSet(CersModel):
     company = models.ForeignKey(Company, on_delete=models.CASCADE, null=True, blank=True, verbose_name=_('Company'))
     model = models.ForeignKey(ComputerModel, null=True, on_delete=models.CASCADE, verbose_name=_('Model'))
     serial_number = models.CharField(max_length=255, verbose_name=_('Serial number'), null=True, blank=True)
-    operating_system = models.ForeignKey(OperatingSystem, on_delete=models.CASCADE, null=True, blank=True,
-                                         verbose_name=_('Operating system'))
-    operating_system_license_key = models.CharField(max_length=255, null=True, blank=True,
-                                                    verbose_name=_('Operating system license key'))
+    operating_system = models.ForeignKey(
+        OperatingSystem, on_delete=models.CASCADE, null=True, blank=True, verbose_name=_('Operating system')
+    )
+    operating_system_license_key = models.CharField(
+        max_length=255, null=True, blank=True, verbose_name=_('Operating system license key')
+    )
     processor = models.ForeignKey(ProcessorModel, on_delete=models.CASCADE, verbose_name=_('Processor'))
-    processor_serial_number = models.CharField(max_length=255, null=True, blank=True,
-                                               verbose_name=_('Processor serial number'))
+    processor_serial_number = models.CharField(
+        max_length=255, null=True, blank=True, verbose_name=_('Processor serial number')
+    )
     power_supply = models.ForeignKey(PowerSupplyModel, on_delete=models.CASCADE, verbose_name=_('Power supply'))
-    power_supply_serial_number = models.CharField(max_length=255, null=True, blank=True,
-                                                  verbose_name=_('Power supply serial number'))
+    power_supply_serial_number = models.CharField(
+        max_length=255, null=True, blank=True, verbose_name=_('Power supply serial number')
+    )
     motherboard = models.ForeignKey(MotherboardModel, on_delete=models.CASCADE, verbose_name=_('Motherboard'))
-    motherboard_serial_number = models.CharField(max_length=255, null=True, blank=True,
-                                                 verbose_name=_('Motherboard serial number'))
+    motherboard_serial_number = models.CharField(
+        max_length=255, null=True, blank=True, verbose_name=_('Motherboard serial number')
+    )
     date_of_sale = models.DateField(verbose_name=_('Date of sale'))
     warranty = models.IntegerField(verbose_name=_('Warranty'))
 
@@ -198,8 +201,12 @@ class SerialNumber(CersModel):
     full_number = models.CharField(max_length=255, verbose_name=_('Full number'))
     number = models.PositiveIntegerField()
     computer_set = models.OneToOneField(ComputerSet, on_delete=models.CASCADE, null=True, blank=True)
-    config = models.ForeignKey(SerialNumberConfig, on_delete=models.CASCADE, related_name='serial_number',
-                               verbose_name=_('Serial number config'))
+    config = models.ForeignKey(
+        SerialNumberConfig,
+        on_delete=models.CASCADE,
+        related_name='serial_number',
+        verbose_name=_('Serial number config'),
+    )
 
     class Meta:
         verbose_name = _('Serial number')

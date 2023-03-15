@@ -1,8 +1,7 @@
+from cers.hardware.models import Computer
 from django.core.management import BaseCommand
 from django.db import transaction
 from openpyxl.reader.excel import load_workbook
-
-from cers.hardware.models import Computer
 
 EXCEL_MAPPING = {
     'name': 0,

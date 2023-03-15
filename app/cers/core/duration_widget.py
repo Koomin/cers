@@ -1,10 +1,10 @@
 from datetime import timedelta
 from gettext import ngettext
 
-from django.utils.translation import gettext_lazy as _
 from django.forms import MultiWidget
 from django.forms.widgets import NumberInput
 from django.utils.dateparse import parse_duration
+from django.utils.translation import gettext_lazy as _
 
 
 def get_time_factors(td):
@@ -17,7 +17,7 @@ def get_time_factors(td):
         td.days,  # returns number of days
         td.seconds // 3600,  # returns number of hours
         (td.seconds // 60) % 60,  # returns number of minutes
-        td.seconds % 60  # returns number of seconds
+        td.seconds % 60,  # returns number of seconds
     )
 
 
@@ -26,14 +26,14 @@ def get_human_readable_duration(value):
     parsed_value = parse_duration(value)
     days, hours, minutes, seconds = get_time_factors(parsed_value)
     if days > 0:
-        format_list.append("{0} {1}".format(days, ngettext("Day", "Days", days)))
+        format_list.append('{0} {1}'.format(days, ngettext('Day', 'Days', days)))
     if hours > 0:
-        format_list.append("{0} {1}".format(hours, ngettext("Hour", _("Hours"), hours)))
+        format_list.append('{0} {1}'.format(hours, ngettext('Hour', _('Hours'), hours)))
     if minutes > 0:
-        format_list.append("{0} {1}".format(minutes, ngettext("Minute", "Minutes", minutes)))
+        format_list.append('{0} {1}'.format(minutes, ngettext('Minute', 'Minutes', minutes)))
     if seconds > 0 or not format_list:
-        format_list.append("{0} {1}".format(seconds, ngettext("Second", "Seconds", seconds)))
-    return " ".join(format_list)
+        format_list.append('{0} {1}'.format(seconds, ngettext('Second', 'Seconds', seconds)))
+    return ' '.join(format_list)
 
 
 class LabeledNumberInput(NumberInput):
@@ -56,11 +56,11 @@ class TimeDurationWidget(MultiWidget):
     Time duration selector widget
     """
 
-    template_name = "widgets/duration_multiple_input.html"
+    template_name = 'widgets/duration_multiple_input.html'
 
     def get_context(self, name, value, attrs):
         context = super(TimeDurationWidget, self).get_context(name, value, attrs)
-        duration_readable = ""
+        duration_readable = ''
         if not isinstance(value, list) and value:
             duration_readable = get_human_readable_duration(value)
         context['duration_readable'] = duration_readable
@@ -73,10 +73,10 @@ class TimeDurationWidget(MultiWidget):
         self.show_minutes = show_minutes
         self.show_seconds = show_seconds
         _widgets = []
-        _widgets.append(LabeledNumberInput(label=_("Days"), type="days")) if show_days else None,  # Day
-        _widgets.append(LabeledNumberInput(label=_("Hours"), type="hours")) if show_hours else None,  # Hour
-        _widgets.append(LabeledNumberInput(label=_("Minutes"), type="minutes")) if show_minutes else None,  # Minute
-        _widgets.append(LabeledNumberInput(label=_("Seconds"), type="seconds")) if show_seconds else None,  # Seconds
+        _widgets.append(LabeledNumberInput(label=_('Days'), type='days')) if show_days else None,  # Day
+        _widgets.append(LabeledNumberInput(label=_('Hours'), type='hours')) if show_hours else None,  # Hour
+        _widgets.append(LabeledNumberInput(label=_('Minutes'), type='minutes')) if show_minutes else None,  # Minute
+        _widgets.append(LabeledNumberInput(label=_('Seconds'), type='seconds')) if show_seconds else None,  # Seconds
         super(TimeDurationWidget, self).__init__(_widgets, attrs)
 
     # ---------------------------------------------------------------------------------------------------------------------
@@ -95,8 +95,10 @@ class TimeDurationWidget(MultiWidget):
 
     # ---------------------------------------------------------------------------------------------------------------------
     def value_from_datadict(self, data, files, name):
-        data_list = {widget.type: widget.value_from_datadict(data, files, name + '_{0}'.format(i)) for i, widget in
-                     enumerate(self.widgets)}
+        data_list = {
+            widget.type: widget.value_from_datadict(data, files, name + '_{0}'.format(i))
+            for i, widget in enumerate(self.widgets)
+        }
         if not any(data_list.values()):
             # No data input
             return ''
@@ -106,21 +108,16 @@ class TimeDurationWidget(MultiWidget):
             except ValueError:
                 data_list[key] = 0
 
-        days = 0 if not self.show_days else data_list.get("days")
-        hours = 0 if not self.show_hours else data_list.get("hours")
-        minutes = 0 if not self.show_minutes else data_list.get("minutes")
-        seconds = 0 if not self.show_seconds else data_list.get("seconds")
+        days = 0 if not self.show_days else data_list.get('days')
+        hours = 0 if not self.show_hours else data_list.get('hours')
+        minutes = 0 if not self.show_minutes else data_list.get('minutes')
+        seconds = 0 if not self.show_seconds else data_list.get('seconds')
 
         if self.is_required and days == 0 and hours == 0 and minutes == 0 and seconds == 0:
             return ''
 
         try:
-            D = timedelta(
-                days=int(days),
-                hours=int(hours),
-                minutes=int(minutes),
-                seconds=int(seconds)
-            )
+            D = timedelta(days=int(days), hours=int(hours), minutes=int(minutes), seconds=int(seconds))
         except ValueError:
             return ''
         else:

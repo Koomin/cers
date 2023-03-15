@@ -1,13 +1,13 @@
-from openpyxl.styles import Color, PatternFill, Font, Border, Side, Alignment
+from openpyxl.styles import Alignment, Border, Color, Font, PatternFill, Side
 
 
 class Colors:
-    GREY = "C9C9C9"
-    WHITE = "FFFFFF"
-    BLACK = "000000"
+    GREY = 'C9C9C9'
+    WHITE = 'FFFFFF'
+    BLACK = '000000'
 
 
-thin = Side(border_style="thin", color=Colors.BLACK)
+thin = Side(border_style='thin', color=Colors.BLACK)
 border = Border(left=thin, right=thin, top=thin, bottom=thin)
 
 

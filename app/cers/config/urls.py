@@ -13,24 +13,23 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-from django.conf.urls.i18n import i18n_patterns
-from django.contrib import admin
-from django.urls import path, include
-from django.conf import settings
-from django.conf.urls.static import static
-
 from cers.core.admin import admin_site
+from django.conf import settings
+from django.conf.urls.i18n import i18n_patterns
+from django.conf.urls.static import static
+from django.urls import include, path
 
 urlpatterns = [
     path('i18n/', include('django.conf.urls.i18n')),
-path('hardware/', include('cers.hardware.urls')),
-
+    path('hardware/', include('cers.hardware.urls')),
 ]
 
-urlpatterns += i18n_patterns(path('', include('cers.tickets.urls')),
-
-                             path('', include('cers.core.urls', namespace='cers_core_urls')),
-                             path('', admin_site.urls), prefix_default_language=False)
+urlpatterns += i18n_patterns(
+    path('', include('cers.tickets.urls')),
+    path('', include('cers.core.urls', namespace='cers_core_urls')),
+    path('', admin_site.urls),
+    prefix_default_language=False,
+)
 
 if settings.DEBUG:
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
