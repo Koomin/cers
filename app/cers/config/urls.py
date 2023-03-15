@@ -23,10 +23,12 @@ from cers.core.admin import admin_site
 
 urlpatterns = [
     path('i18n/', include('django.conf.urls.i18n')),
+path('hardware/', include('cers.hardware.urls')),
 
 ]
 
 urlpatterns += i18n_patterns(path('', include('cers.tickets.urls')),
+
                              path('', include('cers.core.urls', namespace='cers_core_urls')),
                              path('', admin_site.urls), prefix_default_language=False)
 

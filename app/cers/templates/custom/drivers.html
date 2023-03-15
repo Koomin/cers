@@ -1,0 +1,46 @@
+{% load i18n static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+
+</head>
+<style>
+    body {
+        background-color: #4b545c;
+    }
+</style>
+<body>
+<div style="width: 60%; margin-left: 20%; text-align: center;">
+    <h1>{% trans "Download drivers" %}</h1>
+    <label for="serial_number">{% trans "Serial number" %}:</label>
+    <input type="text" id="serial_number" name="serial_number"><br><br>
+    <input type="submit" id="submit" value="{% trans "Submit" %}">
+</div>
+<div id="data" style="width: 60%; margin-left: 20%; margin-top: 10%; text-align: center;">
+
+</div>
+</body>
+<script>
+    $("#submit").click(function(){
+        $.ajax({
+                url: '/hardware/get_drivers/',
+                method: 'get',
+                data: {
+                    'serial_number': $('#serial_number').val(),
+                },
+                success: function (json) {
+                    var table = '<table>'
+                    $.each(json, function(key, val){
+                        table += '<tr><td>'+  key +'</td><td>'+ val +'</td></tr>'
+                    });
+                    table += '</table>'
+                    $('#data').append(table);
+                }
+
+            });
+    })
+
+</script>
+</html>
