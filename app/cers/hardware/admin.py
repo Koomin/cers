@@ -1,13 +1,39 @@
 from cers.core.admin import CersModelAdmin, admin_site
+from cers.hardware.models import (
+    Computer,
+    ComputerModel,
+    ComputerSet,
+    GraphicCard,
+    GraphicCardModel,
+    HardDrive,
+    HardDriveModel,
+    Manufacturer,
+    Memory,
+    MemoryModel,
+    MotherboardModel,
+    OperatingSystem,
+    PowerSupplyModel,
+    ProcessorModel,
+    SerialNumberConfig,
+)
 from django.contrib import admin
-from cers.hardware.models import Computer, ComputerSet, HardDrive, Memory, OperatingSystem, Manufacturer, GraphicCard, \
-    ProcessorModel, HardDriveModel, MemoryModel, PowerSupplyModel, MotherboardModel, GraphicCardModel, \
-    SerialNumberConfig, ComputerModel
 
 
 class ComputerAdmin(CersModelAdmin):
-    list_display = ['name', 'user', 'model', 'number', 'operating_system', 'office', 'bitlocker', 'backup', 'norton',
-                    'synology_pass', 'comment', 'serial_number']
+    list_display = [
+        'name',
+        'user',
+        'model',
+        'number',
+        'operating_system',
+        'office',
+        'bitlocker',
+        'backup',
+        'norton',
+        'synology_pass',
+        'comment',
+        'serial_number',
+    ]
 
 
 class GraphicCardInline(admin.TabularInline):
@@ -26,8 +52,17 @@ class HardDriveInline(admin.TabularInline):
 
 
 class ComputerSetAdmin(CersModelAdmin):
-    list_display = ['company', 'model', 'serial_number', 'operating_system', 'processor', 'power_supply', 'motherboard',
-                    'date_of_sale', 'warranty']
+    list_display = [
+        'company',
+        'model',
+        'serial_number',
+        'operating_system',
+        'processor',
+        'power_supply',
+        'motherboard',
+        'date_of_sale',
+        'warranty',
+    ]
     readonly_fields = ['serial_number']
     inlines = (HardDriveInline, MemoryInline, GraphicCardInline)
 
@@ -42,7 +77,9 @@ class SerialNumberConfigInline(admin.TabularInline):
 
 class ComputerModelAdmin(CersModelAdmin):
     list_display = ['name']
-    inlines = [SerialNumberConfigInline, ]
+    inlines = [
+        SerialNumberConfigInline,
+    ]
 
 
 admin_site.register(Computer, ComputerAdmin)

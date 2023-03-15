@@ -1,12 +1,11 @@
 import datetime
 
-from django.db import models
-from django.utils.translation import gettext_lazy as _
-
 from cers.cers_auth.models import CersUser
 from cers.companies.models import Company
 from cers.core.models import CersModel
-from cers.tickets.managers import TicketOpenManager, TicketClosedManager
+from cers.tickets.managers import TicketClosedManager, TicketOpenManager
+from django.db import models
+from django.utils.translation import gettext_lazy as _
 
 
 class Ticket(CersModel):
@@ -25,19 +24,38 @@ class Ticket(CersModel):
         IMPORTANT = 2, _('Important')
         CRITICAL = 1, _('Critical')
 
-    reporting = models.ForeignKey(CersUser, on_delete=models.CASCADE, null=False, blank=True,
-                                  verbose_name=_('Reporting'), related_name='reporting_tasks')
-    technician = models.ForeignKey(CersUser, on_delete=models.CASCADE, null=True, blank=True, related_name='tasks',
-                                   verbose_name=_('Technician'))
+    reporting = models.ForeignKey(
+        CersUser,
+        on_delete=models.CASCADE,
+        null=False,
+        blank=True,
+        verbose_name=_('Reporting'),
+        related_name='reporting_tasks',
+    )
+    technician = models.ForeignKey(
+        CersUser, on_delete=models.CASCADE, null=True, blank=True, related_name='tasks', verbose_name=_('Technician')
+    )
     topic = models.CharField(max_length=255, null=False, blank=False, verbose_name=_('Topic'))
     description = models.TextField(null=False, blank=False, verbose_name=_('Description'))
     deadline = models.DateField(null=True, blank=True, verbose_name=_('Deadline'))
-    status = models.CharField(max_length=5, choices=Status.choices, blank=False, null=False, default=Status.OPEN,
-                              verbose_name=_('Status'))
-    send_notification = models.CharField(max_length=5, choices=NotificationType.choices, blank=False, null=False,
-                                         default=NotificationType.NO, verbose_name=_('Send notification'))
-    priority = models.IntegerField(choices=PriorityLevels.choices, blank=False, null=False,
-                                   default=PriorityLevels.NORMAL, verbose_name=_('Priority'))
+    status = models.CharField(
+        max_length=5, choices=Status.choices, blank=False, null=False, default=Status.OPEN, verbose_name=_('Status')
+    )
+    send_notification = models.CharField(
+        max_length=5,
+        choices=NotificationType.choices,
+        blank=False,
+        null=False,
+        default=NotificationType.NO,
+        verbose_name=_('Send notification'),
+    )
+    priority = models.IntegerField(
+        choices=PriorityLevels.choices,
+        blank=False,
+        null=False,
+        default=PriorityLevels.NORMAL,
+        verbose_name=_('Priority'),
+    )
     duration = models.DurationField(null=True, blank=True, verbose_name=_('Duration'))
     accepted = models.BooleanField(default=False, verbose_name=_('Accepted'))
     company = models.ForeignKey(Company, on_delete=models.CASCADE, null=True, blank=True, verbose_name=_('Company'))

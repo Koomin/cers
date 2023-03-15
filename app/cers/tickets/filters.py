@@ -1,10 +1,9 @@
 import calendar
 
-from django.utils.translation import gettext_lazy as _, get_language, activate
-
-from django.contrib.admin import SimpleListFilter
-
 from cers.tickets.models import TicketClosed
+from django.contrib.admin import SimpleListFilter
+from django.utils.translation import activate, get_language
+from django.utils.translation import gettext_lazy as _
 
 
 class AcceptedFilter(SimpleListFilter):

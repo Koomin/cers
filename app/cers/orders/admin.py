@@ -1,7 +1,6 @@
-from django.contrib import admin
-
 from cers.core.admin import CersModelAdmin, admin_site
-from cers.orders.models import Order, Comment, Supplier
+from cers.orders.models import Comment, Order, Supplier
+from django.contrib import admin
 
 
 class CommentInline(admin.TabularInline):

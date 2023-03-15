@@ -1,7 +1,5 @@
-from django.http import JsonResponse
-from django.shortcuts import render
-
 from cers.tickets.models import Ticket
+from django.http import JsonResponse
 
 
 def accept_ticket(request):
