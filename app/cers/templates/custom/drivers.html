@@ -2,28 +2,41 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% trans "Drivers" %}</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
-
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
 </head>
 <style>
-    body {
-        background-color: #4b545c;
-    }
+
 </style>
 <body>
-<div style="width: 60%; margin-left: 20%; text-align: center;">
-    <h1>{% trans "Download drivers" %}</h1>
-    <label for="serial_number">{% trans "Serial number" %}:</label>
-    <input type="text" id="serial_number" name="serial_number"><br><br>
-    <input type="submit" id="submit" value="{% trans "Submit" %}">
-</div>
-<div id="data" style="width: 60%; margin-left: 20%; margin-top: 10%; text-align: center;">
+<img src="..." class="img-fluid" alt="...">
+<div class="container text-center">
+  <div class="row">
+    <div class="col">
+    </div>
+    <div class="col">
+        <h1>{% trans "Download drivers" %}</h1>
+        <div class="input-group input-group-sm mb-3">
+        <input type="text" id="serial_number" class="form-control" name="serial_number" placeholder="{% trans "Serial number" %}">
+        </div>
+        <input type="submit" id="submit" class="btn btn-light" value="{% trans "Submit" %}">
+        <div id="data">
 
 </div>
+    </div>
+    <div class="col">
+    </div>
+  </div>
+</div>
+
+
 </body>
 <script>
     $("#submit").click(function(){
+        $('#data').empty();
         $.ajax({
                 url: '/hardware/get_drivers/',
                 method: 'get',
@@ -31,14 +44,22 @@
                     'serial_number': $('#serial_number').val(),
                 },
                 success: function (json) {
-                    var table = '<table>'
+                    var table = '<table class="table table-borderless">'
                     $.each(json, function(key, val){
-                        table += '<tr><td>'+  key +'</td><td>'+ val +'</td></tr>'
+                        table += '<tr><td>'+  val['title'] +'</td><td>'+  val['model'] + '</td>'
+                        if (val['url'] !== '-') {
+                            table += '<td><a href="' + val['url'] + '">Download</a></td></tr>'
+                        }
+                        else{
+                            table += '<td>-</td></tr>'
+                        }
                     });
                     table += '</table>'
                     $('#data').append(table);
+                },
+                error: function() {
+                    $('#data').append('<h2> {% trans 'Wrong serial number' %} </h2>');
                 }
-
             });
     })
 

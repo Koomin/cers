@@ -49,6 +49,7 @@ class Computer(CersModel):
 class ComponentModel(CersModel):
     model = models.CharField(max_length=255, verbose_name=_('Model'))
     manufacturer = models.ForeignKey(Manufacturer, on_delete=models.CASCADE, verbose_name=_('Manufacturer'))
+    driver_url = models.URLField(null=True, blank=True, verbose_name=_('Driver url'))
 
     class Meta:
         abstract = True

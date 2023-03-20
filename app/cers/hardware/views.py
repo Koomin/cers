@@ -1,6 +1,7 @@
 from cers.hardware.models import ComputerSet
 from django.http import JsonResponse
 from django.shortcuts import render
+from django.utils.translation import gettext_lazy as _
 
 
 def driver_site(request):
@@ -18,12 +19,29 @@ def get_drivers(request):
             return response
         else:
             data = {
-                'model': computer_set.model.name,
-                'operating_system': computer_set.operating_system.name,
-                'motherboard': computer_set.motherboard.__str__(),
-                'power_supply': computer_set.power_supply.__str__(),
-                'processor': computer_set.processor.__str__(),
+                'computer_model': {'model': computer_set.model.name, 'title': _('Computer model'), 'url': '-'},
+                'operating_system': {
+                    'model': computer_set.operating_system.name,
+                    'title': _('Operating system'),
+                    'url': '-',
+                },
+                'motherboard': {
+                    'model': computer_set.motherboard.__str__(),
+                    'title': _('Motherboard'),
+                    'url': computer_set.motherboard.driver_url or '-',
+                },
+                'power_supply': {
+                    'model': computer_set.power_supply.__str__(),
+                    'title': _('Power supply'),
+                    'url': computer_set.power_supply.driver_url or '-',
+                },
+                'processor': {
+                    'model': computer_set.processor.__str__(),
+                    'title': _('Processor'),
+                    'url': computer_set.processor.driver_url or '-',
+                },
             }
+
             return JsonResponse(data)
     response = JsonResponse({})
     response.status_code = 405
