@@ -23,7 +23,7 @@ def get_drivers(request):
             data = {
                 'computer_model': {'model': computer_set.model.name, 'title': _('Computer model'), 'url': '-'},
                 'operating_system': {
-                    'model': computer_set.operating_system.name if hasattr(computer_set, 'operating_system') else '-',
+                    'model': computer_set.operating_system.name if getattr(computer_set, 'operating_system') else '-',
                     'title': _('Operating system'),
                     'url': '-',
                 },
