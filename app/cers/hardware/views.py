@@ -1,5 +1,5 @@
 from cers.companies.models import CompanyConfig
-from cers.hardware.models import ComputerSet
+from cers.hardware.models import Component, ComputerSet
 from django.http import JsonResponse
 from django.shortcuts import render
 from django.utils.translation import gettext_lazy as _
@@ -23,7 +23,7 @@ def get_drivers(request):
             data = {
                 'computer_model': {'model': computer_set.model.name, 'title': _('Computer model'), 'url': '-'},
                 'operating_system': {
-                    'model': computer_set.operating_system.name,
+                    'model': computer_set.operating_system.name if hasattr(computer_set, 'operating_system') else '-',
                     'title': _('Operating system'),
                     'url': '-',
                 },
@@ -43,6 +43,16 @@ def get_drivers(request):
                     'url': computer_set.processor.driver_url or '-',
                 },
             }
+            for component in computer_set.component_set.all():
+                fields = Component()._meta.fields_map.keys()
+                for field in fields:
+                    if hasattr(component, field):
+                        obj = getattr(component, field)
+                        data[f'{field}_{obj.pk}'] = {
+                            'model': obj.model.__str__(),
+                            'title': obj._meta.verbose_name,
+                            'url': obj.model.driver_url or '-',
+                        }
 
             return JsonResponse(data)
     response = JsonResponse({})
