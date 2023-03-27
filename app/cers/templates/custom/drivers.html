@@ -1,0 +1,68 @@
+{% load i18n static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% trans "Drivers" %}</title>
+    <link rel="stylesheet" type="text/css" href="{% block stylesheet %}{% static 'custom/css/base.css' %}{% endblock %}" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+</head>
+<style>
+</style>
+<body id="body_styling">
+
+<div class="container text-center">
+    <img src="{{ logo }}" class="img-fluid" alt="..." style="width: 400px;">
+  <div class="row">
+    <div class="col">
+    </div>
+    <div class="col-xl">
+        <h1>{% trans "Download drivers" %}</h1>
+        <div class="input-group input-group-sm mb-3">
+        <input type="text" id="serial_number" class="form-control" name="serial_number" placeholder="{% trans "Serial number" %}">
+        </div>
+        <input type="submit" id="submit" class="btn btn-light" value="{% trans "Submit" %}">
+        <div id="data">
+
+</div>
+    </div>
+    <div class="col">
+    </div>
+  </div>
+</div>
+
+
+</body>
+<script>
+    $("#submit").click(function(){
+        $('#data').empty();
+        $.ajax({
+                url: '/drivers/get_drivers/',
+                method: 'get',
+                data: {
+                    'serial_number': $('#serial_number').val(),
+                },
+                success: function (json) {
+                    var table = '<table class="table table-borderless drivers_table">'
+                    $.each(json, function(key, val){
+                        table += '<tr><td>'+  val['title'] +'</td><td>'+  val['model'] + '</td>'
+                        if (val['url'] !== '-') {
+                            table += '<td><a class="download_link" href="' + val['url'] + '">{% trans 'Download' %}</a></td></tr>'
+                        }
+                        else{
+                            table += '<td>-</td></tr>'
+                        }
+                    });
+                    table += '</table>'
+                    $('#data').append(table);
+                },
+                error: function() {
+                    $('#data').append('<h2> {% trans 'Wrong serial number' %} </h2>');
+                }
+            });
+    })
+
+</script>
+</html>

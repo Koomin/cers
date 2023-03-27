@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-03-13 10:23+0100\n"
+"POT-Creation-Date: 2023-03-27 18:42+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,19 +20,19 @@ msgstr ""
 "(n%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && "
 "n%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
 
-#: cers/cers_auth/admin.py:13
+#: cers/cers_auth/admin.py:11
 msgid "Personal info"
 msgstr "Dane personalne"
 
-#: cers/cers_auth/admin.py:15
+#: cers/cers_auth/admin.py:13
 msgid "Permissions"
 msgstr "Uprawnienia"
 
-#: cers/cers_auth/admin.py:25 cers/cers_auth/models.py:31
+#: cers/cers_auth/admin.py:23 cers/cers_auth/models.py:28
 msgid "Settings"
 msgstr "Ustawienia"
 
-#: cers/cers_auth/admin.py:26
+#: cers/cers_auth/admin.py:24
 msgid "Important dates"
 msgstr "Ważne daty"
 
@@ -40,70 +40,86 @@ msgstr "Ważne daty"
 msgid "Configuration"
 msgstr "Konfiguracja"
 
-#: cers/cers_auth/models.py:12
+#: cers/cers_auth/models.py:11
 msgid "groups"
 msgstr "grupy"
 
-#: cers/cers_auth/models.py:18
+#: cers/cers_auth/models.py:15
 msgid "user permissions"
 msgstr "uprawnienia użytkownika"
 
-#: cers/cers_auth/models.py:20
+#: cers/cers_auth/models.py:17
 msgid "Specific permissions for this user."
 msgstr ""
 
-#: cers/cers_auth/models.py:25
+#: cers/cers_auth/models.py:22
 msgid "staff status"
 msgstr ""
 
-#: cers/cers_auth/models.py:27
+#: cers/cers_auth/models.py:24
 msgid "Designates whether the user can log into this admin site."
 msgstr ""
 
-#: cers/cers_auth/models.py:29 cers/companies/apps.py:8
-#: cers/companies/models.py:12
+#: cers/cers_auth/models.py:26 cers/companies/apps.py:8
+#: cers/companies/models.py:13
 msgid "Companies"
 msgstr "Firmy"
 
-#: cers/cers_auth/models.py:30
+#: cers/cers_auth/models.py:27
 msgid "Phone number"
 msgstr "Numer telefonu"
 
-#: cers/cers_auth/models.py:32
+#: cers/cers_auth/models.py:29
 msgid "Report on behalf"
 msgstr "Zgłaszaj w imieniu"
 
-#: cers/cers_auth/models.py:49 cers/cers_auth/models.py:60
+#: cers/cers_auth/models.py:46 cers/cers_auth/models.py:57
 msgid "User with given username already exist."
 msgstr "Użytkownik z podaną nazwą już istnieje."
 
-#: cers/companies/apps.py:7 cers/companies/models.py:11
-#: cers/hardware/models.py:167 cers/orders/models.py:27
-#: cers/reports/models.py:17 cers/tickets/models.py:43
+#: cers/companies/apps.py:7 cers/companies/models.py:12
+#: cers/hardware/models.py:166 cers/orders/models.py:27
+#: cers/reports/models.py:17 cers/tickets/models.py:61
 msgid "Company"
 msgstr "Firma"
 
-#: cers/companies/models.py:8 cers/companies/models.py:20
+#: cers/companies/models.py:9 cers/companies/models.py:21
 msgid "name"
 msgstr "nazwa"
 
-#: cers/companies/models.py:21
+#: cers/companies/models.py:22 cers/companies/models.py:34
 msgid "company"
 msgstr "firma"
 
-#: cers/companies/models.py:24
+#: cers/companies/models.py:25
 msgid "Department"
 msgstr "Dział"
 
-#: cers/companies/models.py:25
+#: cers/companies/models.py:26
 msgid "Departments"
 msgstr "Działy"
 
-#: cers/config/settings/base.py:112
+#: cers/companies/models.py:35
+msgid "logo"
+msgstr "logo"
+
+#: cers/companies/models.py:36
+msgid "main company"
+msgstr "główna firma"
+
+#: cers/companies/models.py:39 cers/companies/models.py:40
+msgid "Company config"
+msgstr "Konfiguracja firmy"
+
+#: cers/companies/models.py:44
+msgid "Cannot add another main company."
+msgstr "Nie można dodać kolejnej głównej firmy"
+
+#: cers/config/settings/base.py:115
 msgid "Polish"
 msgstr "Polski"
 
-#: cers/config/settings/base.py:113
+#: cers/config/settings/base.py:116
 msgid "English"
 msgstr "Angielski"
 
@@ -153,11 +169,11 @@ msgstr "minut"
 msgid "Seconds"
 msgstr ""
 
-#: cers/core/models.py:8
+#: cers/core/models.py:9
 msgid "Created"
 msgstr "Utworzono"
 
-#: cers/core/models.py:9
+#: cers/core/models.py:10
 msgid "Modified"
 msgstr "Zmodyfikowano"
 
@@ -169,7 +185,7 @@ msgstr "Nowe zgłoszenie"
 msgid "Click to add"
 msgstr "Kliknij aby dodać"
 
-#: cers/core/templates/index.html:43 cers/tickets/models.py:78
+#: cers/core/templates/index.html:43 cers/tickets/models.py:96
 msgid "Open tickets"
 msgstr "Otwarte zgłoszenia"
 
@@ -177,7 +193,7 @@ msgstr "Otwarte zgłoszenia"
 msgid "More info"
 msgstr "Więcej informacji"
 
-#: cers/core/templates/index.html:58 cers/tickets/models.py:87
+#: cers/core/templates/index.html:58 cers/tickets/models.py:105
 msgid "Closed tickets"
 msgstr "Zamknięte zgłoszenia"
 
@@ -185,141 +201,149 @@ msgstr "Zamknięte zgłoszenia"
 msgid "Hardware"
 msgstr "Sprzęt"
 
-#: cers/hardware/models.py:10 cers/hardware/models.py:21
-#: cers/hardware/models.py:32 cers/hardware/models.py:128
-#: cers/orders/models.py:8 cers/orders/models.py:28 cers/tickets/models.py:100
+#: cers/hardware/models.py:9 cers/hardware/models.py:20
+#: cers/hardware/models.py:31 cers/hardware/models.py:127
+#: cers/orders/models.py:8 cers/orders/models.py:28 cers/tickets/models.py:118
 msgid "Name"
 msgstr "Nazwa"
 
-#: cers/hardware/models.py:16 cers/hardware/models.py:52
+#: cers/hardware/models.py:15 cers/hardware/models.py:51
 msgid "Manufacturer"
 msgstr "Producent"
 
-#: cers/hardware/models.py:17
+#: cers/hardware/models.py:16
 msgid "Manufacturers"
 msgstr "Producenci"
 
-#: cers/hardware/models.py:27 cers/hardware/models.py:36
-#: cers/hardware/models.py:171
+#: cers/hardware/models.py:26 cers/hardware/models.py:35
+#: cers/hardware/models.py:170 cers/hardware/views.py:27
 msgid "Operating system"
 msgstr "System operacyjny"
 
-#: cers/hardware/models.py:28
+#: cers/hardware/models.py:27
 msgid "Operating systems"
 msgstr "System operacyjny"
 
-#: cers/hardware/models.py:33
+#: cers/hardware/models.py:32
 msgid "User"
 msgstr "Użytkownik"
 
-#: cers/hardware/models.py:34 cers/hardware/models.py:51
-#: cers/hardware/models.py:104 cers/hardware/models.py:112
-#: cers/hardware/models.py:120 cers/hardware/models.py:168
+#: cers/hardware/models.py:33 cers/hardware/models.py:50
+#: cers/hardware/models.py:103 cers/hardware/models.py:111
+#: cers/hardware/models.py:119 cers/hardware/models.py:167
 msgid "Model"
 msgstr "Model"
 
-#: cers/hardware/models.py:35
+#: cers/hardware/models.py:34
 msgid "Computer number"
 msgstr "Numer komputera"
 
-#: cers/hardware/models.py:37
+#: cers/hardware/models.py:36
 msgid "Office"
 msgstr ""
 
-#: cers/hardware/models.py:38
+#: cers/hardware/models.py:37
 msgid "Bitlocker"
 msgstr ""
 
-#: cers/hardware/models.py:39
+#: cers/hardware/models.py:38
 msgid "Backup"
 msgstr ""
 
-#: cers/hardware/models.py:40
+#: cers/hardware/models.py:39
 msgid "Norton"
 msgstr ""
 
-#: cers/hardware/models.py:41
+#: cers/hardware/models.py:40
 msgid "Synology password"
 msgstr "Hasło Synology"
 
-#: cers/hardware/models.py:42 cers/orders/models.py:57
-#: cers/tickets/models.py:95
+#: cers/hardware/models.py:41 cers/orders/models.py:57
+#: cers/tickets/models.py:113
 msgid "Comment"
 msgstr "Komentarz"
 
-#: cers/hardware/models.py:43 cers/hardware/models.py:63
-#: cers/hardware/models.py:169 cers/hardware/models.py:205
+#: cers/hardware/models.py:42 cers/hardware/models.py:62
+#: cers/hardware/models.py:168 cers/hardware/models.py:213
+#: cers/templates/custom/drivers.html:24
 msgid "Serial number"
 msgstr "Numer seryjny"
 
-#: cers/hardware/models.py:46
+#: cers/hardware/models.py:45
 msgid "Computer"
 msgstr "Komputer"
 
-#: cers/hardware/models.py:47
+#: cers/hardware/models.py:46
 msgid "Computers"
 msgstr "Komputery"
 
-#: cers/hardware/models.py:69 cers/hardware/models.py:174
+#: cers/hardware/models.py:52
+msgid "Driver url"
+msgstr ""
+
+#: cers/hardware/models.py:68 cers/hardware/models.py:175
+#: cers/hardware/views.py:42
 msgid "Processor"
 msgstr "Procesor"
 
-#: cers/hardware/models.py:70
+#: cers/hardware/models.py:69
 msgid "Processors"
 msgstr "Procesory"
 
-#: cers/hardware/models.py:75 cers/hardware/models.py:76
-#: cers/hardware/models.py:115 cers/hardware/models.py:116
+#: cers/hardware/models.py:74 cers/hardware/models.py:75
+#: cers/hardware/models.py:114 cers/hardware/models.py:115
 msgid "Hard Drive"
 msgstr "Dysk twardy"
 
-#: cers/hardware/models.py:81 cers/hardware/models.py:82
-#: cers/hardware/models.py:123
+#: cers/hardware/models.py:80 cers/hardware/models.py:81
+#: cers/hardware/models.py:122
 msgid "Memory"
 msgstr "Pamięć RAM"
 
-#: cers/hardware/models.py:87 cers/hardware/models.py:107
+#: cers/hardware/models.py:86 cers/hardware/models.py:106
 msgid "Graphic Card"
 msgstr "Karta graficzna"
 
-#: cers/hardware/models.py:88 cers/hardware/models.py:108
+#: cers/hardware/models.py:87 cers/hardware/models.py:107
 msgid "Graphic Cards"
 msgstr "Karty graficzne"
 
-#: cers/hardware/models.py:93
+#: cers/hardware/models.py:92
 msgid "Power Supply"
 msgstr "Zasilacz"
 
-#: cers/hardware/models.py:94
+#: cers/hardware/models.py:93
 msgid "Power Supplies"
 msgstr "Zasilacze"
 
-#: cers/hardware/models.py:99 cers/hardware/models.py:180
+#: cers/hardware/models.py:98 cers/hardware/models.py:183
+#: cers/hardware/views.py:32
 msgid "Motherboard"
 msgstr "Płyta główna"
 
-#: cers/hardware/models.py:100
+#: cers/hardware/models.py:99
 msgid "Motherboards"
 msgstr "Płyty główne"
 
-#: cers/hardware/models.py:124
+#: cers/hardware/models.py:123
 msgid "Memories"
 msgstr "Pamięć RAM"
 
-#: cers/hardware/models.py:131 cers/hardware/models.py:139
+#: cers/hardware/models.py:130 cers/hardware/models.py:138
+#: cers/hardware/views.py:24
 msgid "Computer model"
 msgstr "Model komputera"
 
-#: cers/hardware/models.py:132
+#: cers/hardware/models.py:131
 msgid "Computer models"
 msgstr "Modele komputerów"
 
-#: cers/hardware/models.py:142
+#: cers/hardware/models.py:141
 msgid "Number length"
 msgstr "Długość liczby"
 
-#: cers/hardware/models.py:145 cers/hardware/models.py:146
-#: cers/hardware/models.py:202
+#: cers/hardware/models.py:144 cers/hardware/models.py:145
+#: cers/hardware/models.py:209
 msgid "Serial number config"
 msgstr "Numer seryjny - konfiguracja"
 
@@ -327,67 +351,67 @@ msgstr "Numer seryjny - konfiguracja"
 msgid "Operating system license key"
 msgstr "Klucz licencyjny - system operacyjny"
 
-#: cers/hardware/models.py:176
+#: cers/hardware/models.py:177
 msgid "Processor serial number"
 msgstr "Numer seryjny - procesor"
 
-#: cers/hardware/models.py:177
+#: cers/hardware/models.py:179 cers/hardware/views.py:37
 msgid "Power supply"
 msgstr "Zasilacz"
 
-#: cers/hardware/models.py:179
+#: cers/hardware/models.py:181
 msgid "Power supply serial number"
 msgstr "Numer seryjny - zasilacz"
 
-#: cers/hardware/models.py:182
+#: cers/hardware/models.py:185
 msgid "Motherboard serial number"
 msgstr "Numer seryjny - płyta główna"
 
-#: cers/hardware/models.py:183
+#: cers/hardware/models.py:187
 msgid "Date of sale"
 msgstr "Data sprzedaży"
 
-#: cers/hardware/models.py:184
+#: cers/hardware/models.py:188
 msgid "Warranty"
 msgstr "Gwarancja"
 
-#: cers/hardware/models.py:187
+#: cers/hardware/models.py:191
 msgid "Computer set"
 msgstr "Zestaw komputerowy"
 
-#: cers/hardware/models.py:188
+#: cers/hardware/models.py:192
 msgid "Computer sets"
 msgstr "Zestawy komputerowe"
 
-#: cers/hardware/models.py:198
+#: cers/hardware/models.py:202
 #, fuzzy
 #| msgid "Serial number"
 msgid "Full number"
 msgstr "Numer seryjny"
 
-#: cers/hardware/models.py:206
+#: cers/hardware/models.py:214
 #, fuzzy
 #| msgid "Serial number"
 msgid "Serial numbers"
 msgstr "Numer seryjny"
 
-#: cers/imports/apps.py:8 cers/imports/models.py:17
+#: cers/imports/apps.py:8 cers/imports/models.py:16
 msgid "Imports"
 msgstr "Importy"
 
-#: cers/imports/models.py:10
+#: cers/imports/models.py:9
 msgid "Import computers"
 msgstr "Import komputerów"
 
-#: cers/imports/models.py:12 cers/tickets/models.py:101
+#: cers/imports/models.py:11 cers/tickets/models.py:119
 msgid "File"
 msgstr "Plik"
 
-#: cers/imports/models.py:13
+#: cers/imports/models.py:12
 msgid "Type"
 msgstr "Typ"
 
-#: cers/imports/models.py:16
+#: cers/imports/models.py:15
 msgid "Import"
 msgstr "Import"
 
@@ -427,7 +451,7 @@ msgstr "Do wydania"
 msgid "Delivered"
 msgstr "Dostarczone"
 
-#: cers/orders/models.py:29 cers/tickets/models.py:36
+#: cers/orders/models.py:29 cers/tickets/models.py:42
 msgid "Status"
 msgstr "Status"
 
@@ -448,12 +472,12 @@ msgid "Order"
 msgstr "Zamówienie"
 
 #: cers/orders/models.py:53
-#: cers/reports/management/commands/monthly_report.py:28
-#: cers/tickets/models.py:33 cers/tickets/models.py:91
+#: cers/reports/management/commands/monthly_report.py:29
+#: cers/tickets/models.py:39 cers/tickets/models.py:109
 msgid "Description"
 msgstr "Opis"
 
-#: cers/orders/models.py:58 cers/tickets/models.py:96
+#: cers/orders/models.py:58 cers/tickets/models.py:114
 msgid "Comments"
 msgstr "Komentarze"
 
@@ -461,37 +485,37 @@ msgstr "Komentarze"
 msgid "Reports"
 msgstr "Raporty"
 
-#: cers/reports/management/commands/monthly_report.py:22
-#: cers/reports/models.py:11
+#: cers/reports/management/commands/monthly_report.py:21
+#: cers/reports/models.py:10
 msgid "Monthly report"
 msgstr "Raport miesięczny"
 
-#: cers/reports/management/commands/monthly_report.py:28
+#: cers/reports/management/commands/monthly_report.py:29
 msgid "No."
 msgstr "Lp"
 
-#: cers/reports/management/commands/monthly_report.py:28
+#: cers/reports/management/commands/monthly_report.py:29
 msgid "Date"
 msgstr "Data"
 
-#: cers/reports/management/commands/monthly_report.py:28
-#: cers/tickets/models.py:44
+#: cers/reports/management/commands/monthly_report.py:29
+#: cers/tickets/models.py:62
 msgid "Access to the client"
 msgstr "Dojazd"
 
-#: cers/reports/management/commands/monthly_report.py:28
+#: cers/reports/management/commands/monthly_report.py:29
 msgid "Duration of service"
 msgstr "Czas realizacji usługi"
 
-#: cers/reports/management/commands/monthly_report.py:38
+#: cers/reports/management/commands/monthly_report.py:41
 msgid "YES"
 msgstr "TAK"
 
-#: cers/reports/management/commands/monthly_report.py:38
+#: cers/reports/management/commands/monthly_report.py:41
 msgid "NO"
 msgstr "NIE"
 
-#: cers/reports/models.py:14
+#: cers/reports/models.py:13
 msgid "Report type"
 msgstr "Typ raportu"
 
@@ -581,131 +605,151 @@ msgstr "Pokaż wszystko"
 msgid "Save"
 msgstr "Zapisz"
 
-#: cers/tickets/admin.py:183
+#: cers/templates/custom/drivers.html:6
+msgid "Drivers"
+msgstr "Sterowniki"
+
+#: cers/templates/custom/drivers.html:22
+msgid "Download drivers"
+msgstr "Pobierz sterowniki"
+
+#: cers/templates/custom/drivers.html:26
+msgid "Submit"
+msgstr "Wyślij"
+
+#: cers/templates/custom/drivers.html:52
+msgid "Download"
+msgstr "Pobierz"
+
+#: cers/templates/custom/drivers.html:62
+msgid "Wrong serial number"
+msgstr "Błędny numer seryjny"
+
+#: cers/tickets/admin.py:198
 msgid "year"
 msgstr "rok"
 
-#: cers/tickets/admin.py:194
+#: cers/tickets/admin.py:209
 msgid "hours"
 msgstr "godzin"
 
-#: cers/tickets/admin.py:195
+#: cers/tickets/admin.py:210
 msgid "minutes"
 msgstr "minut"
 
-#: cers/tickets/admin.py:197
+#: cers/tickets/admin.py:213
 msgid "Period"
 msgstr "Okres"
 
-#: cers/tickets/admin.py:201
+#: cers/tickets/admin.py:214
 msgid "For day"
 msgstr "Na dzień"
 
-#: cers/tickets/admin.py:205
+#: cers/tickets/admin.py:216
 msgid "Time"
 msgstr "Czas"
 
-#: cers/tickets/apps.py:7 cers/tickets/models.py:49
+#: cers/tickets/apps.py:7 cers/tickets/models.py:67
 msgid "Tickets"
 msgstr "Zgłoszenia"
 
-#: cers/tickets/filters.py:11 cers/tickets/models.py:42
+#: cers/tickets/filters.py:10 cers/tickets/models.py:60
 msgid "Accepted"
 msgstr "Zaakceptowany"
 
-#: cers/tickets/filters.py:28
+#: cers/tickets/filters.py:27
 msgid "Month closed"
 msgstr "Miesiąc zamknięcia"
 
-#: cers/tickets/filters.py:45
+#: cers/tickets/filters.py:44
 msgid "Year closed"
 msgstr "Rok zamknięcia"
 
-#: cers/tickets/models.py:14
+#: cers/tickets/models.py:13
 msgid "Open"
 msgstr "Otwarty"
 
-#: cers/tickets/models.py:15
+#: cers/tickets/models.py:14
 msgid "Closed"
 msgstr "Zamknięty"
 
-#: cers/tickets/models.py:18
+#: cers/tickets/models.py:17
 msgid "SMS"
 msgstr "SMS"
 
-#: cers/tickets/models.py:19
+#: cers/tickets/models.py:18
 msgid "E-mail"
 msgstr "E-mail"
 
-#: cers/tickets/models.py:20
+#: cers/tickets/models.py:19
 msgid "Don't notify"
 msgstr "Nie powiadamiaj"
 
-#: cers/tickets/models.py:23
+#: cers/tickets/models.py:22
 msgid "Low"
 msgstr "Niski"
 
-#: cers/tickets/models.py:24
+#: cers/tickets/models.py:23
 msgid "Normal"
 msgstr "Normalny"
 
-#: cers/tickets/models.py:25
+#: cers/tickets/models.py:24
 msgid "Important"
 msgstr "Ważny"
 
-#: cers/tickets/models.py:26
+#: cers/tickets/models.py:25
 msgid "Critical"
 msgstr "Krytyczny"
 
-#: cers/tickets/models.py:29
+#: cers/tickets/models.py:32
 msgid "Reporting"
 msgstr "Zgłaszający"
 
-#: cers/tickets/models.py:31
+#: cers/tickets/models.py:36
 msgid "Technician"
 msgstr "Technik"
 
-#: cers/tickets/models.py:32
+#: cers/tickets/models.py:38
 msgid "Topic"
 msgstr "Temat"
 
-#: cers/tickets/models.py:34
+#: cers/tickets/models.py:40
 msgid "Deadline"
 msgstr "Termin wykonania"
 
-#: cers/tickets/models.py:38
+#: cers/tickets/models.py:50
 msgid "Send notification"
 msgstr "Wyślij powiadomienie"
 
-#: cers/tickets/models.py:40
+#: cers/tickets/models.py:57
 msgid "Priority"
 msgstr "Priorytet"
 
-#: cers/tickets/models.py:41
+#: cers/tickets/models.py:59
 msgid "Duration"
 msgstr "Czas trwania"
 
-#: cers/tickets/models.py:45
+#: cers/tickets/models.py:63
 msgid "Closed date"
 msgstr "Data zamknięcia"
 
-#: cers/tickets/models.py:48
+#: cers/tickets/models.py:66
 msgid "Ticket"
 msgstr "Zgłoszenie"
 
-#: cers/tickets/models.py:77
+#: cers/tickets/models.py:95
 msgid "Open ticket"
 msgstr "Otwarte zgłoszenie"
 
-#: cers/tickets/models.py:86
+#: cers/tickets/models.py:104
 msgid "Closed ticket"
 msgstr "Zamknięte zgłoszenie"
 
-#: cers/tickets/models.py:105
+#: cers/tickets/models.py:123
 msgid "Attachment"
 msgstr "Załącznik"
 
-#: cers/tickets/models.py:106
+#: cers/tickets/models.py:124
 msgid "Attachments"
 msgstr "Załączniki"
 
