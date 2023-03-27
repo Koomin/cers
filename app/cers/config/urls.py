@@ -21,8 +21,11 @@ from django.urls import include, path
 
 urlpatterns = [
     path('i18n/', include('django.conf.urls.i18n')),
-    path('hardware/', include('cers.hardware.urls')),
+    path('drivers/', include('cers.hardware.urls')),
 ]
+
+urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 urlpatterns += i18n_patterns(
     path('', include('cers.tickets.urls')),
@@ -30,7 +33,3 @@ urlpatterns += i18n_patterns(
     path('', admin_site.urls),
     prefix_default_language=False,
 )
-
-if settings.DEBUG:
-    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -1,4 +1,4 @@
-from cers.companies.models import Company, Department
+from cers.companies.models import Company, CompanyConfig, Department
 from cers.core.admin import admin_site
 from django.contrib import admin
 
@@ -8,8 +8,15 @@ class DepartmentInline(admin.StackedInline):
     extra = 1
 
 
+class CompanyConfigInline(admin.StackedInline):
+    model = CompanyConfig
+
+
 class CompanyAdmin(admin.ModelAdmin):
-    inlines = (DepartmentInline,)
+    inlines = (
+        CompanyConfigInline,
+        DepartmentInline,
+    )
 
 
 admin_site.register(Company, CompanyAdmin)

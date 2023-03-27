@@ -1,0 +1,17 @@
+#body_styling {
+    background-color: #142375;
+    color: white;
+}
+
+.drivers_table {
+    margin-top: 5vh;
+    color: white !important;
+}
+
+.drivers_table td {
+    text-align: center;
+}
+
+.download_link {
+    color: white;
+}

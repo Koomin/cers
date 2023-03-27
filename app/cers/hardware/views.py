@@ -1,3 +1,4 @@
+from cers.companies.models import CompanyConfig
 from cers.hardware.models import ComputerSet
 from django.http import JsonResponse
 from django.shortcuts import render
@@ -5,7 +6,8 @@ from django.utils.translation import gettext_lazy as _
 
 
 def driver_site(request):
-    return render(request, 'custom/drivers.html')
+    logo = CompanyConfig.objects.get(main_company=True).logo.url
+    return render(request, 'custom/drivers.html', {'logo': logo})
 
 
 def get_drivers(request):

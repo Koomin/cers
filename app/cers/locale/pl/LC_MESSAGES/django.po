@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-03-16 16:47+0100\n"
+"POT-Creation-Date: 2023-03-27 18:42+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -61,7 +61,7 @@ msgid "Designates whether the user can log into this admin site."
 msgstr ""
 
 #: cers/cers_auth/models.py:26 cers/companies/apps.py:8
-#: cers/companies/models.py:11
+#: cers/companies/models.py:13
 msgid "Companies"
 msgstr "Firmy"
 
@@ -77,27 +77,43 @@ msgstr "Zgłaszaj w imieniu"
 msgid "User with given username already exist."
 msgstr "Użytkownik z podaną nazwą już istnieje."
 
-#: cers/companies/apps.py:7 cers/companies/models.py:10
+#: cers/companies/apps.py:7 cers/companies/models.py:12
 #: cers/hardware/models.py:166 cers/orders/models.py:27
 #: cers/reports/models.py:17 cers/tickets/models.py:61
 msgid "Company"
 msgstr "Firma"
 
-#: cers/companies/models.py:7 cers/companies/models.py:19
+#: cers/companies/models.py:9 cers/companies/models.py:21
 msgid "name"
 msgstr "nazwa"
 
-#: cers/companies/models.py:20
+#: cers/companies/models.py:22 cers/companies/models.py:34
 msgid "company"
 msgstr "firma"
 
-#: cers/companies/models.py:23
+#: cers/companies/models.py:25
 msgid "Department"
 msgstr "Dział"
 
-#: cers/companies/models.py:24
+#: cers/companies/models.py:26
 msgid "Departments"
 msgstr "Działy"
+
+#: cers/companies/models.py:35
+msgid "logo"
+msgstr "logo"
+
+#: cers/companies/models.py:36
+msgid "main company"
+msgstr "główna firma"
+
+#: cers/companies/models.py:39 cers/companies/models.py:40
+msgid "Company config"
+msgstr "Konfiguracja firmy"
+
+#: cers/companies/models.py:44
+msgid "Cannot add another main company."
+msgstr "Nie można dodać kolejnej głównej firmy"
 
 #: cers/config/settings/base.py:115
 msgid "Polish"
@@ -200,7 +216,7 @@ msgid "Manufacturers"
 msgstr "Producenci"
 
 #: cers/hardware/models.py:26 cers/hardware/models.py:35
-#: cers/hardware/models.py:170 cers/hardware/views.py:26
+#: cers/hardware/models.py:170 cers/hardware/views.py:27
 msgid "Operating system"
 msgstr "System operacyjny"
 
@@ -249,7 +265,7 @@ msgstr "Komentarz"
 
 #: cers/hardware/models.py:42 cers/hardware/models.py:62
 #: cers/hardware/models.py:168 cers/hardware/models.py:213
-#: cers/templates/custom/drivers.html:16
+#: cers/templates/custom/drivers.html:24
 msgid "Serial number"
 msgstr "Numer seryjny"
 
@@ -266,7 +282,7 @@ msgid "Driver url"
 msgstr ""
 
 #: cers/hardware/models.py:68 cers/hardware/models.py:175
-#: cers/hardware/views.py:35
+#: cers/hardware/views.py:42
 msgid "Processor"
 msgstr "Procesor"
 
@@ -301,7 +317,7 @@ msgid "Power Supplies"
 msgstr "Zasilacze"
 
 #: cers/hardware/models.py:98 cers/hardware/models.py:183
-#: cers/hardware/views.py:29
+#: cers/hardware/views.py:32
 msgid "Motherboard"
 msgstr "Płyta główna"
 
@@ -314,7 +330,7 @@ msgid "Memories"
 msgstr "Pamięć RAM"
 
 #: cers/hardware/models.py:130 cers/hardware/models.py:138
-#: cers/hardware/views.py:23
+#: cers/hardware/views.py:24
 msgid "Computer model"
 msgstr "Model komputera"
 
@@ -339,7 +355,7 @@ msgstr "Klucz licencyjny - system operacyjny"
 msgid "Processor serial number"
 msgstr "Numer seryjny - procesor"
 
-#: cers/hardware/models.py:179 cers/hardware/views.py:32
+#: cers/hardware/models.py:179 cers/hardware/views.py:37
 msgid "Power supply"
 msgstr "Zasilacz"
 
@@ -589,19 +605,23 @@ msgstr "Pokaż wszystko"
 msgid "Save"
 msgstr "Zapisz"
 
-#: cers/templates/custom/drivers.html:5
+#: cers/templates/custom/drivers.html:6
 msgid "Drivers"
 msgstr "Sterowniki"
 
-#: cers/templates/custom/drivers.html:15
+#: cers/templates/custom/drivers.html:22
 msgid "Download drivers"
 msgstr "Pobierz sterowniki"
 
-#: cers/templates/custom/drivers.html:18
+#: cers/templates/custom/drivers.html:26
 msgid "Submit"
 msgstr "Wyślij"
 
-#: cers/templates/custom/drivers.html:48
+#: cers/templates/custom/drivers.html:52
+msgid "Download"
+msgstr "Pobierz"
+
+#: cers/templates/custom/drivers.html:62
 msgid "Wrong serial number"
 msgstr "Błędny numer seryjny"
 
