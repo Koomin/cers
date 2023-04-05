@@ -26,7 +26,7 @@ class Command(BaseCommand):
         )
         language_code = get_language()
         activate(language_code)
-        headers = [_('No.'), _('Date'), _('Access to the client'), _('Description'), _('Duration of service')]
+        headers = [_('No.'), _('Date'), _('Access to the client'), _('Description'), _('Duration of service'), _('Reporting')]
         wb = Workbook()
         ws = wb.active
         ws.append(str(obj) for obj in headers)
@@ -41,6 +41,7 @@ class Command(BaseCommand):
                     str(_('YES')) if obj.access_to_client else str(_('NO')),
                     obj.description,
                     obj.duration,
+                    obj.reporting.username
                 ]
             )
             if idx % 2 == 0 or queryset.count() == idx:
@@ -50,11 +51,12 @@ class Command(BaseCommand):
         ws.append(['', '', access_to_client, '', queryset.aggregate(sum_duration=Sum('duration'))['sum_duration']])
         set_borders(ws, queryset.count() + 2)
         filters = ws.auto_filter
-        filters.ref = f'A1:E{queryset.count()}'
+        filters.ref = f'A1:F{queryset.count()}'
         ws.column_dimensions['E'].width = 18
         ws.column_dimensions['B'].width = 12
         ws.column_dimensions['D'].width = 55
         ws.column_dimensions['C'].width = 8
+        ws.column_dimensions['F'].width = 18
         file_name = (
             f'{report_name}_'
             f'{Company.objects.get(id=kwargs.get("company_id")).name}_'
