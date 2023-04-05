@@ -26,7 +26,14 @@ class Command(BaseCommand):
         )
         language_code = get_language()
         activate(language_code)
-        headers = [_('No.'), _('Date'), _('Access to the client'), _('Description'), _('Duration of service'), _('Reporting')]
+        headers = [
+            _('No.'),
+            _('Date'),
+            _('Access to the client'),
+            _('Description'),
+            _('Duration of service'),
+            _('Reporting'),
+        ]
         wb = Workbook()
         ws = wb.active
         ws.append(str(obj) for obj in headers)
@@ -41,7 +48,7 @@ class Command(BaseCommand):
                     str(_('YES')) if obj.access_to_client else str(_('NO')),
                     obj.description,
                     obj.duration,
-                    obj.reporting.username
+                    obj.reporting.username,
                 ]
             )
             if idx % 2 == 0 or queryset.count() == idx:
