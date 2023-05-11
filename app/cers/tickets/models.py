@@ -71,8 +71,7 @@ class Ticket(CersModel):
 
     def save(self, *args, **kwargs):
         if self._state.adding:
-            if not self.reporting:
-                self.reporting = self.user
+            self.reporting = self.user
             company = self.user.settings.get('company')
             if company != 0:
                 self.company = Company.objects.get(pk=company)
