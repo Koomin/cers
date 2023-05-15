@@ -67,7 +67,8 @@ class CersModelAdmin(admin.ModelAdmin):
         return qs
 
     def save_model(self, request, obj, form, change):
-        obj.user = request.user
+        if (hasattr(obj, 'user') and not obj.user) or not hasattr(obj, 'user'):
+            obj.user = request.user
         super().save_model(request, obj, form, change)
 
     def has_add_permission(self, request):

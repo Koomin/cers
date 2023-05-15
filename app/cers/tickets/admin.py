@@ -30,8 +30,8 @@ class TicketAdmin(CersModelAdmin):
 
     def save_model(self, request, obj, form, change):
         obj.user = request.user
-        if hasattr(self.form, 'cleaned_data') and self.form.cleaned_data.get('reporting'):
-            obj.user = self.form.cleaned_data.get('reporting')
+        if hasattr(form, 'cleaned_data') and form.cleaned_data.get('reporting'):
+            obj.user = form.cleaned_data.get('reporting')
         super().save_model(request, obj, form, change)
 
     def get_queryset(self, request):
