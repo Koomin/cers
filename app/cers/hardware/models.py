@@ -40,6 +40,7 @@ class Computer(CersModel):
     synology_pass = models.CharField(max_length=255, null=True, blank=True, verbose_name=_('Synology password'))
     comment = models.CharField(max_length=255, null=True, blank=True, verbose_name=_('Comment'))
     serial_number = models.CharField(max_length=50, null=True, blank=True, verbose_name=_('Serial number'))
+    company = models.ForeignKey(Company, on_delete=models.CASCADE, null=True, blank=True, verbose_name=_('Company'))
 
     class Meta:
         verbose_name = _('Computer')

@@ -23,6 +23,7 @@ class ComputerAdmin(CersModelAdmin):
     list_display = [
         'name',
         'user',
+        'company',
         'model',
         'number',
         'operating_system',
@@ -34,6 +35,7 @@ class ComputerAdmin(CersModelAdmin):
         'comment',
         'serial_number',
     ]
+    context_field = 'company'
 
 
 class GraphicCardInline(admin.TabularInline):
