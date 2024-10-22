@@ -14,7 +14,7 @@ class ReportGeneration(CersModel):
     )
     date_from = models.DateField(null=False, blank=False, verbose_name=_('Date from'))
     date_to = models.DateField(null=False, blank=False, verbose_name=_('Date to'))
-    company = models.ForeignKey(Company, on_delete=models.CASCADE, null=False, blank=False, verbose_name=_('Company'))
+    company = models.ForeignKey(Company, on_delete=models.CASCADE, null=True, blank=True, verbose_name=_('Company'))
     report_file = models.FileField(upload_to='reports/', blank=True, null=True, verbose_name=_('Report file'))
 
     class Meta:
