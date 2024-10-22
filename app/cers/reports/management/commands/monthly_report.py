@@ -20,7 +20,7 @@ class Command(BaseCommand):
     def handle(self, *args, **kwargs):
         report_name = _('Monthly report')
         wb = Workbook()
-        companies = [kwargs.get('company_id') if kwargs.get('company_id') else Company.objects.all().values_list('id', flat=True)]
+        companies = [kwargs.get('company_id')] if kwargs.get('company_id') else list(Company.objects.all().values_list('id', flat=True))
         for company in companies:
             queryset = TicketClosed.objects.filter(
                 closed_date__gte=kwargs.get('date_from'),
