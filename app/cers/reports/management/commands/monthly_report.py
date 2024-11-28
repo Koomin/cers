@@ -36,6 +36,7 @@ class Command(BaseCommand):
                 _('Description'),
                 _('Duration of service'),
                 _('Reporting'),
+                _('Deadline')
             ]
             ws = wb.create_sheet(title=Company.objects.get(pk=company).name)
             ws.append(str(obj) for obj in headers)
@@ -51,6 +52,7 @@ class Command(BaseCommand):
                         obj.description,
                         obj.duration,
                         obj.reporting.username,
+                        obj.deadline,
                     ]
                 )
                 if idx % 2 == 0 or queryset.count() == idx:
@@ -66,6 +68,7 @@ class Command(BaseCommand):
             ws.column_dimensions['D'].width = 55
             ws.column_dimensions['C'].width = 8
             ws.column_dimensions['F'].width = 18
+            ws.column_dimensions['G'].width = 18
         file_name = (
             f'{report_name}_'
             f'{Company.objects.get(id=kwargs.get("company_id")).name if kwargs.get("company_id") else "All companies"}_'
