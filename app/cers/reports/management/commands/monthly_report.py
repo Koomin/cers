@@ -26,17 +26,16 @@ class Command(BaseCommand):
                 closed_date__gte=kwargs.get('date_from'),
                 closed_date__lte=kwargs.get('date_to'),
                 company__id=company,
-            )
+            ).order_by('deadline')
             language_code = get_language()
             activate(language_code)
             headers = [
                 _('No.'),
-                _('Date'),
+                _('Deadline'),
                 _('Access to the client'),
                 _('Description'),
                 _('Duration of service'),
                 _('Reporting'),
-                _('Deadline')
             ]
             ws = wb.create_sheet(title=Company.objects.get(pk=company).name)
             ws.append(str(obj) for obj in headers)
@@ -47,12 +46,11 @@ class Command(BaseCommand):
                 ws.append(
                     [
                         idx,
-                        obj.closed_date,
+                        obj.deadline,
                         str(_('YES')) if obj.access_to_client else str(_('NO')),
                         obj.description,
                         obj.duration,
                         obj.reporting.username,
-                        obj.deadline,
                     ]
                 )
                 if idx % 2 == 0 or queryset.count() == idx:
