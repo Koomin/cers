@@ -1,7 +1,8 @@
 from datetime import datetime
 
+from django.db.models import Sum
 from rest_framework import status
-from rest_framework.decorators import api_view, permission_classes
+from rest_framework.decorators import api_view
 from rest_framework.response import Response
 
 from cers.cers_auth.models import CersUser
@@ -38,11 +39,10 @@ def technicians(request):
              'tickets': technician.tasks.filter(closed_date=datetime.today()).count(),
              'tickets_current_month': technician.tasks.filter(closed_date__month=month,
                                                               closed_date__year=year).count(),
-             'time': sum(technician.tasks.filter(closed_date=datetime.today()).values_list("duration",
-                                                                                           flat=True)),
-             'time_current_month': sum(technician.tasks.filter(closed_date__month=month,
-                                                               closed_date__year=year).values_list("duration",
-                                                                                                   flat=True))
+             'time': technician.tasks.filter(closed_date=datetime.today()).aggregate(
+                 Sum('duration'))['duration__sum'].total_seconds() // 60,
+             'time_current_month': technician.tasks.filter(closed_date__month=month, closed_date__year=year).aggregate(
+                 Sum('duration'))['duration__sum'].total_seconds() // 60
              } for
             technician in technicians_list]
     return Response({'data': data}, status=status.HTTP_200_OK)
