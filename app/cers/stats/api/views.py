@@ -43,5 +43,5 @@ def technicians_tickets_year(request, year):
     data = [{'label': "",
              'data': [technician.tasks.filter(closed_date__month=m, closed_date__year=year).count() for m in
                       range(1, 13)],
-             'backgroundColor': ""} for technician in technicians_list]
+             'backgroundColor': technician.color} for technician in technicians_list]
     return Response({'data': {'data': data}}, status=status.HTTP_200_OK)
