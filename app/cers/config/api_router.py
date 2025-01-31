@@ -8,4 +8,4 @@ router = DefaultRouter() if settings.DEBUG else SimpleRouter()
 
 app_name = "api"
 urlpatterns = router.urls
-urlpatterns += [path('stats', include('cers.stats.urls'))]
+urlpatterns += [path('stats/', include('cers.stats.urls'))]

@@ -20,7 +20,7 @@ class CersUserAdmin(UserAdmin):
                 ),
             },
         ),
-        (_('Settings'), {'fields': ('settings',)}),
+        (_('Settings'), {'fields': ('settings', 'color')}),
         (_('Important dates'), {'fields': ('last_login', 'date_joined')}),
     )
     filter_horizontal = ('user_permissions',)
