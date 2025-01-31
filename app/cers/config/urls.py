@@ -33,3 +33,5 @@ urlpatterns += i18n_patterns(
     path('', admin_site.urls),
     prefix_default_language=False,
 )
+
+urlpatterns += [path(settings.API_VERSION, include("cers.config.api_router")),]
