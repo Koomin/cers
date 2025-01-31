@@ -39,7 +39,7 @@ def technicians(request):
              'tickets_current_month': technician.tasks.filter(closed_date__month=month,
                                                               closed_date__year=year).count(),
              'time': sum(technician.tasks.filter(closed_date=datetime.today()).values_list("duration",
-                                                                                           flat=True))
+                                                                                           flat=True)),
              'time_current_month': sum(technician.tasks.filter(closed_date__month=month,
                                                                closed_date__year=year).values_list("duration",
                                                                                                    flat=True))
