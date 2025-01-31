@@ -45,6 +45,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
+    'rest_framework_api_key',
     'cers.core',
     'cers.cers_auth',
     'cers.companies',
@@ -204,3 +206,11 @@ JAZZMIN_UI_TWEAKS = {
     },
     'actions_sticky_top': True,
 }
+
+REST_FRAMEWORK = {
+    "DEFAULT_PERMISSION_CLASSES": [
+        "rest_framework_api_key.permissions.HasAPIKey",
+    ]
+}
+
+API_VERSION = 'api/v1/'
