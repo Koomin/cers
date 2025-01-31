@@ -22,6 +22,7 @@ from django.urls import include, path
 urlpatterns = [
     path('i18n/', include('django.conf.urls.i18n')),
     path('drivers/', include('cers.hardware.urls')),
+    path(settings.API_VERSION, include("cers.config.api_router")),
 ]
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
@@ -34,4 +35,3 @@ urlpatterns += i18n_patterns(
     prefix_default_language=False,
 )
 
-urlpatterns += [path(settings.API_VERSION, include("cers.config.api_router")),]
