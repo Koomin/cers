@@ -31,10 +31,19 @@ def companies_year(request, year):
 
 @api_view(['GET'])
 def technicians(request):
+    month = datetime.today().month
+    year = datetime.today().year
     technicians_list = CersUser.objects.filter(groups__name='technician')
     data = [{'id': technician.id, 'technician': technician.username,
-             'tickets': technician.tasks.filter(closed_date=datetime.today()),
-             'time': sum(technician.tasks.filter(closed_date=datetime.today()).values_list("duration", flat=True))} for
+             'tickets': technician.tasks.filter(closed_date=datetime.today()).count(),
+             'tickets_current_month': technician.tasks.filter(closed_date__month=month,
+                                                              closed_date__year=year).count(),
+             'time': sum(technician.tasks.filter(closed_date=datetime.today()).values_list("duration",
+                                                                                           flat=True))
+             'time_current_month': sum(technician.tasks.filter(closed_date__month=month,
+                                                               closed_date__year=year).values_list("duration",
+                                                                                                   flat=True))
+             } for
             technician in technicians_list]
     return Response({'data': data}, status=status.HTTP_200_OK)
 
