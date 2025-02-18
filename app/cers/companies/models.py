@@ -6,7 +6,7 @@ from django.utils.translation import gettext_lazy as _
 
 class Company(CersModel):
     name = models.CharField(max_length=255, null=False, blank=False, verbose_name=_('name'))
-    color = models.CharField(max_length=255, default="", verbose_name=_('color'))
+    color = models.CharField(max_length=255, default="", verbose_name=_('color'), blank=True)
     class Meta:
         verbose_name = _('Company')
         verbose_name_plural = _('Companies')
