@@ -490,6 +490,9 @@ msgstr "Raporty"
 msgid "Monthly report"
 msgstr "Raport miesięczny"
 
+msgid "Monthly report by deadline"
+msgstr "Raport miesięczny wg. terminu"
+
 #: cers/reports/management/commands/monthly_report.py:29
 msgid "No."
 msgstr "Lp"
