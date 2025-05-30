@@ -8,6 +8,7 @@ from django.utils.translation import gettext_lazy as _
 class ReportGeneration(CersModel):
     class ReportType(models.TextChoices):
         MONTHLY_REPORT = 'monthly_report', _('Monthly report')
+        MONTHLY_REPORT_DEADLINE = 'monthly_report_deadline', _('Monthly report deadline')
 
     report_type = models.CharField(
         max_length=50, choices=ReportType.choices, blank=False, null=False, verbose_name=_('Report type')
