@@ -212,5 +212,5 @@ REST_FRAMEWORK = {
         "rest_framework_api_key.permissions.HasAPIKey",
     ]
 }
-
+CSRF_TRUSTED_ORIGINS = ALLOWED_HOSTS
 API_VERSION = 'api/v1/'
