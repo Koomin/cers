@@ -85,7 +85,11 @@ class TimeDurationWidget(MultiWidget):
             parsed_value = parse_duration(value)
             days, hours, minutes, seconds = get_time_factors(parsed_value)
             return_list = []
-            return_list.append(days) if self.show_days else None
+            if self.show_days:
+                return_list.append(days)
+            else:
+                # Add days to hours when days are not shown
+                hours += days * 24
             return_list.append(hours) if self.show_hours else None
             return_list.append(minutes) if self.show_minutes else None
             return_list.append(seconds) if self.show_seconds else None
