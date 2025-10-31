@@ -1,3 +1,4 @@
+from cers.cers_auth.actions import add_companies
 from cers.cers_auth.models import CersUser
 from cers.core.admin import admin_site
 from django.contrib.auth.admin import GroupAdmin, UserAdmin
@@ -30,6 +31,7 @@ class CersUserAdmin(UserAdmin):
         'last_name',
         'email',
     ]
+    actions = (add_companies,)
 
 
 admin_site.register(CersUser, CersUserAdmin)

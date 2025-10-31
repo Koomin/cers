@@ -1,3 +1,5 @@
+from django.apps import apps
+
 from cers.core.models import CersModel
 from django.core.exceptions import ValidationError
 from django.db import models
@@ -15,6 +17,21 @@ class Company(CersModel):
     def __str__(self):
         return self.name
 
+    def save(
+        self, force_insert=False, force_update=False, using=None, update_fields=None
+    ):
+        if self._state.adding:
+            self.color = "#000000"
+            try:
+                super().save(force_insert, force_update, using, update_fields)
+                model = apps.get_model('cers_auth', 'CersUser')
+                users = model.objects.filter(groups__name__in=["admin", "technician"])
+                for user in users:
+                    user.companies.add(self)
+                    user.save()
+            except Exception as e:
+                pass
+        super().save(force_insert, force_update, using, update_fields)
 
 class Department(CersModel):
     name = models.CharField(max_length=255, null=False, blank=False, verbose_name=_('name'))
